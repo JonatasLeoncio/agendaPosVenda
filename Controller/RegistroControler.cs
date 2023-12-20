@@ -17,6 +17,11 @@ namespace agendaPosVenda.Controller
         {
            return servico.SalvarRegistro(novoRegistro);
         }
+
+        public List<Registro> ListarRegistros()
+        {
+            return servico.ListarRegistros();
+        }
     }
 
         

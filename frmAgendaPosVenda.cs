@@ -2,12 +2,15 @@ using agendaPosVenda.Controller;
 using agendaPosVenda.Model;
 using agendaPosVenda.Services;
 using Microsoft.Win32;
+using System.Data;
+using System.Data.Common;
 using System.Windows.Forms;
 
 namespace agendaPosVenda
 {
     public partial class frmAgendaPosVenda : Form
     {
+        RegistroControler registroControler = new RegistroControler();
         public frmAgendaPosVenda()
         {
             InitializeComponent();
@@ -24,7 +27,7 @@ namespace agendaPosVenda
             novoRegistro.Status = "Aberto";
             novoRegistro.Observacao = "blablabla";
 
-            RegistroControler registroControler = new RegistroControler();
+           
             List<Registro> resp = new List<Registro>();
              resp.AddRange(registroControler.SalvarRegistro(novoRegistro));
             // return null;
@@ -51,7 +54,9 @@ namespace agendaPosVenda
                // gridRegistros.Rows[rowIndex].Cells["Observacao"].Value = item.Observacao;
                 // Adicione mais linhas conforme necessário
             }
-
+           gridExemplo.DataSource = resp;
+            
+            
 
 
 
@@ -74,6 +79,11 @@ namespace agendaPosVenda
 
         }
 
-       
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            var resp= registroControler.ListarRegistros();
+            gridExemplo.DataSource = resp;
+
+        }
     }
 }

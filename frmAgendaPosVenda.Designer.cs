@@ -65,11 +65,13 @@
             this.CodCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
+            this.gridExemplo = new System.Windows.Forms.DataGridView();
             this.pnlEntidades.SuspendLayout();
             this.pnlStatus.SuspendLayout();
             this.pnlControles.SuspendLayout();
             this.pnlComandos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRegistros)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridExemplo)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSalvar
@@ -312,6 +314,7 @@
             this.btnAlterar.TabIndex = 10;
             this.btnAlterar.Text = "Atualizar";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnExcluir
             // 
@@ -387,7 +390,7 @@
             this.gridRegistros.Location = new System.Drawing.Point(14, 211);
             this.gridRegistros.Name = "gridRegistros";
             this.gridRegistros.RowTemplate.Height = 25;
-            this.gridRegistros.Size = new System.Drawing.Size(1045, 219);
+            this.gridRegistros.Size = new System.Drawing.Size(1045, 104);
             this.gridRegistros.TabIndex = 16;
             // 
             // Id
@@ -426,11 +429,21 @@
             this.label9.TabIndex = 17;
             this.label9.Text = "Obs:";
             // 
+            // gridExemplo
+            // 
+            this.gridExemplo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridExemplo.Location = new System.Drawing.Point(303, 321);
+            this.gridExemplo.Name = "gridExemplo";
+            this.gridExemplo.RowTemplate.Height = 25;
+            this.gridExemplo.Size = new System.Drawing.Size(756, 109);
+            this.gridExemplo.TabIndex = 18;
+            // 
             // frmAgendaPosVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1071, 442);
+            this.Controls.Add(this.gridExemplo);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.gridRegistros);
             this.Controls.Add(this.label7);
@@ -450,6 +463,7 @@
             this.pnlControles.ResumeLayout(false);
             this.pnlComandos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridRegistros)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridExemplo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -494,5 +508,6 @@
         private DataGridViewTextBoxColumn CodCliente;
         private DataGridViewTextBoxColumn cliente;
         private Label label9;
+        private DataGridView gridExemplo;
     }
 }

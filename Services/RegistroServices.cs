@@ -15,5 +15,9 @@ namespace agendaPosVenda.Services
         {
             return registroRepositories.SalvarRegistro(registro);
         }
+        public List<Registro> ListarRegistros()
+        {
+            return registroRepositories.ListarGegistros();
+        }
     }
 }

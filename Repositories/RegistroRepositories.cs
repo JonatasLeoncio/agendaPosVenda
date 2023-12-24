@@ -19,8 +19,8 @@ namespace agendaPosVenda.Repositories
 
             using (var conexao = new SQLiteConnection("Data Source=C:/Users/Micro/Desktop/Agenda_pos_vendas/agendaPosVenda/Banco/BdCV.db"))
             {
-                string sql = "insert into registros (Talao, Funcionario, codCliente, NomeCliente, Telefone, Status, Data, DataAberta, DataEntrega, DataPosVenda, Observacao)values(@Talao,@Funcionario,@CodCliente,@NomeCliente,@Telefone,@Status,@Data,@DataAberta,@DataEntrega,@DataPosVenda,@Observacao);";
-                // string sql = "insert into registros (Talao, Funcionario, CodCliente, NomeCliente, Telefone, Status, Data, DataAbertura, DataEntrega, DataPosVenda, Observacao)values(123,'jojo',222,'kkkko',3215544,'aberto','1984/10/02','02-10-1984','02-10-1984','02-10-1984','ooop');";
+                string sql = "insert into registros (Talao, Funcionario, codCliente, NomeCliente, Telefone, Status, Data, DataAberta, DataEntrega, DataPosVenda, Observacao,Valor)values(@Talao,@Funcionario,@CodCliente,@NomeCliente,@Telefone,@Status,@Data,@DataAberta,@DataEntrega,@DataPosVenda,@Observacao,@Valor);";
+                // string sql = "insert into registros (Talao, Funcionario, CodCliente, NomeCliente, Telefone, Status, Data, DataAberta, DataEntrega, DataPosVenda, Observacao)values(123,'jojo',222,'kkkko',3215544,'aberto','1984/10/02','02-10-1984','02-10-1984','02-10-1984','ooop');";
                 int linhasAfetadas = conexao.Execute(sql, registro);
                 return Banco.Banco.Salvar(registro);
             }
@@ -33,7 +33,7 @@ namespace agendaPosVenda.Repositories
         {
             using (var conexao = new SQLiteConnection("Data Source=C:/Users/Micro/Desktop/Agenda_pos_vendas/agendaPosVenda/Banco/BdCV.db"))
             {
-                string sql = "select * from registros";
+                string sql = "select * from registros Order By Id Desc";
                 var resp = conexao.Query<Registro>(sql).ToList();
                 return resp ;
             }

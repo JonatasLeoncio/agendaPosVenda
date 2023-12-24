@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.txtNomeCliente = new System.Windows.Forms.TextBox();
             this.txtTalao = new System.Windows.Forms.TextBox();
@@ -64,14 +66,24 @@
             this.Funcionario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataAberta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataEntrega = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataPosVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Observacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
             this.gridExemplo = new System.Windows.Forms.DataGridView();
+            this.label10 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblDataHoje = new System.Windows.Forms.Label();
             this.pnlEntidades.SuspendLayout();
             this.pnlStatus.SuspendLayout();
             this.pnlControles.SuspendLayout();
             this.pnlComandos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRegistros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridExemplo)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSalvar
@@ -146,7 +158,12 @@
             // 
             // cmbStatus
             // 
+            this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStatus.FormattingEnabled = true;
+            this.cmbStatus.Items.AddRange(new object[] {
+            "Aberto",
+            "Entregue",
+            "Pós Venda Feito"});
             this.cmbStatus.Location = new System.Drawing.Point(398, 25);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(152, 23);
@@ -212,7 +229,7 @@
             // 
             // txtDataTalao
             // 
-            this.txtDataTalao.Location = new System.Drawing.Point(435, 491);
+            this.txtDataTalao.Location = new System.Drawing.Point(2, 611);
             this.txtDataTalao.Mask = "00/00/0000";
             this.txtDataTalao.Name = "txtDataTalao";
             this.txtDataTalao.Size = new System.Drawing.Size(146, 23);
@@ -223,7 +240,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(435, 471);
+            this.label3.Location = new System.Drawing.Point(2, 591);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 17);
             this.label3.TabIndex = 9;
@@ -361,17 +378,17 @@
             // 
             // txtObservacao
             // 
-            this.txtObservacao.Location = new System.Drawing.Point(863, 26);
+            this.txtObservacao.Location = new System.Drawing.Point(5, 26);
             this.txtObservacao.Multiline = true;
             this.txtObservacao.Name = "txtObservacao";
-            this.txtObservacao.Size = new System.Drawing.Size(196, 174);
+            this.txtObservacao.Size = new System.Drawing.Size(184, 140);
             this.txtObservacao.TabIndex = 14;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(12, 442);
+            this.label7.Location = new System.Drawing.Point(14, 409);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(123, 17);
             this.label7.TabIndex = 15;
@@ -386,21 +403,30 @@
             this.Talao,
             this.Funcionario,
             this.CodCliente,
-            this.cliente});
-            this.gridRegistros.Location = new System.Drawing.Point(14, 211);
+            this.cliente,
+            this.Telefone,
+            this.Status,
+            this.DataAberta,
+            this.DataEntrega,
+            this.DataPosVenda,
+            this.Observacao});
+            this.gridRegistros.Location = new System.Drawing.Point(12, 211);
             this.gridRegistros.Name = "gridRegistros";
             this.gridRegistros.RowTemplate.Height = 25;
-            this.gridRegistros.Size = new System.Drawing.Size(1045, 104);
+            this.gridRegistros.Size = new System.Drawing.Size(1045, 195);
             this.gridRegistros.TabIndex = 16;
             // 
             // Id
             // 
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Id.DefaultCellStyle = dataGridViewCellStyle1;
             this.Id.HeaderText = "Id";
             this.Id.Name = "Id";
-            this.Id.Visible = false;
             // 
             // Talao
             // 
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Talao.DefaultCellStyle = dataGridViewCellStyle2;
             this.Talao.HeaderText = "Talao";
             this.Talao.Name = "Talao";
             // 
@@ -416,14 +442,44 @@
             // 
             // cliente
             // 
-            this.cliente.HeaderText = "cliente";
+            this.cliente.HeaderText = "Cliente";
             this.cliente.Name = "cliente";
+            // 
+            // Telefone
+            // 
+            this.Telefone.HeaderText = "Telefone";
+            this.Telefone.Name = "Telefone";
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            // 
+            // DataAberta
+            // 
+            this.DataAberta.HeaderText = "Data Aberta";
+            this.DataAberta.Name = "DataAberta";
+            // 
+            // DataEntrega
+            // 
+            this.DataEntrega.HeaderText = "Data Entrega";
+            this.DataEntrega.Name = "DataEntrega";
+            // 
+            // DataPosVenda
+            // 
+            this.DataPosVenda.HeaderText = "Data Pós Venda";
+            this.DataPosVenda.Name = "DataPosVenda";
+            // 
+            // Observacao
+            // 
+            this.Observacao.HeaderText = "Observacao";
+            this.Observacao.Name = "Observacao";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(863, 6);
+            this.label9.Location = new System.Drawing.Point(3, 6);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(36, 17);
             this.label9.TabIndex = 17;
@@ -432,23 +488,55 @@
             // gridExemplo
             // 
             this.gridExemplo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridExemplo.Location = new System.Drawing.Point(303, 321);
+            this.gridExemplo.Location = new System.Drawing.Point(12, 462);
             this.gridExemplo.Name = "gridExemplo";
             this.gridExemplo.RowTemplate.Height = 25;
-            this.gridExemplo.Size = new System.Drawing.Size(756, 109);
+            this.gridExemplo.Size = new System.Drawing.Size(1045, 109);
             this.gridExemplo.TabIndex = 18;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(259, 6);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(78, 17);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Data Hoje: ";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.txtObservacao);
+            this.panel1.Location = new System.Drawing.Point(863, 26);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(194, 179);
+            this.panel1.TabIndex = 20;
+            // 
+            // lblDataHoje
+            // 
+            this.lblDataHoje.AutoSize = true;
+            this.lblDataHoje.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblDataHoje.Location = new System.Drawing.Point(334, 6);
+            this.lblDataHoje.Name = "lblDataHoje";
+            this.lblDataHoje.Size = new System.Drawing.Size(41, 17);
+            this.lblDataHoje.TabIndex = 21;
+            this.lblDataHoje.Text = "Atual";
             // 
             // frmAgendaPosVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1071, 442);
+            this.ClientSize = new System.Drawing.Size(1071, 636);
+            this.Controls.Add(this.lblDataHoje);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.gridExemplo);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.gridRegistros);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtDataTalao);
-            this.Controls.Add(this.txtObservacao);
             this.Controls.Add(this.pnlControles);
             this.Controls.Add(this.pnlStatus);
             this.Controls.Add(this.label3);
@@ -464,6 +552,8 @@
             this.pnlComandos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridRegistros)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridExemplo)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -502,12 +592,21 @@
         private Label label8;
         private ComboBox cmbStatus;
         private DataGridView gridRegistros;
+        private Label label9;
+        private DataGridView gridExemplo;
+        private Label label10;
+        private Panel panel1;
+        private Label lblDataHoje;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Talao;
         private DataGridViewTextBoxColumn Funcionario;
         private DataGridViewTextBoxColumn CodCliente;
         private DataGridViewTextBoxColumn cliente;
-        private Label label9;
-        private DataGridView gridExemplo;
+        private DataGridViewTextBoxColumn Telefone;
+        private DataGridViewTextBoxColumn Status;
+        private DataGridViewTextBoxColumn DataAberta;
+        private DataGridViewTextBoxColumn DataEntrega;
+        private DataGridViewTextBoxColumn DataPosVenda;
+        private DataGridViewTextBoxColumn Observacao;
     }
 }

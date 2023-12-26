@@ -24,6 +24,9 @@ namespace agendaPosVenda.Repositories
                 int linhasAfetadas = conexao.Execute(sql, registro);
                 return Banco.Banco.Salvar(registro);
             }
+            //Alterar
+            //Excluir
+            //Buscar
 
 
 

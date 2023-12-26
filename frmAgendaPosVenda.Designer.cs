@@ -36,6 +36,8 @@
             this.txtCodCliente = new System.Windows.Forms.TextBox();
             this.cmbFuncionario = new System.Windows.Forms.ComboBox();
             this.pnlEntidades = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtValor = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.txtTel = new System.Windows.Forms.MaskedTextBox();
@@ -121,14 +123,21 @@
             // cmbFuncionario
             // 
             this.cmbFuncionario.FormattingEnabled = true;
+            this.cmbFuncionario.Items.AddRange(new object[] {
+            "Jonatas Leoncio",
+            "Leandro Leoncio",
+            "Leonardo",
+            "Rodrigo"});
             this.cmbFuncionario.Location = new System.Drawing.Point(101, 25);
             this.cmbFuncionario.Name = "cmbFuncionario";
-            this.cmbFuncionario.Size = new System.Drawing.Size(282, 23);
+            this.cmbFuncionario.Size = new System.Drawing.Size(230, 23);
             this.cmbFuncionario.TabIndex = 5;
             // 
             // pnlEntidades
             // 
             this.pnlEntidades.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlEntidades.Controls.Add(this.label11);
+            this.pnlEntidades.Controls.Add(this.txtValor);
             this.pnlEntidades.Controls.Add(this.label8);
             this.pnlEntidades.Controls.Add(this.cmbStatus);
             this.pnlEntidades.Controls.Add(this.txtTel);
@@ -146,11 +155,28 @@
             this.pnlEntidades.Size = new System.Drawing.Size(570, 120);
             this.pnlEntidades.TabIndex = 8;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(337, 6);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(40, 17);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "Valor";
+            // 
+            // txtValor
+            // 
+            this.txtValor.Location = new System.Drawing.Point(337, 25);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Size = new System.Drawing.Size(99, 23);
+            this.txtValor.TabIndex = 20;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(398, 5);
+            this.label8.Location = new System.Drawing.Point(442, 5);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 17);
             this.label8.TabIndex = 16;
@@ -158,16 +184,16 @@
             // 
             // cmbStatus
             // 
-            this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStatus.FormattingEnabled = true;
             this.cmbStatus.Items.AddRange(new object[] {
             "Aberto",
             "Entregue",
             "Pós Venda Feito"});
-            this.cmbStatus.Location = new System.Drawing.Point(398, 25);
+            this.cmbStatus.Location = new System.Drawing.Point(442, 25);
             this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(152, 23);
+            this.cmbStatus.Size = new System.Drawing.Size(123, 23);
             this.cmbStatus.TabIndex = 19;
+            this.cmbStatus.Text = "Aberto";
             // 
             // txtTel
             // 
@@ -413,6 +439,7 @@
             this.gridRegistros.Location = new System.Drawing.Point(12, 211);
             this.gridRegistros.Name = "gridRegistros";
             this.gridRegistros.RowTemplate.Height = 25;
+            this.gridRegistros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridRegistros.Size = new System.Drawing.Size(1045, 195);
             this.gridRegistros.TabIndex = 16;
             // 
@@ -529,7 +556,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1071, 636);
+            this.ClientSize = new System.Drawing.Size(1071, 596);
             this.Controls.Add(this.lblDataHoje);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label10);
@@ -608,5 +635,7 @@
         private DataGridViewTextBoxColumn DataEntrega;
         private DataGridViewTextBoxColumn DataPosVenda;
         private DataGridViewTextBoxColumn Observacao;
+        private Label label11;
+        private TextBox txtValor;
     }
 }

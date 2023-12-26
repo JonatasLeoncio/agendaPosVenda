@@ -30,13 +30,13 @@ namespace agendaPosVenda
             novoRegistro.CodCliente = Convert.ToInt32(txtCodCliente.Text);
             novoRegistro.NomeCliente = txtNomeCliente.Text;
             novoRegistro.Telefone = txtTel.Text;
-            novoRegistro.Status = "Aberto";
+            novoRegistro.Status = cmbStatus.Text;
             novoRegistro.Data = Convert.ToDateTime(lblDataHoje.Text);
             novoRegistro.DataAberta = Convert.ToDateTime(txtDtAberto.Text);
             novoRegistro.DataEntrega = Convert.ToDateTime(txtDtEntregue.Text);
-            novoRegistro.DataPosVenda = null;//Convert.ToDateTime(txtDtPosVenda.Text);
-            novoRegistro.Observacao = "blablabla";
-            novoRegistro.Valor = 100.00M;
+            novoRegistro.DataPosVenda = Convert.ToDateTime(txtDtPosVenda.Text);
+            novoRegistro.Observacao = txtObservacao.Text;
+            novoRegistro.Valor = Convert.ToDecimal(txtValor.Text);
             
 
             List<Registro> resp = new List<Registro>();

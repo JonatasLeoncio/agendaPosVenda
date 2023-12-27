@@ -79,6 +79,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblDataHoje = new System.Windows.Forms.Label();
+            this.lblId = new System.Windows.Forms.Label();
             this.pnlEntidades.SuspendLayout();
             this.pnlStatus.SuspendLayout();
             this.pnlControles.SuspendLayout();
@@ -368,6 +369,7 @@
             this.btnExcluir.TabIndex = 11;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // pnlControles
             // 
@@ -423,6 +425,7 @@
             // gridRegistros
             // 
             this.gridRegistros.AllowUserToAddRows = false;
+            this.gridRegistros.AllowUserToDeleteRows = false;
             this.gridRegistros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridRegistros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -438,10 +441,14 @@
             this.Observacao});
             this.gridRegistros.Location = new System.Drawing.Point(12, 211);
             this.gridRegistros.Name = "gridRegistros";
+            this.gridRegistros.ReadOnly = true;
             this.gridRegistros.RowTemplate.Height = 25;
             this.gridRegistros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridRegistros.Size = new System.Drawing.Size(1045, 195);
             this.gridRegistros.TabIndex = 16;
+            this.gridRegistros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellContentClick);
+            this.gridRegistros.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellDoubleClick);
+            this.gridRegistros.Click += new System.EventHandler(this.gridRegistros_Click);
             // 
             // Id
             // 
@@ -449,6 +456,7 @@
             this.Id.DefaultCellStyle = dataGridViewCellStyle1;
             this.Id.HeaderText = "Id";
             this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
             // 
             // Talao
             // 
@@ -456,51 +464,61 @@
             this.Talao.DefaultCellStyle = dataGridViewCellStyle2;
             this.Talao.HeaderText = "Talao";
             this.Talao.Name = "Talao";
+            this.Talao.ReadOnly = true;
             // 
             // Funcionario
             // 
             this.Funcionario.HeaderText = "Funcionario";
             this.Funcionario.Name = "Funcionario";
+            this.Funcionario.ReadOnly = true;
             // 
             // CodCliente
             // 
             this.CodCliente.HeaderText = "Cod Cliente";
             this.CodCliente.Name = "CodCliente";
+            this.CodCliente.ReadOnly = true;
             // 
             // cliente
             // 
             this.cliente.HeaderText = "Cliente";
             this.cliente.Name = "cliente";
+            this.cliente.ReadOnly = true;
             // 
             // Telefone
             // 
             this.Telefone.HeaderText = "Telefone";
             this.Telefone.Name = "Telefone";
+            this.Telefone.ReadOnly = true;
             // 
             // Status
             // 
             this.Status.HeaderText = "Status";
             this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
             // 
             // DataAberta
             // 
             this.DataAberta.HeaderText = "Data Aberta";
             this.DataAberta.Name = "DataAberta";
+            this.DataAberta.ReadOnly = true;
             // 
             // DataEntrega
             // 
             this.DataEntrega.HeaderText = "Data Entrega";
             this.DataEntrega.Name = "DataEntrega";
+            this.DataEntrega.ReadOnly = true;
             // 
             // DataPosVenda
             // 
             this.DataPosVenda.HeaderText = "Data Pós Venda";
             this.DataPosVenda.Name = "DataPosVenda";
+            this.DataPosVenda.ReadOnly = true;
             // 
             // Observacao
             // 
             this.Observacao.HeaderText = "Observacao";
             this.Observacao.Name = "Observacao";
+            this.Observacao.ReadOnly = true;
             // 
             // label9
             // 
@@ -552,11 +570,21 @@
             this.lblDataHoje.TabIndex = 21;
             this.lblDataHoje.Text = "Atual";
             // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.lblId.Location = new System.Drawing.Point(12, 6);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(0, 15);
+            this.lblId.TabIndex = 22;
+            // 
             // frmAgendaPosVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1071, 596);
+            this.Controls.Add(this.lblId);
             this.Controls.Add(this.lblDataHoje);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label10);
@@ -624,6 +652,9 @@
         private Label label10;
         private Panel panel1;
         private Label lblDataHoje;
+        private Label label11;
+        private TextBox txtValor;
+        private Label lblId;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Talao;
         private DataGridViewTextBoxColumn Funcionario;
@@ -635,7 +666,5 @@
         private DataGridViewTextBoxColumn DataEntrega;
         private DataGridViewTextBoxColumn DataPosVenda;
         private DataGridViewTextBoxColumn Observacao;
-        private Label label11;
-        private TextBox txtValor;
     }
 }

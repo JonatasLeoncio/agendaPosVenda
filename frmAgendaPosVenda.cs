@@ -37,7 +37,7 @@ namespace agendaPosVenda
             novoRegistro.DataPosVenda = Convert.ToDateTime(txtDtPosVenda.Text);
             novoRegistro.Observacao = txtObservacao.Text;
             novoRegistro.Valor = Convert.ToDecimal(txtValor.Text);
-            
+
 
             List<Registro> resp = new List<Registro>();
             resp.AddRange(registroControler.SalvarRegistro(novoRegistro));
@@ -74,8 +74,8 @@ namespace agendaPosVenda
                 int rowIndex = gridRegistros.Rows.Add();
 
                 // Preencha os valores das células para a nova linha
-                gridRegistros.Rows[rowIndex].Cells["Id"].Value = item.Id ;
-                gridRegistros.Rows[rowIndex].Cells["Talao"].Value = item.Talao;               
+                gridRegistros.Rows[rowIndex].Cells["Id"].Value = item.Id;
+                gridRegistros.Rows[rowIndex].Cells["Talao"].Value = item.Talao;
                 gridRegistros.Rows[rowIndex].Cells["Funcionario"].Value = item.Funcionario;
                 gridRegistros.Rows[rowIndex].Cells["CodCliente"].Value = item.CodCliente;
                 gridRegistros.Rows[rowIndex].Cells["Cliente"].Value = item.NomeCliente;
@@ -83,12 +83,19 @@ namespace agendaPosVenda
                 gridRegistros.Rows[rowIndex].Cells["Status"].Value = item.Status;
                 // gridRegistros.Rows[rowIndex].Cells["Observacao"].Value = item.Observacao;
                 // Adicione mais linhas conforme necessário
+
+                gridRegistros.DefaultCellStyle.SelectionBackColor = Color.White;
+                gridRegistros.DefaultCellStyle.SelectionForeColor = Color.Black;
             }
         }
 
         private void frmAgendaPosVenda_Load(object sender, EventArgs e)
         {
             //registroControler.ListarRegistros();
+            gridRegistros.DefaultCellStyle.SelectionBackColor = Color.White;
+            gridRegistros.DefaultCellStyle.SelectionForeColor = Color.Black;
+           // gridRegistros.Columns[0].Width = 00;
+            gridRegistros.Columns[0].Visible=false;
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -100,6 +107,61 @@ namespace agendaPosVenda
         {
             var resp = registroControler.ListarRegistros();
 
+
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = 0;
+                if (lblId.Text!="")
+                {
+                    id = Convert.ToInt32(lblId.Text);
+                }
+                else
+                {
+                    MessageBox.Show("Selecione um registro");
+                    return;
+                }
+               
+                if (registroControler.ExcluirRegistro(id))
+                {
+                    MessageBox.Show("Registro Excluído com sucesso");
+                    id = 0;
+                    lblId.Text = "";
+                    ListarGridRegistros();
+                }
+                else
+                {
+                    MessageBox.Show("Não foi possivel excluir o registro");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            
+            
+        }
+
+        private void gridRegistros_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            lblId.Text = gridRegistros.CurrentRow.Cells[0].Value.ToString();
+            gridRegistros.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 128, 128);//coloca cor argb
+        }
+
+        private void gridRegistros_Click(object sender, EventArgs e)
+        {
+            gridRegistros.DefaultCellStyle.SelectionBackColor = Color.LightSkyBlue;
+            gridRegistros.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+            lblId.Text = "";
+        }
+
+        private void gridRegistros_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

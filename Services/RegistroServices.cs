@@ -19,5 +19,10 @@ namespace agendaPosVenda.Services
         {
             return registroRepositories.ListarGegistros();
         }
+
+        public bool ExcluirRegistro(int id)
+        {
+           return registroRepositories.ExcluirRegstro(id);
+        }
     }
 }

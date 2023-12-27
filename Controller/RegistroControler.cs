@@ -22,6 +22,11 @@ namespace agendaPosVenda.Controller
         {
             return servico.ListarRegistros();
         }
+
+        public bool ExcluirRegistro(int Id)
+        {
+           return  servico.ExcluirRegistro(Id);
+        }
     }
 
         

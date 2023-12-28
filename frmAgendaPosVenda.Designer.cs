@@ -439,16 +439,18 @@
             this.DataEntrega,
             this.DataPosVenda,
             this.Observacao});
+            this.gridRegistros.EnableHeadersVisualStyles = false;
             this.gridRegistros.Location = new System.Drawing.Point(12, 211);
+            this.gridRegistros.MultiSelect = false;
             this.gridRegistros.Name = "gridRegistros";
             this.gridRegistros.ReadOnly = true;
             this.gridRegistros.RowTemplate.Height = 25;
             this.gridRegistros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridRegistros.Size = new System.Drawing.Size(1045, 195);
             this.gridRegistros.TabIndex = 16;
-            this.gridRegistros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellContentClick);
             this.gridRegistros.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellDoubleClick);
             this.gridRegistros.Click += new System.EventHandler(this.gridRegistros_Click);
+            this.gridRegistros.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridRegistros_KeyDown);
             // 
             // Id
             // 

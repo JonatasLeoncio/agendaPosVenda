@@ -36,7 +36,7 @@ namespace agendaPosVenda.Repositories
             }
         }
 
-        //Alterar
+        //Alterar.AAAAAAAAAAAAAAAAAAA
 
         //Excluir
         public bool ExcluirRegstro(int Id)

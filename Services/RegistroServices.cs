@@ -1,5 +1,6 @@
 ﻿using agendaPosVenda.Model;
 using agendaPosVenda.Repositories;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,11 @@ namespace agendaPosVenda.Services
         public bool ExcluirRegistro(int id)
         {
            return registroRepositories.ExcluirRegstro(id);
+        }
+
+        public List<Registro> AlterarRegistro(Registro novoRegistro)
+        {
+            return registroRepositories.AlterarRegistro(novoRegistro);
         }
     }
 }

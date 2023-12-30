@@ -67,7 +67,7 @@ namespace agendaPosVenda
 
         private void ListarGridRegistros()
         {
-           // gridRegistros.CellFormatting += gridRegistros_CellFormatting;
+            // gridRegistros.CellFormatting += gridRegistros_CellFormatting;
             var resp = registroControler.ListarRegistros();
             gridRegistros.Rows.Clear();
             foreach (var item in resp)
@@ -76,18 +76,18 @@ namespace agendaPosVenda
                 int rowIndex = gridRegistros.Rows.Add();
 
                 // Preencha os valores das células para a nova linha
-               /* gridRegistros.Rows[rowIndex].Cells["Id"].Value = item.Id;
-                gridRegistros.Rows[rowIndex].Cells["Talao"].Value = item.Talao;
-                gridRegistros.Rows[rowIndex].Cells["Funcionario"].Value = item.Funcionario;
-                gridRegistros.Rows[rowIndex].Cells["CodCliente"].Value = item.CodCliente;
-                gridRegistros.Rows[rowIndex].Cells["Cliente"].Value = item.NomeCliente;
-                gridRegistros.Rows[rowIndex].Cells["Telefone"].Value = item.Telefone;
-                gridRegistros.Rows[rowIndex].Cells["Status"].Value = item.Status;*/
+                /* gridRegistros.Rows[rowIndex].Cells["Id"].Value = item.Id;
+                 gridRegistros.Rows[rowIndex].Cells["Talao"].Value = item.Talao;
+                 gridRegistros.Rows[rowIndex].Cells["Funcionario"].Value = item.Funcionario;
+                 gridRegistros.Rows[rowIndex].Cells["CodCliente"].Value = item.CodCliente;
+                 gridRegistros.Rows[rowIndex].Cells["Cliente"].Value = item.NomeCliente;
+                 gridRegistros.Rows[rowIndex].Cells["Telefone"].Value = item.Telefone;
+                 gridRegistros.Rows[rowIndex].Cells["Status"].Value = item.Status;*/
                 // gridRegistros.Rows[rowIndex].Cells["Observacao"].Value = item.Observacao;
                 // Adicione mais linhas conforme necessário
 
                 //gridRegistros.DefaultCellStyle.SelectionBackColor = Color.White;
-               // gridRegistros.DefaultCellStyle.SelectionForeColor = Color.Black;
+                // gridRegistros.DefaultCellStyle.SelectionForeColor = Color.Black;
             }
             for (int i = 0; i < resp.Count; i++)
             {
@@ -101,12 +101,12 @@ namespace agendaPosVenda
 
 
                 // Altera a cor do texto na célula com base em alguma condição
-                if (resp[i].Status=="Aberto")
+                if (resp[i].Status == "Aberto")
                 {
                     gridRegistros.Rows[i].Cells["Status"].Style.BackColor = Color.Yellow;
                     gridRegistros.Rows[i].Cells["Status"].Style.ForeColor = Color.Red; // Cor padrão
                 }
-                else if(resp[i].Status == "Entregue")
+                else if (resp[i].Status == "Entregue")
                 {
                     gridRegistros.Rows[i].Cells["Status"].Style.ForeColor = Color.White; // Cor padrão
                     gridRegistros.Rows[i].Cells["Status"].Style.BackColor = Color.Green;
@@ -134,10 +134,10 @@ namespace agendaPosVenda
             //registroControler.ListarRegistros();
             //gridRegistros.DefaultCellStyle.SelectionBackColor = Color.Transparent;
             //gridRegistros.DefaultCellStyle.SelectionForeColor = Color.Black;
-           // gridRegistros.Columns[0].Width = 00;
-            gridRegistros.Columns[0].Visible=false;
+            // gridRegistros.Columns[0].Width = 00;
+            gridRegistros.Columns[0].Visible = false;
 
-           
+
 
 
             gridRegistros.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
@@ -157,7 +157,11 @@ namespace agendaPosVenda
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-           
+            if (lblId.Text == "".Trim())
+            {
+                MessageBox.Show("Selecione algum registro na grade para alteração");
+                return;
+            }
 
             Registro novoRegistro = new Registro();
             novoRegistro.Id = Convert.ToInt32(lblId.Text);
@@ -177,7 +181,7 @@ namespace agendaPosVenda
 
             List<Registro> resp = new List<Registro>();
             resp.AddRange(registroControler.AlterarRegistro(novoRegistro));
-           
+
 
             ListarGridRegistros();
             gridExemplo.DataSource = resp;
@@ -189,7 +193,7 @@ namespace agendaPosVenda
             try
             {
                 int id = 0;
-                if (lblId.Text!="")
+                if (lblId.Text != "")
                 {
                     id = Convert.ToInt32(lblId.Text);
                 }
@@ -198,7 +202,7 @@ namespace agendaPosVenda
                     MessageBox.Show("Selecione um registro");
                     return;
                 }
-               
+
                 if (registroControler.ExcluirRegistro(id))
                 {
                     MessageBox.Show("Registro Excluído com sucesso");
@@ -216,29 +220,39 @@ namespace agendaPosVenda
 
                 MessageBox.Show(ex.Message);
             }
-            
-            
+
+
         }
 
         private void gridRegistros_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //lblId.Text = gridRegistros.CurrentRow.Cells[0].Value.ToString();
             //gridRegistros.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 128, 128);//coloca cor argb
-           
+
+
+            /*gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            gridRegistros.CurrentCell = null;
+            lblId.Text = "";*/
+
+
+            gridRegistros.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
 
             gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            gridRegistros.CurrentCell = null;
-            lblId.Text = "";
         }
 
         private void gridRegistros_Click(object sender, EventArgs e)
         {
             //gridRegistros.DefaultCellStyle.SelectionBackColor = Color.LightSkyBlue;
             //gridRegistros.DefaultCellStyle.SelectionForeColor = Color.Black;           
-           // Color corPadrao = SystemColors.Highlight;
-            gridRegistros.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
+            // Color corPadrao = SystemColors.Highlight;
+
+            /*gridRegistros.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
+
+            gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;*/
 
             gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            gridRegistros.CurrentCell = null;
+            lblId.Text = "";
 
         }
 
@@ -246,9 +260,27 @@ namespace agendaPosVenda
         {
             if (e.KeyCode == Keys.Enter)
             {
+                if (gridRegistros.CurrentCell == null){
+                   // MessageBox.Show("Selecione algum registro");
+                    gridRegistros.CurrentCell = null;
+                    e.SuppressKeyPress = true;
+                    return;
+                }
+                
                 // Faça o que você precisa fazer quando a tecla Enter é pressionada
                 // ...
                 lblId.Text = gridRegistros.CurrentRow.Cells[0].Value.ToString();
+               txtTalao.Text = gridRegistros.CurrentRow.Cells[1].Value.ToString();
+               cmbFuncionario.Text = gridRegistros.CurrentRow.Cells[2].Value.ToString();
+               txtCodCliente.Text = gridRegistros.CurrentRow.Cells[3].Value.ToString();
+               txtNomeCliente.Text = gridRegistros.CurrentRow.Cells[4].Value.ToString();
+               txtTel.Text = gridRegistros.CurrentRow.Cells[5].Value.ToString();
+               cmbStatus.Text = gridRegistros.CurrentRow.Cells[6].Value.ToString();
+              // txtDtAberto.Text = gridRegistros.CurrentRow.Cells[7].Value.ToString();
+              // txtDtEntregue.Text = gridRegistros.CurrentRow.Cells[8].Value.ToString();
+               //txtDtPosVenda.Text = gridRegistros.CurrentRow.Cells[9].Value.ToString();
+                //txtObservacao.Text = gridRegistros.CurrentRow.Cells[10].Value.ToString();
+
                 gridRegistros.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 128, 128);//coloca cor argb
 
                 // Impede a mudança para a próxima linha
@@ -265,11 +297,11 @@ namespace agendaPosVenda
         {
             if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
             {
-               
+
 
                 gridRegistros.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
-               
-                
+
+
             }
         }
     }

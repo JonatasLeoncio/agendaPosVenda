@@ -449,7 +449,7 @@
             this.DataPosVenda,
             this.Observacao});
             this.gridRegistros.EnableHeadersVisualStyles = false;
-            this.gridRegistros.Location = new System.Drawing.Point(12, 211);
+            this.gridRegistros.Location = new System.Drawing.Point(13, 212);
             this.gridRegistros.MultiSelect = false;
             this.gridRegistros.Name = "gridRegistros";
             this.gridRegistros.ReadOnly = true;

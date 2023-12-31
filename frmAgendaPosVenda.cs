@@ -330,10 +330,11 @@ namespace agendaPosVenda
                txtNomeCliente.Text = gridRegistros.CurrentRow.Cells[4].Value.ToString();
                txtTel.Text = gridRegistros.CurrentRow.Cells[5].Value.ToString();
                cmbStatus.Text = gridRegistros.CurrentRow.Cells[6].Value.ToString();
-               // txtDataPrevEntrega.Text = gridExemplo.CurrentRow.Cells[9].Value.ToString();
-              // txtDtAberto.Text = gridRegistros.CurrentRow.Cells[7].Value.ToString();
-              // txtDtEntregue.Text = gridRegistros.CurrentRow.Cells[8].Value.ToString();
-               //txtDtPosVenda.Text = gridRegistros.CurrentRow.Cells[9].Value.ToString();
+
+               txtDtAberto.Text = gridRegistros.CurrentRow.Cells[7].Value.ToString();
+                txtDataPrevEntrega.Text = gridRegistros.CurrentRow.Cells[8].Value.ToString();
+               txtDtEntregue.Text = gridRegistros.CurrentRow.Cells[9].Value.ToString();
+               txtDtPosVenda.Text = gridRegistros.CurrentRow.Cells[10].Value.ToString();
                 //txtObservacao.Text = gridRegistros.CurrentRow.Cells[10].Value.ToString();
 
                 gridRegistros.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 128, 128);//coloca cor argb

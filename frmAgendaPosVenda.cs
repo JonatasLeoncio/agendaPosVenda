@@ -33,11 +33,12 @@ namespace agendaPosVenda
             novoRegistro.Telefone = txtTel.Text;
             novoRegistro.Status = cmbStatus.Text;
             novoRegistro.Data = Convert.ToDateTime(lblDataHoje.Text);
-            novoRegistro.DataAberta = Convert.ToDateTime(txtDtAberto.Text);
-            novoRegistro.DataEntrega = Convert.ToDateTime(txtDtEntregue.Text);
-            novoRegistro.DataPosVenda = Convert.ToDateTime(txtDtPosVenda.Text);
+            novoRegistro.DataPrevEntrega = (txtDataPrevEntrega.Text == "  /  /")?null:Convert.ToDateTime(txtDataPrevEntrega.Text);
+            novoRegistro.DataAberta = (txtDtAberto.Text == "  /  /") ? null : Convert.ToDateTime(txtDtAberto.Text);
+            novoRegistro.DataEntrega = (txtDtEntregue.Text == "  /  /") ? null : Convert.ToDateTime(txtDtEntregue.Text);
+            novoRegistro.DataPosVenda = (txtDtPosVenda.Text == "  /  /") ? null : Convert.ToDateTime(txtDtPosVenda.Text);
             novoRegistro.Observacao = txtObservacao.Text;
-            novoRegistro.Valor = Convert.ToDecimal(txtValor.Text);
+            novoRegistro.Valor = (txtValor.Text == "".Trim()) ? 0 : Convert.ToDecimal(txtValor.Text);
 
 
             List<Registro> resp = new List<Registro>();
@@ -118,7 +119,7 @@ namespace agendaPosVenda
                 }
             }
 
-            gridRegistros.Columns[0].Visible = false;
+           // gridRegistros.Columns[0].Visible = false;
 
 
 
@@ -135,7 +136,7 @@ namespace agendaPosVenda
             //gridRegistros.DefaultCellStyle.SelectionBackColor = Color.Transparent;
             //gridRegistros.DefaultCellStyle.SelectionForeColor = Color.Black;
             // gridRegistros.Columns[0].Width = 00;
-            gridRegistros.Columns[0].Visible = false;
+            //gridRegistros.Columns[0].Visible = false;
 
 
 
@@ -152,7 +153,17 @@ namespace agendaPosVenda
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            /*string testSemMascara = new String(txtDtEntregue.Text.Where(Char.IsDigit).ToArray());
+            MessageBox.Show(testSemMascara);*/
+            if(txtDtEntregue.Text=="  /  /")
+            {
+                MessageBox.Show("vazio");
+            }
+            else
+            {
+                MessageBox.Show(txtDtEntregue.Text);
+            }
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
@@ -172,11 +183,12 @@ namespace agendaPosVenda
             novoRegistro.Telefone = txtTel.Text;
             novoRegistro.Status = cmbStatus.Text;
             novoRegistro.Data = Convert.ToDateTime(lblDataHoje.Text);
-            novoRegistro.DataAberta = Convert.ToDateTime(txtDtAberto.Text);
-            novoRegistro.DataEntrega = Convert.ToDateTime(txtDtEntregue.Text);
-            novoRegistro.DataPosVenda = Convert.ToDateTime(txtDtPosVenda.Text);
+            novoRegistro.DataPrevEntrega = (txtDataPrevEntrega.Text == "  /  /") ? null : Convert.ToDateTime(txtDataPrevEntrega.Text);
+            novoRegistro.DataAberta = (txtDtAberto.Text == "  /  /") ? null : Convert.ToDateTime(txtDtAberto.Text);
+            novoRegistro.DataEntrega = (txtDtEntregue.Text == "  /  /") ? null : Convert.ToDateTime(txtDtEntregue.Text);
+            novoRegistro.DataPosVenda = (txtDtPosVenda.Text == "  /  /") ? null : Convert.ToDateTime(txtDtPosVenda.Text);
             novoRegistro.Observacao = txtObservacao.Text;
-            novoRegistro.Valor = Convert.ToDecimal(txtValor.Text);
+            novoRegistro.Valor = (txtValor.Text=="".Trim())?0:Convert.ToDecimal(txtValor.Text);
 
 
             List<Registro> resp = new List<Registro>();
@@ -233,11 +245,14 @@ namespace agendaPosVenda
             /*gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             gridRegistros.CurrentCell = null;
             lblId.Text = "";*/
-
-
-            gridRegistros.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
-
             gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            gridRegistros.CurrentCell = null;
+            lblId.Text = "";
+
+
+            //gridRegistros.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
+
+            //gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void gridRegistros_Click(object sender, EventArgs e)
@@ -250,9 +265,13 @@ namespace agendaPosVenda
 
             gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;*/
 
+            //gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //gridRegistros.CurrentCell = null;
+            //lblId.Text = "";
+
+            gridRegistros.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
+
             gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            gridRegistros.CurrentCell = null;
-            lblId.Text = "";
 
         }
 
@@ -276,6 +295,7 @@ namespace agendaPosVenda
                txtNomeCliente.Text = gridRegistros.CurrentRow.Cells[4].Value.ToString();
                txtTel.Text = gridRegistros.CurrentRow.Cells[5].Value.ToString();
                cmbStatus.Text = gridRegistros.CurrentRow.Cells[6].Value.ToString();
+               // txtDataPrevEntrega.Text = gridExemplo.CurrentRow.Cells[9].Value.ToString();
               // txtDtAberto.Text = gridRegistros.CurrentRow.Cells[7].Value.ToString();
               // txtDtEntregue.Text = gridRegistros.CurrentRow.Cells[8].Value.ToString();
                //txtDtPosVenda.Text = gridRegistros.CurrentRow.Cells[9].Value.ToString();
@@ -303,6 +323,11 @@ namespace agendaPosVenda
 
 
             }
+        }
+
+        private void txtDtAberto_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 }

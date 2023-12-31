@@ -37,6 +37,8 @@
             this.txtCodCliente = new System.Windows.Forms.TextBox();
             this.cmbFuncionario = new System.Windows.Forms.ComboBox();
             this.pnlEntidades = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtDataPrevEntrega = new System.Windows.Forms.MaskedTextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -132,12 +134,14 @@
             "Rodrigo"});
             this.cmbFuncionario.Location = new System.Drawing.Point(101, 25);
             this.cmbFuncionario.Name = "cmbFuncionario";
-            this.cmbFuncionario.Size = new System.Drawing.Size(230, 23);
+            this.cmbFuncionario.Size = new System.Drawing.Size(261, 23);
             this.cmbFuncionario.TabIndex = 5;
             // 
             // pnlEntidades
             // 
             this.pnlEntidades.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlEntidades.Controls.Add(this.label12);
+            this.pnlEntidades.Controls.Add(this.txtDataPrevEntrega);
             this.pnlEntidades.Controls.Add(this.label11);
             this.pnlEntidades.Controls.Add(this.txtValor);
             this.pnlEntidades.Controls.Add(this.label8);
@@ -154,14 +158,33 @@
             this.pnlEntidades.Controls.Add(this.txtCodCliente);
             this.pnlEntidades.Location = new System.Drawing.Point(12, 26);
             this.pnlEntidades.Name = "pnlEntidades";
-            this.pnlEntidades.Size = new System.Drawing.Size(570, 120);
+            this.pnlEntidades.Size = new System.Drawing.Size(655, 120);
             this.pnlEntidades.TabIndex = 8;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(380, 5);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(130, 17);
+            this.label12.TabIndex = 24;
+            this.label12.Text = "Previsão de entrega";
+            // 
+            // txtDataPrevEntrega
+            // 
+            this.txtDataPrevEntrega.Location = new System.Drawing.Point(380, 25);
+            this.txtDataPrevEntrega.Mask = "00/00/0000";
+            this.txtDataPrevEntrega.Name = "txtDataPrevEntrega";
+            this.txtDataPrevEntrega.Size = new System.Drawing.Size(131, 23);
+            this.txtDataPrevEntrega.TabIndex = 23;
+            this.txtDataPrevEntrega.ValidatingType = typeof(System.DateTime);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(337, 6);
+            this.label11.Location = new System.Drawing.Point(551, 65);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(40, 17);
             this.label11.TabIndex = 21;
@@ -169,7 +192,7 @@
             // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(337, 25);
+            this.txtValor.Location = new System.Drawing.Point(551, 84);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(99, 23);
             this.txtValor.TabIndex = 20;
@@ -178,7 +201,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(442, 5);
+            this.label8.Location = new System.Drawing.Point(531, 5);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 17);
             this.label8.TabIndex = 16;
@@ -191,7 +214,7 @@
             "Aberto",
             "Entregue",
             "Pós Venda Feito"});
-            this.cmbStatus.Location = new System.Drawing.Point(442, 25);
+            this.cmbStatus.Location = new System.Drawing.Point(531, 25);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(123, 23);
             this.cmbStatus.TabIndex = 19;
@@ -280,19 +303,16 @@
             this.pnlStatus.Controls.Add(this.txtDtPosVenda);
             this.pnlStatus.Controls.Add(this.txtDtEntregue);
             this.pnlStatus.Controls.Add(this.txtDtAberto);
-            this.pnlStatus.Controls.Add(this.ckbPosVenda);
-            this.pnlStatus.Controls.Add(this.ckbEntregur);
-            this.pnlStatus.Controls.Add(this.ckbAberto);
-            this.pnlStatus.Location = new System.Drawing.Point(599, 26);
+            this.pnlStatus.Location = new System.Drawing.Point(673, 26);
             this.pnlStatus.Name = "pnlStatus";
-            this.pnlStatus.Size = new System.Drawing.Size(258, 120);
+            this.pnlStatus.Size = new System.Drawing.Size(184, 120);
             this.pnlStatus.TabIndex = 9;
             this.pnlStatus.TabStop = true;
             this.pnlStatus.Tag = "";
             // 
             // txtDtPosVenda
             // 
-            this.txtDtPosVenda.Location = new System.Drawing.Point(105, 74);
+            this.txtDtPosVenda.Location = new System.Drawing.Point(39, 74);
             this.txtDtPosVenda.Mask = "00/00/0000";
             this.txtDtPosVenda.Name = "txtDtPosVenda";
             this.txtDtPosVenda.Size = new System.Drawing.Size(131, 23);
@@ -301,7 +321,7 @@
             // 
             // txtDtEntregue
             // 
-            this.txtDtEntregue.Location = new System.Drawing.Point(105, 42);
+            this.txtDtEntregue.Location = new System.Drawing.Point(39, 45);
             this.txtDtEntregue.Mask = "00/00/0000";
             this.txtDtEntregue.Name = "txtDtEntregue";
             this.txtDtEntregue.Size = new System.Drawing.Size(131, 23);
@@ -310,17 +330,18 @@
             // 
             // txtDtAberto
             // 
-            this.txtDtAberto.Location = new System.Drawing.Point(106, 13);
+            this.txtDtAberto.Location = new System.Drawing.Point(39, 16);
             this.txtDtAberto.Mask = "00/00/0000";
             this.txtDtAberto.Name = "txtDtAberto";
             this.txtDtAberto.Size = new System.Drawing.Size(130, 23);
             this.txtDtAberto.TabIndex = 15;
             this.txtDtAberto.ValidatingType = typeof(System.DateTime);
+            this.txtDtAberto.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtDtAberto_MaskInputRejected);
             // 
             // ckbPosVenda
             // 
             this.ckbPosVenda.AutoSize = true;
-            this.ckbPosVenda.Location = new System.Drawing.Point(3, 76);
+            this.ckbPosVenda.Location = new System.Drawing.Point(172, 648);
             this.ckbPosVenda.Name = "ckbPosVenda";
             this.ckbPosVenda.Size = new System.Drawing.Size(103, 19);
             this.ckbPosVenda.TabIndex = 10;
@@ -330,7 +351,7 @@
             // ckbEntregur
             // 
             this.ckbEntregur.AutoSize = true;
-            this.ckbEntregur.Location = new System.Drawing.Point(3, 47);
+            this.ckbEntregur.Location = new System.Drawing.Point(172, 619);
             this.ckbEntregur.Name = "ckbEntregur";
             this.ckbEntregur.Size = new System.Drawing.Size(96, 19);
             this.ckbEntregur.TabIndex = 9;
@@ -343,7 +364,7 @@
             this.ckbAberto.Checked = true;
             this.ckbAberto.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckbAberto.Enabled = false;
-            this.ckbAberto.Location = new System.Drawing.Point(3, 17);
+            this.ckbAberto.Location = new System.Drawing.Point(172, 589);
             this.ckbAberto.Name = "ckbAberto";
             this.ckbAberto.Size = new System.Drawing.Size(85, 19);
             this.ckbAberto.TabIndex = 8;
@@ -410,6 +431,7 @@
             this.txtObservacao.Location = new System.Drawing.Point(5, 26);
             this.txtObservacao.Multiline = true;
             this.txtObservacao.Name = "txtObservacao";
+            this.txtObservacao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtObservacao.Size = new System.Drawing.Size(184, 140);
             this.txtObservacao.TabIndex = 14;
             // 
@@ -455,7 +477,7 @@
             this.gridRegistros.ReadOnly = true;
             this.gridRegistros.RowTemplate.Height = 25;
             this.gridRegistros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridRegistros.Size = new System.Drawing.Size(1045, 195);
+            this.gridRegistros.Size = new System.Drawing.Size(736, 195);
             this.gridRegistros.TabIndex = 16;
             this.gridRegistros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellContentClick);
             this.gridRegistros.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellDoubleClick);
@@ -468,8 +490,10 @@
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Id.DefaultCellStyle = dataGridViewCellStyle2;
             this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 4;
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
+            this.Id.Width = 4;
             // 
             // Talao
             // 
@@ -596,11 +620,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1071, 596);
+            this.ClientSize = new System.Drawing.Size(1071, 454);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.lblDataHoje);
+            this.Controls.Add(this.ckbPosVenda);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.ckbEntregur);
             this.Controls.Add(this.label10);
+            this.Controls.Add(this.ckbAberto);
             this.Controls.Add(this.gridExemplo);
             this.Controls.Add(this.gridRegistros);
             this.Controls.Add(this.label7);
@@ -668,6 +695,8 @@
         private Label label11;
         private TextBox txtValor;
         private Label lblId;
+        private MaskedTextBox txtDataPrevEntrega;
+        private Label label12;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Talao;
         private DataGridViewTextBoxColumn Funcionario;

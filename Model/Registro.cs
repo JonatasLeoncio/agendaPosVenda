@@ -18,7 +18,8 @@ namespace agendaPosVenda.Model
         
         public string? Status { get; set; }
         public DateTime Data { get; set; }
-        public DateTime DataAberta { get; set; }
+        public DateTime? DataAberta { get; set; }
+        public DateTime? DataPrevEntrega { get; set; }
         public DateTime? DataEntrega { get; set; }     
         public DateTime? DataPosVenda { get; set; }
         public string? Observacao { get; set; }

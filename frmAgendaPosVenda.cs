@@ -14,7 +14,7 @@ namespace agendaPosVenda
         public frmAgendaPosVenda()
         {
             InitializeComponent();
-            lblDataHoje.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+            lblDataHoje.Text = DateTime.Now.ToString("dd/MM/yyyy");
             txtDtAberto.Text = DateTime.Now.ToString("dd/MM/yyyy");
             gridExemplo.DataSource = registroControler.ListarRegistros();
 
@@ -32,7 +32,7 @@ namespace agendaPosVenda
             novoRegistro.NomeCliente = txtNomeCliente.Text;
             novoRegistro.Telefone = txtTel.Text;
             novoRegistro.Status = cmbStatus.Text;
-            novoRegistro.Data = Convert.ToDateTime(lblDataHoje.Text);
+            novoRegistro.Data = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy HH:mm"));
             novoRegistro.DataPrevEntrega = (txtDataPrevEntrega.Text == "  /  /")?null:Convert.ToDateTime(txtDataPrevEntrega.Text);
             novoRegistro.DataAberta = (txtDtAberto.Text == "  /  /") ? null : Convert.ToDateTime(txtDtAberto.Text);
             novoRegistro.DataEntrega = (txtDtEntregue.Text == "  /  /") ? null : Convert.ToDateTime(txtDtEntregue.Text);
@@ -182,7 +182,7 @@ namespace agendaPosVenda
             novoRegistro.NomeCliente = txtNomeCliente.Text;
             novoRegistro.Telefone = txtTel.Text;
             novoRegistro.Status = cmbStatus.Text;
-            novoRegistro.Data = Convert.ToDateTime(lblDataHoje.Text);
+            //novoRegistro.Data = Convert.ToDateTime(lblDataHoje.Text);
             novoRegistro.DataPrevEntrega = (txtDataPrevEntrega.Text == "  /  /") ? null : Convert.ToDateTime(txtDataPrevEntrega.Text);
             novoRegistro.DataAberta = (txtDtAberto.Text == "  /  /") ? null : Convert.ToDateTime(txtDtAberto.Text);
             novoRegistro.DataEntrega = (txtDtEntregue.Text == "  /  /") ? null : Convert.ToDateTime(txtDtEntregue.Text);

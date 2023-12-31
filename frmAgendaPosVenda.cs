@@ -19,7 +19,8 @@ namespace agendaPosVenda
             gridExemplo.DataSource = registroControler.ListarRegistros();
 
             ListarGridRegistros();
-            //gridRegistros.CellFormatting += gridRegistros_CellFormatting;
+            gridExemplo.CellFormatting += gridExemplo_CellFormatting;
+           
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -75,20 +76,7 @@ namespace agendaPosVenda
             {
                 // Adicione uma nova linha ao DataGridView
                 int rowIndex = gridRegistros.Rows.Add();
-
-                // Preencha os valores das células para a nova linha
-                /* gridRegistros.Rows[rowIndex].Cells["Id"].Value = item.Id;
-                 gridRegistros.Rows[rowIndex].Cells["Talao"].Value = item.Talao;
-                 gridRegistros.Rows[rowIndex].Cells["Funcionario"].Value = item.Funcionario;
-                 gridRegistros.Rows[rowIndex].Cells["CodCliente"].Value = item.CodCliente;
-                 gridRegistros.Rows[rowIndex].Cells["Cliente"].Value = item.NomeCliente;
-                 gridRegistros.Rows[rowIndex].Cells["Telefone"].Value = item.Telefone;
-                 gridRegistros.Rows[rowIndex].Cells["Status"].Value = item.Status;*/
-                // gridRegistros.Rows[rowIndex].Cells["Observacao"].Value = item.Observacao;
-                // Adicione mais linhas conforme necessário
-
-                //gridRegistros.DefaultCellStyle.SelectionBackColor = Color.White;
-                // gridRegistros.DefaultCellStyle.SelectionForeColor = Color.Black;
+               
             }
             for (int i = 0; i < resp.Count; i++)
             {
@@ -99,6 +87,53 @@ namespace agendaPosVenda
                 gridRegistros.Rows[i].Cells["Cliente"].Value = resp[i].NomeCliente;
                 gridRegistros.Rows[i].Cells["Telefone"].Value = resp[i].Telefone;
                 gridRegistros.Rows[i].Cells["Status"].Value = resp[i].Status;
+
+
+                // gridRegistros.Rows[i].Cells["DataPrevEntrega"].Value = resp[i].DataPrevEntrega;
+                // Formata a data para excluir a parte da hora e minutos
+                // Verifica se DataPrevEntrega não é nulo antes de formatar
+                if (resp[i].DataAberta != null)
+                {
+                    // Formata a data para excluir a parte da hora e minutos
+                    gridRegistros.Rows[i].Cells["DataAberta"].Value = ((DateTime)resp[i].DataAberta).ToString("dd/MM/yyyy");
+                }
+                else
+                {
+                    // Se a data for nula, você pode manipular de acordo com sua lógica de tratamento
+                    gridRegistros.Rows[i].Cells["DataPrevEntrega"].Value = "";
+                }
+
+                if (resp[i].DataPrevEntrega != null)
+                {
+                    // Formata a data para excluir a parte da hora e minutos
+                    gridRegistros.Rows[i].Cells["DataPrevEntrega"].Value = ((DateTime)resp[i].DataPrevEntrega).ToString("dd/MM/yyyy");
+                }
+                else
+                {
+                    // Se a data for nula, você pode manipular de acordo com sua lógica de tratamento
+                    gridRegistros.Rows[i].Cells["DataPrevEntrega"].Value = "";
+                }
+
+                //               
+
+                if (resp[i].DataEntrega != null)
+                {                   
+                    gridRegistros.Rows[i].Cells["DataEntrega"].Value = ((DateTime)resp[i].DataEntrega).ToString("dd/MM/yyyy");
+                }
+                else
+                {                    
+                    gridRegistros.Rows[i].Cells["DataEntrega"].Value = "";
+                }
+                if (resp[i].DataPosVenda != null)
+                {
+                    gridRegistros.Rows[i].Cells["DataPosVenda"].Value = ((DateTime)resp[i].DataPosVenda).ToString("dd/MM/yyyy");
+                }
+                else
+                {
+                    gridRegistros.Rows[i].Cells["DataPosVenda"].Value = "";
+                }
+
+
 
 
                 // Altera a cor do texto na célula com base em alguma condição
@@ -328,6 +363,32 @@ namespace agendaPosVenda
         private void txtDtAberto_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
+        }
+
+        private void gridExemplo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void gridExemplo_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == gridExemplo.Columns["Status"].Index && e.Value != null)
+            {
+                // Obtém o valor da célula
+                string valorCelula = e.Value.ToString();
+
+                // Condição para determinar a cor com base no conteúdo
+                if (valorCelula == "Aberto")
+                {
+                    // Define a cor desejada
+                    e.CellStyle.BackColor = Color.Green;
+                    e.CellStyle.ForeColor = Color.White; // Cor do texto
+                }
+                // Adicione mais condições conforme necessário
+
+                // Importante: Define a propriedade FormattingApplied como true para indicar que a formatação foi aplicada
+                e.FormattingApplied = true;
+            }
         }
     }
 }

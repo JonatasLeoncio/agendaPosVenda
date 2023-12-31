@@ -74,6 +74,7 @@
             this.Telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataAberta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataPrevEntrega = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataEntrega = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataPosVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Observacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -467,6 +468,7 @@
             this.Telefone,
             this.Status,
             this.DataAberta,
+            this.DataPrevEntrega,
             this.DataEntrega,
             this.DataPosVenda,
             this.Observacao});
@@ -477,7 +479,7 @@
             this.gridRegistros.ReadOnly = true;
             this.gridRegistros.RowTemplate.Height = 25;
             this.gridRegistros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridRegistros.Size = new System.Drawing.Size(736, 195);
+            this.gridRegistros.Size = new System.Drawing.Size(1179, 195);
             this.gridRegistros.TabIndex = 16;
             this.gridRegistros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellContentClick);
             this.gridRegistros.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellDoubleClick);
@@ -539,6 +541,12 @@
             this.DataAberta.Name = "DataAberta";
             this.DataAberta.ReadOnly = true;
             // 
+            // DataPrevEntrega
+            // 
+            this.DataPrevEntrega.HeaderText = "Previsão de Entrega";
+            this.DataPrevEntrega.Name = "DataPrevEntrega";
+            this.DataPrevEntrega.ReadOnly = true;
+            // 
             // DataEntrega
             // 
             this.DataEntrega.HeaderText = "Data Entrega";
@@ -575,6 +583,8 @@
             this.gridExemplo.RowTemplate.Height = 25;
             this.gridExemplo.Size = new System.Drawing.Size(1045, 109);
             this.gridExemplo.TabIndex = 18;
+            this.gridExemplo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridExemplo_CellContentClick);
+            this.gridExemplo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gridExemplo_CellFormatting);
             // 
             // label10
             // 
@@ -620,7 +630,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1071, 454);
+            this.ClientSize = new System.Drawing.Size(1325, 663);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.lblDataHoje);
             this.Controls.Add(this.ckbPosVenda);
@@ -705,6 +715,7 @@
         private DataGridViewTextBoxColumn Telefone;
         private DataGridViewTextBoxColumn Status;
         private DataGridViewTextBoxColumn DataAberta;
+        private DataGridViewTextBoxColumn DataPrevEntrega;
         private DataGridViewTextBoxColumn DataEntrega;
         private DataGridViewTextBoxColumn DataPosVenda;
         private DataGridViewTextBoxColumn Observacao;

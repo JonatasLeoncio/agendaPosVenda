@@ -63,6 +63,7 @@
             this.pnlControles = new System.Windows.Forms.Panel();
             this.pnlComandos = new System.Windows.Forms.Panel();
             this.btnNovo = new System.Windows.Forms.Button();
+            this.btnAlerta = new System.Windows.Forms.Button();
             this.txtObservacao = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.gridRegistros = new System.Windows.Forms.DataGridView();
@@ -83,10 +84,21 @@
             this.gridExemplo = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblAtrazado = new System.Windows.Forms.Label();
             this.lblDataHoje = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
             this.lblTotRegistrosGrid = new System.Windows.Forms.Label();
             this.lblSomaTotal = new System.Windows.Forms.Label();
+            this.txtAlertaAtrazada = new System.Windows.Forms.TextBox();
+            this.txtAlertaAmanha = new System.Windows.Forms.TextBox();
+            this.txtAlertaHoje = new System.Windows.Forms.TextBox();
+            this.lblTotHoje = new System.Windows.Forms.Label();
+            this.lblTotAmanha = new System.Windows.Forms.Label();
+            this.lblTotAtrazada = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.rbAtrazada = new System.Windows.Forms.RadioButton();
+            this.rbAmanha = new System.Windows.Forms.RadioButton();
+            this.rbHoje = new System.Windows.Forms.RadioButton();
             this.pnlEntidades.SuspendLayout();
             this.pnlStatus.SuspendLayout();
             this.pnlControles.SuspendLayout();
@@ -94,6 +106,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridRegistros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridExemplo)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSalvar
@@ -402,6 +415,7 @@
             this.pnlControles.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.pnlControles.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlControles.Controls.Add(this.pnlComandos);
+            this.pnlControles.Controls.Add(this.btnAlerta);
             this.pnlControles.Location = new System.Drawing.Point(14, 152);
             this.pnlControles.Name = "pnlControles";
             this.pnlControles.Size = new System.Drawing.Size(843, 53);
@@ -430,6 +444,17 @@
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
+            // btnAlerta
+            // 
+            this.btnAlerta.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAlerta.Location = new System.Drawing.Point(339, 11);
+            this.btnAlerta.Name = "btnAlerta";
+            this.btnAlerta.Size = new System.Drawing.Size(65, 28);
+            this.btnAlerta.TabIndex = 25;
+            this.btnAlerta.Text = "Novo";
+            this.btnAlerta.UseVisualStyleBackColor = true;
+            this.btnAlerta.Click += new System.EventHandler(this.btnAlerta_Click);
+            // 
             // txtObservacao
             // 
             this.txtObservacao.Location = new System.Drawing.Point(5, 26);
@@ -443,7 +468,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(14, 409);
+            this.label7.Location = new System.Drawing.Point(25, 523);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(123, 17);
             this.label7.TabIndex = 15;
@@ -483,7 +508,7 @@
             this.gridRegistros.ReadOnly = true;
             this.gridRegistros.RowTemplate.Height = 25;
             this.gridRegistros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridRegistros.Size = new System.Drawing.Size(681, 195);
+            this.gridRegistros.Size = new System.Drawing.Size(694, 296);
             this.gridRegistros.TabIndex = 16;
             this.gridRegistros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellContentClick);
             this.gridRegistros.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellDoubleClick);
@@ -588,10 +613,10 @@
             // gridExemplo
             // 
             this.gridExemplo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridExemplo.Location = new System.Drawing.Point(12, 462);
+            this.gridExemplo.Location = new System.Drawing.Point(334, 574);
             this.gridExemplo.Name = "gridExemplo";
             this.gridExemplo.RowTemplate.Height = 25;
-            this.gridExemplo.Size = new System.Drawing.Size(682, 109);
+            this.gridExemplo.Size = new System.Drawing.Size(125, 49);
             this.gridExemplo.TabIndex = 18;
             this.gridExemplo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridExemplo_CellContentClick);
             this.gridExemplo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gridExemplo_CellFormatting);
@@ -617,6 +642,16 @@
             this.panel1.Size = new System.Drawing.Size(238, 179);
             this.panel1.TabIndex = 20;
             // 
+            // lblAtrazado
+            // 
+            this.lblAtrazado.AutoSize = true;
+            this.lblAtrazado.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblAtrazado.Location = new System.Drawing.Point(501, 560);
+            this.lblAtrazado.Name = "lblAtrazado";
+            this.lblAtrazado.Size = new System.Drawing.Size(41, 17);
+            this.lblAtrazado.TabIndex = 27;
+            this.lblAtrazado.Text = "Atual";
+            // 
             // lblDataHoje
             // 
             this.lblDataHoje.AutoSize = true;
@@ -640,7 +675,7 @@
             // 
             this.lblTotRegistrosGrid.AutoSize = true;
             this.lblTotRegistrosGrid.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTotRegistrosGrid.Location = new System.Drawing.Point(143, 410);
+            this.lblTotRegistrosGrid.Location = new System.Drawing.Point(154, 524);
             this.lblTotRegistrosGrid.Name = "lblTotRegistrosGrid";
             this.lblTotRegistrosGrid.Size = new System.Drawing.Size(41, 17);
             this.lblTotRegistrosGrid.TabIndex = 23;
@@ -650,17 +685,139 @@
             // 
             this.lblSomaTotal.AutoSize = true;
             this.lblSomaTotal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblSomaTotal.Location = new System.Drawing.Point(616, 421);
+            this.lblSomaTotal.Location = new System.Drawing.Point(616, 524);
             this.lblSomaTotal.Name = "lblSomaTotal";
-            this.lblSomaTotal.Size = new System.Drawing.Size(41, 17);
+            this.lblSomaTotal.Size = new System.Drawing.Size(40, 17);
             this.lblSomaTotal.TabIndex = 24;
-            this.lblSomaTotal.Text = "Talão";
+            this.lblSomaTotal.Text = "Valor";
+            // 
+            // txtAlertaAtrazada
+            // 
+            this.txtAlertaAtrazada.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.txtAlertaAtrazada.Location = new System.Drawing.Point(3, 47);
+            this.txtAlertaAtrazada.Multiline = true;
+            this.txtAlertaAtrazada.Name = "txtAlertaAtrazada";
+            this.txtAlertaAtrazada.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtAlertaAtrazada.Size = new System.Drawing.Size(381, 231);
+            this.txtAlertaAtrazada.TabIndex = 26;
+            this.txtAlertaAtrazada.Visible = false;
+            // 
+            // txtAlertaAmanha
+            // 
+            this.txtAlertaAmanha.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.txtAlertaAmanha.Location = new System.Drawing.Point(3, 47);
+            this.txtAlertaAmanha.Multiline = true;
+            this.txtAlertaAmanha.Name = "txtAlertaAmanha";
+            this.txtAlertaAmanha.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtAlertaAmanha.Size = new System.Drawing.Size(381, 231);
+            this.txtAlertaAmanha.TabIndex = 28;
+            this.txtAlertaAmanha.Visible = false;
+            // 
+            // txtAlertaHoje
+            // 
+            this.txtAlertaHoje.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.txtAlertaHoje.Location = new System.Drawing.Point(3, 47);
+            this.txtAlertaHoje.Multiline = true;
+            this.txtAlertaHoje.Name = "txtAlertaHoje";
+            this.txtAlertaHoje.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtAlertaHoje.Size = new System.Drawing.Size(381, 231);
+            this.txtAlertaHoje.TabIndex = 29;
+            // 
+            // lblTotHoje
+            // 
+            this.lblTotHoje.AutoSize = true;
+            this.lblTotHoje.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTotHoje.ForeColor = System.Drawing.Color.Black;
+            this.lblTotHoje.Location = new System.Drawing.Point(74, 7);
+            this.lblTotHoje.Name = "lblTotHoje";
+            this.lblTotHoje.Size = new System.Drawing.Size(15, 17);
+            this.lblTotHoje.TabIndex = 30;
+            this.lblTotHoje.Text = "0";
+            // 
+            // lblTotAmanha
+            // 
+            this.lblTotAmanha.AutoSize = true;
+            this.lblTotAmanha.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTotAmanha.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.lblTotAmanha.Location = new System.Drawing.Point(207, 5);
+            this.lblTotAmanha.Name = "lblTotAmanha";
+            this.lblTotAmanha.Size = new System.Drawing.Size(15, 17);
+            this.lblTotAmanha.TabIndex = 31;
+            this.lblTotAmanha.Text = "0";
+            // 
+            // lblTotAtrazada
+            // 
+            this.lblTotAtrazada.AutoSize = true;
+            this.lblTotAtrazada.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTotAtrazada.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.lblTotAtrazada.Location = new System.Drawing.Point(350, 7);
+            this.lblTotAtrazada.Name = "lblTotAtrazada";
+            this.lblTotAtrazada.Size = new System.Drawing.Size(15, 17);
+            this.lblTotAtrazada.TabIndex = 32;
+            this.lblTotAtrazada.Text = "0";
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.rbAtrazada);
+            this.panel2.Controls.Add(this.txtAlertaAmanha);
+            this.panel2.Controls.Add(this.txtAlertaAtrazada);
+            this.panel2.Controls.Add(this.lblTotAtrazada);
+            this.panel2.Controls.Add(this.rbAmanha);
+            this.panel2.Controls.Add(this.lblTotAmanha);
+            this.panel2.Controls.Add(this.rbHoje);
+            this.panel2.Controls.Add(this.lblTotHoje);
+            this.panel2.Controls.Add(this.txtAlertaHoje);
+            this.panel2.Location = new System.Drawing.Point(713, 223);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(386, 285);
+            this.panel2.TabIndex = 33;
+            // 
+            // rbAtrazada
+            // 
+            this.rbAtrazada.AutoSize = true;
+            this.rbAtrazada.ForeColor = System.Drawing.Color.Red;
+            this.rbAtrazada.Location = new System.Drawing.Point(268, 5);
+            this.rbAtrazada.Name = "rbAtrazada";
+            this.rbAtrazada.Size = new System.Drawing.Size(76, 19);
+            this.rbAtrazada.TabIndex = 2;
+            this.rbAtrazada.Text = "Atrazadas";
+            this.rbAtrazada.UseVisualStyleBackColor = true;
+            this.rbAtrazada.CheckedChanged += new System.EventHandler(this.rbAtrazada_CheckedChanged);
+            // 
+            // rbAmanha
+            // 
+            this.rbAmanha.AutoSize = true;
+            this.rbAmanha.ForeColor = System.Drawing.Color.Green;
+            this.rbAmanha.Location = new System.Drawing.Point(125, 5);
+            this.rbAmanha.Name = "rbAmanha";
+            this.rbAmanha.Size = new System.Drawing.Size(70, 19);
+            this.rbAmanha.TabIndex = 1;
+            this.rbAmanha.Text = "Amanhã";
+            this.rbAmanha.UseVisualStyleBackColor = true;
+            this.rbAmanha.CheckedChanged += new System.EventHandler(this.rbAmanha_CheckedChanged);
+            // 
+            // rbHoje
+            // 
+            this.rbHoje.AutoSize = true;
+            this.rbHoje.Checked = true;
+            this.rbHoje.ForeColor = System.Drawing.Color.Blue;
+            this.rbHoje.Location = new System.Drawing.Point(18, 5);
+            this.rbHoje.Name = "rbHoje";
+            this.rbHoje.Size = new System.Drawing.Size(50, 19);
+            this.rbHoje.TabIndex = 0;
+            this.rbHoje.TabStop = true;
+            this.rbHoje.Text = "Hoje";
+            this.rbHoje.UseVisualStyleBackColor = true;
+            this.rbHoje.CheckedChanged += new System.EventHandler(this.rbHoje_CheckedChanged);
             // 
             // frmAgendaPosVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1113, 624);
+            this.ClientSize = new System.Drawing.Size(1113, 595);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.lblAtrazado);
             this.Controls.Add(this.lblSomaTotal);
             this.Controls.Add(this.lblTotRegistrosGrid);
             this.Controls.Add(this.lblId);
@@ -691,6 +848,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridExemplo)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -754,5 +913,17 @@
         private DataGridViewTextBoxColumn Observacao;
         private Label lblTotRegistrosGrid;
         private Label lblSomaTotal;
+        private Button btnAlerta;
+        private TextBox txtAlertaAtrazada;
+        private Label lblAtrazado;
+        private TextBox txtAlertaAmanha;
+        private TextBox txtAlertaHoje;
+        private Label lblTotHoje;
+        private Label lblTotAmanha;
+        private Label lblTotAtrazada;
+        private Panel panel2;
+        private RadioButton rbAtrazada;
+        private RadioButton rbAmanha;
+        private RadioButton rbHoje;
     }
 }

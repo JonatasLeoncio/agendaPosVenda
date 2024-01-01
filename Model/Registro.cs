@@ -8,6 +8,7 @@ namespace agendaPosVenda.Model
 {
     public class Registro
     {
+        //teste
         public int Id { get; set; }
         public  int Talao { get; set; }
         public string? Funcionario { get; set; }

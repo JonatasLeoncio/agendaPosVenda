@@ -429,5 +429,105 @@ namespace agendaPosVenda
                 e.FormattingApplied = true;
             }
         }
+
+        private void btnAlerta_Click(object sender, EventArgs e)
+        {
+            var dados = registroControler.ListarRegistros();
+            //List<Registro> listaEntregasHoje = new List<Registro>();
+            //List<Registro> listaEntregasAmanha = new List<Registro>();
+            //List<Registro> listaEntregasAtrazadas = new List<Registro>();
+
+            int totHoje = 0;
+            int totAmanha = 0;
+            int totAtrazada = 0;
+
+            txtAlertaHoje.Clear();
+            txtAlertaAmanha.Clear();
+            txtAlertaAtrazada.Clear();
+
+            string dataHoje = DateTime.Now.ToString("dd/MM/yyyy");
+
+            foreach (var item in dados)
+            {
+                string dataPrevEntrega = ((DateTime)item.DataPrevEntrega).ToString("dd/MM/yyyy");
+                // Converta as strings para objetos DateTime usando o formato desejado
+                DateTime data2 = DateTime.ParseExact(dataPrevEntrega, "dd/MM/yyyy", null);
+                DateTime data1 = DateTime.ParseExact(dataHoje, "dd/MM/yyyy", null);
+                // Subtraia as datas e obtenha a diferença em dias
+                TimeSpan diferenca = data2 - data1;
+                int diferencaEmDias = diferenca.Days;
+
+                if (diferencaEmDias==0&&item.Status=="Aberto")
+                {
+                    //listaEntregasHoje.Add(item);
+                    txtAlertaHoje.Text +=$"Talao: {item.Talao}  - Func: {item.Funcionario}         IdDoc: {item.Id}\r\n";
+                    txtAlertaHoje.ForeColor = Color.Blue;
+                    totHoje++;
+                }
+                if (diferencaEmDias == 1)
+                {
+                    //listaEntregasAmanha.Add(item);
+                    txtAlertaAmanha.Text += $"Talao: {item.Talao}  - Func: {item.Funcionario}         IdDoc: {item.Id}\r\n";
+                    txtAlertaAmanha.ForeColor = Color.Green;
+                    totAmanha++;
+                }
+                if (diferencaEmDias < 0)
+                {
+                    //listaEntregasAtrazadas.Add(item);
+                    //lblAtrazado.Text = "\r\n";
+                    txtAlertaAtrazada.Text += $"Talao: {item.Talao}  - Func: {item.Funcionario}         IdDoc: {item.Id}\r\n";
+                    txtAlertaAtrazada.ForeColor = Color.Red;
+                    totAtrazada++;
+                }
+
+            }
+            lblTotHoje.Text = totHoje.ToString();
+            lblTotAmanha.Text = totAmanha.ToString();
+            lblTotAtrazada.Text = totAtrazada.ToString();
+            //for (int i = 0; i < listaEntregasHoje.Count; i++)
+            //{
+            //    txtAlertaAtrazada.Text += listaEntregasHoje[i].Talao.ToString() + "\r\n";
+            //    txtAlertaAtrazada.ForeColor= Color.Red;
+            //}
+            // (DateTime)resp[i].DataAberta).ToString("dd/MM/yyyy");
+            // txtStatusAlerta.Text = "Linha 1\r\nLinha 2\r\nLinha 3";
+           /* for (int i = 0; i < listaEntregasAtrazadas.Count; i++)
+            {
+                lblAtrazado.Text = "\r\n";
+                lblAtrazado.Text += listaEntregasHoje[i].Talao.ToString() + "\r\n";
+                lblAtrazado.ForeColor = Color.Green;
+               
+            }*/
+        }
+
+        private void rbHoje_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rbHoje.Checked)
+            {
+                txtAlertaHoje.Visible= true;
+                txtAlertaAtrazada.Visible= false;
+                txtAlertaAmanha.Visible = false;
+            }
+        }
+
+        private void rbAmanha_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rbAmanha.Checked)
+            {
+                txtAlertaAmanha.Visible = true;
+                txtAlertaAtrazada.Visible = false;
+                txtAlertaHoje.Visible = false;
+            }
+        }
+
+        private void rbAtrazada_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rbAtrazada.Checked)
+            {
+                txtAlertaAtrazada.Visible = true;
+                txtAlertaHoje.Visible = false;
+                txtAlertaAmanha.Visible = false;
+            }
+        }
     }
 }

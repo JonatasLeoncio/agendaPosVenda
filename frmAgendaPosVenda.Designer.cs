@@ -90,15 +90,16 @@
             this.lblTotRegistrosGrid = new System.Windows.Forms.Label();
             this.lblSomaTotal = new System.Windows.Forms.Label();
             this.txtAlertaAtrazada = new System.Windows.Forms.TextBox();
-            this.txtAlertaAmanha = new System.Windows.Forms.TextBox();
             this.txtAlertaHoje = new System.Windows.Forms.TextBox();
             this.lblTotHoje = new System.Windows.Forms.Label();
             this.lblTotAmanha = new System.Windows.Forms.Label();
             this.lblTotAtrazada = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtAlertaAmanha = new System.Windows.Forms.TextBox();
             this.rbAtrazada = new System.Windows.Forms.RadioButton();
             this.rbAmanha = new System.Windows.Forms.RadioButton();
             this.rbHoje = new System.Windows.Forms.RadioButton();
+            this.label13 = new System.Windows.Forms.Label();
             this.pnlEntidades.SuspendLayout();
             this.pnlStatus.SuspendLayout();
             this.pnlControles.SuspendLayout();
@@ -418,7 +419,7 @@
             this.pnlControles.Controls.Add(this.btnAlerta);
             this.pnlControles.Location = new System.Drawing.Point(14, 152);
             this.pnlControles.Name = "pnlControles";
-            this.pnlControles.Size = new System.Drawing.Size(843, 53);
+            this.pnlControles.Size = new System.Drawing.Size(1087, 53);
             this.pnlControles.TabIndex = 12;
             // 
             // pnlComandos
@@ -428,7 +429,7 @@
             this.pnlComandos.Controls.Add(this.btnSalvar);
             this.pnlComandos.Controls.Add(this.btnAlterar);
             this.pnlComandos.Controls.Add(this.btnExcluir);
-            this.pnlComandos.Location = new System.Drawing.Point(518, 3);
+            this.pnlComandos.Location = new System.Drawing.Point(698, 3);
             this.pnlComandos.Name = "pnlComandos";
             this.pnlComandos.Size = new System.Drawing.Size(318, 43);
             this.pnlComandos.TabIndex = 13;
@@ -447,7 +448,7 @@
             // btnAlerta
             // 
             this.btnAlerta.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAlerta.Location = new System.Drawing.Point(339, 11);
+            this.btnAlerta.Location = new System.Drawing.Point(1016, 10);
             this.btnAlerta.Name = "btnAlerta";
             this.btnAlerta.Size = new System.Drawing.Size(65, 28);
             this.btnAlerta.TabIndex = 25;
@@ -457,11 +458,11 @@
             // 
             // txtObservacao
             // 
-            this.txtObservacao.Location = new System.Drawing.Point(5, 26);
+            this.txtObservacao.Location = new System.Drawing.Point(5, 23);
             this.txtObservacao.Multiline = true;
             this.txtObservacao.Name = "txtObservacao";
             this.txtObservacao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtObservacao.Size = new System.Drawing.Size(228, 140);
+            this.txtObservacao.Size = new System.Drawing.Size(228, 93);
             this.txtObservacao.TabIndex = 14;
             // 
             // label7
@@ -518,6 +519,7 @@
             // 
             // Id
             // 
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Id.DefaultCellStyle = dataGridViewCellStyle2;
             this.Id.HeaderText = "Id";
@@ -604,7 +606,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(3, 6);
+            this.label9.Location = new System.Drawing.Point(3, 3);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(36, 17);
             this.label9.TabIndex = 17;
@@ -639,7 +641,7 @@
             this.panel1.Controls.Add(this.txtObservacao);
             this.panel1.Location = new System.Drawing.Point(863, 26);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(238, 179);
+            this.panel1.Size = new System.Drawing.Size(238, 120);
             this.panel1.TabIndex = 20;
             // 
             // lblAtrazado
@@ -694,33 +696,22 @@
             // txtAlertaAtrazada
             // 
             this.txtAlertaAtrazada.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.txtAlertaAtrazada.Location = new System.Drawing.Point(3, 47);
+            this.txtAlertaAtrazada.Location = new System.Drawing.Point(8, 47);
             this.txtAlertaAtrazada.Multiline = true;
             this.txtAlertaAtrazada.Name = "txtAlertaAtrazada";
             this.txtAlertaAtrazada.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtAlertaAtrazada.Size = new System.Drawing.Size(381, 231);
+            this.txtAlertaAtrazada.Size = new System.Drawing.Size(357, 213);
             this.txtAlertaAtrazada.TabIndex = 26;
             this.txtAlertaAtrazada.Visible = false;
-            // 
-            // txtAlertaAmanha
-            // 
-            this.txtAlertaAmanha.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.txtAlertaAmanha.Location = new System.Drawing.Point(3, 47);
-            this.txtAlertaAmanha.Multiline = true;
-            this.txtAlertaAmanha.Name = "txtAlertaAmanha";
-            this.txtAlertaAmanha.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtAlertaAmanha.Size = new System.Drawing.Size(381, 231);
-            this.txtAlertaAmanha.TabIndex = 28;
-            this.txtAlertaAmanha.Visible = false;
             // 
             // txtAlertaHoje
             // 
             this.txtAlertaHoje.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.txtAlertaHoje.Location = new System.Drawing.Point(3, 47);
+            this.txtAlertaHoje.Location = new System.Drawing.Point(8, 47);
             this.txtAlertaHoje.Multiline = true;
             this.txtAlertaHoje.Name = "txtAlertaHoje";
             this.txtAlertaHoje.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtAlertaHoje.Size = new System.Drawing.Size(381, 231);
+            this.txtAlertaHoje.Size = new System.Drawing.Size(357, 213);
             this.txtAlertaHoje.TabIndex = 29;
             // 
             // lblTotHoje
@@ -728,7 +719,7 @@
             this.lblTotHoje.AutoSize = true;
             this.lblTotHoje.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTotHoje.ForeColor = System.Drawing.Color.Black;
-            this.lblTotHoje.Location = new System.Drawing.Point(74, 7);
+            this.lblTotHoje.Location = new System.Drawing.Point(67, 7);
             this.lblTotHoje.Name = "lblTotHoje";
             this.lblTotHoje.Size = new System.Drawing.Size(15, 17);
             this.lblTotHoje.TabIndex = 30;
@@ -739,7 +730,7 @@
             this.lblTotAmanha.AutoSize = true;
             this.lblTotAmanha.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTotAmanha.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lblTotAmanha.Location = new System.Drawing.Point(207, 5);
+            this.lblTotAmanha.Location = new System.Drawing.Point(193, 5);
             this.lblTotAmanha.Name = "lblTotAmanha";
             this.lblTotAmanha.Size = new System.Drawing.Size(15, 17);
             this.lblTotAmanha.TabIndex = 31;
@@ -750,7 +741,7 @@
             this.lblTotAtrazada.AutoSize = true;
             this.lblTotAtrazada.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTotAtrazada.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lblTotAtrazada.Location = new System.Drawing.Point(350, 7);
+            this.lblTotAtrazada.Location = new System.Drawing.Point(341, 7);
             this.lblTotAtrazada.Name = "lblTotAtrazada";
             this.lblTotAtrazada.Size = new System.Drawing.Size(15, 17);
             this.lblTotAtrazada.TabIndex = 32;
@@ -759,19 +750,30 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.rbAtrazada);
             this.panel2.Controls.Add(this.txtAlertaAmanha);
+            this.panel2.Controls.Add(this.txtAlertaHoje);
+            this.panel2.Controls.Add(this.rbAtrazada);
             this.panel2.Controls.Add(this.txtAlertaAtrazada);
             this.panel2.Controls.Add(this.lblTotAtrazada);
             this.panel2.Controls.Add(this.rbAmanha);
             this.panel2.Controls.Add(this.lblTotAmanha);
             this.panel2.Controls.Add(this.rbHoje);
             this.panel2.Controls.Add(this.lblTotHoje);
-            this.panel2.Controls.Add(this.txtAlertaHoje);
-            this.panel2.Location = new System.Drawing.Point(713, 223);
+            this.panel2.Location = new System.Drawing.Point(713, 241);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(386, 285);
+            this.panel2.Size = new System.Drawing.Size(386, 267);
             this.panel2.TabIndex = 33;
+            // 
+            // txtAlertaAmanha
+            // 
+            this.txtAlertaAmanha.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.txtAlertaAmanha.Location = new System.Drawing.Point(8, 47);
+            this.txtAlertaAmanha.Multiline = true;
+            this.txtAlertaAmanha.Name = "txtAlertaAmanha";
+            this.txtAlertaAmanha.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtAlertaAmanha.Size = new System.Drawing.Size(357, 213);
+            this.txtAlertaAmanha.TabIndex = 34;
+            this.txtAlertaAmanha.Visible = false;
             // 
             // rbAtrazada
             // 
@@ -811,11 +813,22 @@
             this.rbHoje.UseVisualStyleBackColor = true;
             this.rbHoje.CheckedChanged += new System.EventHandler(this.rbHoje_CheckedChanged);
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(793, 221);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(198, 17);
+            this.label13.TabIndex = 34;
+            this.label13.Text = "Acompanhamento de Entregas";
+            // 
             // frmAgendaPosVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1113, 595);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblAtrazado);
             this.Controls.Add(this.lblSomaTotal);
@@ -898,6 +911,19 @@
         private Label lblId;
         private MaskedTextBox txtDataPrevEntrega;
         private Label label12;
+        private Label lblTotRegistrosGrid;
+        private Label lblSomaTotal;
+        private Button btnAlerta;
+        private TextBox txtAlertaAtrazada;
+        private Label lblAtrazado;
+        private TextBox txtAlertaHoje;
+        private Label lblTotHoje;
+        private Label lblTotAmanha;
+        private Label lblTotAtrazada;
+        private Panel panel2;
+        private RadioButton rbAtrazada;
+        private RadioButton rbAmanha;
+        private RadioButton rbHoje;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Talao;
         private DataGridViewTextBoxColumn Funcionario;
@@ -911,19 +937,7 @@
         private DataGridViewTextBoxColumn DataPosVenda;
         private DataGridViewTextBoxColumn Valor;
         private DataGridViewTextBoxColumn Observacao;
-        private Label lblTotRegistrosGrid;
-        private Label lblSomaTotal;
-        private Button btnAlerta;
-        private TextBox txtAlertaAtrazada;
-        private Label lblAtrazado;
         private TextBox txtAlertaAmanha;
-        private TextBox txtAlertaHoje;
-        private Label lblTotHoje;
-        private Label lblTotAmanha;
-        private Label lblTotAtrazada;
-        private Panel panel2;
-        private RadioButton rbAtrazada;
-        private RadioButton rbAmanha;
-        private RadioButton rbHoje;
+        private Label label13;
     }
 }

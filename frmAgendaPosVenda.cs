@@ -18,6 +18,21 @@ namespace agendaPosVenda
             txtDtAberto.Text = DateTime.Now.ToString("dd/MM/yyyy");
             gridExemplo.DataSource = registroControler.ListarRegistros();
 
+
+            txtAlertaHoje.Multiline = true;
+            txtAlertaHoje.WordWrap = false;
+            txtAlertaHoje.ScrollBars = ScrollBars.Both;
+
+            txtAlertaAmanha.Multiline = true;
+            txtAlertaAmanha.WordWrap = false;
+            txtAlertaAmanha.ScrollBars = ScrollBars.Both;
+
+            txtAlertaAtrazada.Multiline = true;
+            txtAlertaAtrazada.WordWrap = false;
+            txtAlertaAtrazada.ScrollBars = ScrollBars.Both;
+
+
+
             ListarGridRegistros();
             gridExemplo.CellFormatting += gridExemplo_CellFormatting;
            
@@ -170,10 +185,15 @@ namespace agendaPosVenda
 
             lblTotRegistrosGrid.Text = gridRegistros.RowCount.ToString();
             lblSomaTotal.Text = total.ToString();
+
+            StatusAlerta();
         }
 
         private void frmAgendaPosVenda_Load(object sender, EventArgs e)
         {
+
+
+            
             //registroControler.ListarRegistros();
             //gridRegistros.DefaultCellStyle.SelectionBackColor = Color.Transparent;
             //gridRegistros.DefaultCellStyle.SelectionForeColor = Color.Black;
@@ -432,10 +452,13 @@ namespace agendaPosVenda
 
         private void btnAlerta_Click(object sender, EventArgs e)
         {
+            StatusAlerta();
+
+        }
+
+        private void StatusAlerta()
+        {
             var dados = registroControler.ListarRegistros();
-            //List<Registro> listaEntregasHoje = new List<Registro>();
-            //List<Registro> listaEntregasAmanha = new List<Registro>();
-            //List<Registro> listaEntregasAtrazadas = new List<Registro>();
 
             int totHoje = 0;
             int totAmanha = 0;
@@ -457,25 +480,25 @@ namespace agendaPosVenda
                 TimeSpan diferenca = data2 - data1;
                 int diferencaEmDias = diferenca.Days;
 
-                if (diferencaEmDias==0&&item.Status=="Aberto")
+                if (diferencaEmDias == 0 && item.Status == "Aberto")
                 {
                     //listaEntregasHoje.Add(item);
-                    txtAlertaHoje.Text +=$"Talao: {item.Talao}  - Func: {item.Funcionario}         IdDoc: {item.Id}\r\n";
+                    txtAlertaHoje.Text += $"Talao: {item.Talao}  - Func: {item.Funcionario}         IdDoc: {item.Id}\r\n\r\n";
                     txtAlertaHoje.ForeColor = Color.Blue;
                     totHoje++;
                 }
-                if (diferencaEmDias == 1)
+                if (diferencaEmDias == 1 && item.Status == "Aberto")
                 {
                     //listaEntregasAmanha.Add(item);
-                    txtAlertaAmanha.Text += $"Talao: {item.Talao}  - Func: {item.Funcionario}         IdDoc: {item.Id}\r\n";
+                    txtAlertaAmanha.Text += $"Talao: {item.Talao}  - Func: {item.Funcionario}         IdDoc: {item.Id}\r\n\r\n";
                     txtAlertaAmanha.ForeColor = Color.Green;
                     totAmanha++;
                 }
-                if (diferencaEmDias < 0)
+                if (diferencaEmDias < 0 && item.Status == "Aberto")
                 {
                     //listaEntregasAtrazadas.Add(item);
                     //lblAtrazado.Text = "\r\n";
-                    txtAlertaAtrazada.Text += $"Talao: {item.Talao}  - Func: {item.Funcionario}         IdDoc: {item.Id}\r\n";
+                    txtAlertaAtrazada.Text += $"Talao: {item.Talao} - Func: {item.Funcionario} - IdDoc: {item.Id}       está atrazado à ({diferencaEmDias*(-1)}) dias\r\n\r\n";
                     txtAlertaAtrazada.ForeColor = Color.Red;
                     totAtrazada++;
                 }
@@ -484,20 +507,6 @@ namespace agendaPosVenda
             lblTotHoje.Text = totHoje.ToString();
             lblTotAmanha.Text = totAmanha.ToString();
             lblTotAtrazada.Text = totAtrazada.ToString();
-            //for (int i = 0; i < listaEntregasHoje.Count; i++)
-            //{
-            //    txtAlertaAtrazada.Text += listaEntregasHoje[i].Talao.ToString() + "\r\n";
-            //    txtAlertaAtrazada.ForeColor= Color.Red;
-            //}
-            // (DateTime)resp[i].DataAberta).ToString("dd/MM/yyyy");
-            // txtStatusAlerta.Text = "Linha 1\r\nLinha 2\r\nLinha 3";
-           /* for (int i = 0; i < listaEntregasAtrazadas.Count; i++)
-            {
-                lblAtrazado.Text = "\r\n";
-                lblAtrazado.Text += listaEntregasHoje[i].Talao.ToString() + "\r\n";
-                lblAtrazado.ForeColor = Color.Green;
-               
-            }*/
         }
 
         private void rbHoje_CheckedChanged(object sender, EventArgs e)

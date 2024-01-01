@@ -40,6 +40,7 @@ namespace agendaPosVenda
             novoRegistro.DataPosVenda = (txtDtPosVenda.Text == "  /  /") ? null : Convert.ToDateTime(txtDtPosVenda.Text);
             novoRegistro.Observacao = txtObservacao.Text;
             novoRegistro.Valor = (txtValor.Text == "".Trim()) ? 0 : Convert.ToDecimal(txtValor.Text);
+            novoRegistro.Observacao = txtObservacao.Text;
 
 
             List<Registro> resp = new List<Registro>();
@@ -72,14 +73,11 @@ namespace agendaPosVenda
             // gridRegistros.CellFormatting += gridRegistros_CellFormatting;
             var resp = registroControler.ListarRegistros();
             gridRegistros.Rows.Clear();
-            foreach (var item in resp)
-            {
-                // Adicione uma nova linha ao DataGridView
-                int rowIndex = gridRegistros.Rows.Add();
-               
-            }
+            double total = 0;
             for (int i = 0; i < resp.Count; i++)
             {
+                int rowIndex = gridRegistros.Rows.Add();
+
                 gridRegistros.Rows[i].Cells["Id"].Value = resp[i].Id;
                 gridRegistros.Rows[i].Cells["Talao"].Value = resp[i].Talao;
                 gridRegistros.Rows[i].Cells["Funcionario"].Value = resp[i].Funcionario;
@@ -133,6 +131,8 @@ namespace agendaPosVenda
                     gridRegistros.Rows[i].Cells["DataPosVenda"].Value = "";
                 }
 
+                gridRegistros.Rows[i].Cells["Observacao"].Value = resp[i].Observacao;
+
 
 
 
@@ -152,9 +152,13 @@ namespace agendaPosVenda
                     gridRegistros.Rows[i].Cells["Status"].Style.ForeColor = Color.White; // Cor padrão
                     gridRegistros.Rows[i].Cells["Status"].Style.BackColor = Color.Blue;
                 }
+
+                gridRegistros.Rows[i].Cells["Valor"].Value = resp[i].Valor;
+                total += Convert.ToDouble(gridRegistros.Rows[i].Cells["Valor"].Value);
             }
 
-           // gridRegistros.Columns[0].Visible = false;
+            // gridRegistros.Columns[0].Visible = false;
+           
 
 
 
@@ -163,6 +167,9 @@ namespace agendaPosVenda
             gridRegistros.CurrentCell = null;
 
             gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            lblTotRegistrosGrid.Text = gridRegistros.RowCount.ToString();
+            lblSomaTotal.Text = total.ToString();
         }
 
         private void frmAgendaPosVenda_Load(object sender, EventArgs e)
@@ -191,14 +198,17 @@ namespace agendaPosVenda
             //gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             /*string testSemMascara = new String(txtDtEntregue.Text.Where(Char.IsDigit).ToArray());
             MessageBox.Show(testSemMascara);*/
-            if(txtDtEntregue.Text=="  /  /")
-            {
-                MessageBox.Show("vazio");
-            }
-            else
-            {
-                MessageBox.Show(txtDtEntregue.Text);
-            }
+
+            string valorSemMascara = txtDtEntregue.Text;
+            MessageBox.Show(valorSemMascara);
+            //if(txtDtEntregue.Text=="  /  /")
+            //{
+            //    MessageBox.Show("vazio");
+            //}
+            //else
+            //{
+            //    MessageBox.Show(txtDtEntregue.Text);
+            //}
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
@@ -216,14 +226,30 @@ namespace agendaPosVenda
             novoRegistro.CodCliente = Convert.ToInt32(txtCodCliente.Text);
             novoRegistro.NomeCliente = txtNomeCliente.Text;
             novoRegistro.Telefone = txtTel.Text;
+            if(txtDtAberto.Text != "  /  /"&& txtDtEntregue.Text == "  /  /"&& txtDtPosVenda.Text == "  /  /")
+            {
+                cmbStatus.Text = "Aberto";
+            }
+            if (txtDtAberto.Text != "  /  /" && txtDtEntregue.Text != "  /  /" && txtDtPosVenda.Text == "  /  /")
+            {
+                cmbStatus.Text = "Entregue";
+            }
+            if (txtDtAberto.Text != "  /  /" && txtDtEntregue.Text != "  /  /" && txtDtPosVenda.Text != "  /  /")
+            {
+                cmbStatus.Text = "Pós Venda Feito";
+            }
+
+
             novoRegistro.Status = cmbStatus.Text;
             //novoRegistro.Data = Convert.ToDateTime(lblDataHoje.Text);
-            novoRegistro.DataPrevEntrega = (txtDataPrevEntrega.Text == "  /  /") ? null : Convert.ToDateTime(txtDataPrevEntrega.Text);
             novoRegistro.DataAberta = (txtDtAberto.Text == "  /  /") ? null : Convert.ToDateTime(txtDtAberto.Text);
+            novoRegistro.DataPrevEntrega = (txtDataPrevEntrega.Text == "  /  /") ? null : Convert.ToDateTime(txtDataPrevEntrega.Text);
             novoRegistro.DataEntrega = (txtDtEntregue.Text == "  /  /") ? null : Convert.ToDateTime(txtDtEntregue.Text);
             novoRegistro.DataPosVenda = (txtDtPosVenda.Text == "  /  /") ? null : Convert.ToDateTime(txtDtPosVenda.Text);
             novoRegistro.Observacao = txtObservacao.Text;
             novoRegistro.Valor = (txtValor.Text=="".Trim())?0:Convert.ToDecimal(txtValor.Text);
+
+            novoRegistro.Observacao=txtObservacao.Text;
 
 
             List<Registro> resp = new List<Registro>();
@@ -335,7 +361,19 @@ namespace agendaPosVenda
                 txtDataPrevEntrega.Text = gridRegistros.CurrentRow.Cells[8].Value.ToString();
                txtDtEntregue.Text = gridRegistros.CurrentRow.Cells[9].Value.ToString();
                txtDtPosVenda.Text = gridRegistros.CurrentRow.Cells[10].Value.ToString();
-                //txtObservacao.Text = gridRegistros.CurrentRow.Cells[10].Value.ToString();
+                txtValor.Text = gridRegistros.CurrentRow.Cells[11].Value.ToString();
+                txtObservacao.Text = gridRegistros.CurrentRow.Cells[12].Value.ToString();
+
+                if (gridRegistros.CurrentRow.Cells[12].Value.ToString() != "".Trim())
+                {
+                    txtObservacao.BackColor
+                        = Color.LightBlue;
+                }
+                else
+                {
+                    txtObservacao.BackColor
+                        = Color.White;
+                }
 
                 gridRegistros.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 128, 128);//coloca cor argb
 

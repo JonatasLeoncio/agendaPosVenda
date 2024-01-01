@@ -66,12 +66,6 @@
             this.txtObservacao = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.gridRegistros = new System.Windows.Forms.DataGridView();
-            this.label9 = new System.Windows.Forms.Label();
-            this.gridExemplo = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblDataHoje = new System.Windows.Forms.Label();
-            this.lblId = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Talao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Funcionario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,6 +79,14 @@
             this.DataPosVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Observacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label9 = new System.Windows.Forms.Label();
+            this.gridExemplo = new System.Windows.Forms.DataGridView();
+            this.label10 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblDataHoje = new System.Windows.Forms.Label();
+            this.lblId = new System.Windows.Forms.Label();
+            this.lblTotRegistrosGrid = new System.Windows.Forms.Label();
+            this.lblSomaTotal = new System.Windows.Forms.Label();
             this.pnlEntidades.SuspendLayout();
             this.pnlStatus.SuspendLayout();
             this.pnlControles.SuspendLayout();
@@ -481,74 +483,13 @@
             this.gridRegistros.ReadOnly = true;
             this.gridRegistros.RowTemplate.Height = 25;
             this.gridRegistros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridRegistros.Size = new System.Drawing.Size(760, 195);
+            this.gridRegistros.Size = new System.Drawing.Size(681, 195);
             this.gridRegistros.TabIndex = 16;
             this.gridRegistros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellContentClick);
             this.gridRegistros.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellDoubleClick);
             this.gridRegistros.Click += new System.EventHandler(this.gridRegistros_Click);
             this.gridRegistros.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridRegistros_KeyDown);
             this.gridRegistros.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.gridRegistros_PreviewKeyDown);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(3, 6);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(36, 17);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Obs:";
-            // 
-            // gridExemplo
-            // 
-            this.gridExemplo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridExemplo.Location = new System.Drawing.Point(12, 462);
-            this.gridExemplo.Name = "gridExemplo";
-            this.gridExemplo.RowTemplate.Height = 25;
-            this.gridExemplo.Size = new System.Drawing.Size(1045, 109);
-            this.gridExemplo.TabIndex = 18;
-            this.gridExemplo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridExemplo_CellContentClick);
-            this.gridExemplo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gridExemplo_CellFormatting);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(259, 6);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(78, 17);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "Data Hoje: ";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.txtObservacao);
-            this.panel1.Location = new System.Drawing.Point(863, 26);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(238, 179);
-            this.panel1.TabIndex = 20;
-            // 
-            // lblDataHoje
-            // 
-            this.lblDataHoje.AutoSize = true;
-            this.lblDataHoje.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblDataHoje.Location = new System.Drawing.Point(334, 6);
-            this.lblDataHoje.Name = "lblDataHoje";
-            this.lblDataHoje.Size = new System.Drawing.Size(41, 17);
-            this.lblDataHoje.TabIndex = 21;
-            this.lblDataHoje.Text = "Atual";
-            // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lblId.Location = new System.Drawing.Point(12, 6);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(0, 15);
-            this.lblId.TabIndex = 22;
             // 
             // Id
             // 
@@ -634,11 +575,94 @@
             this.Observacao.Name = "Observacao";
             this.Observacao.ReadOnly = true;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(3, 6);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(36, 17);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Obs:";
+            // 
+            // gridExemplo
+            // 
+            this.gridExemplo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridExemplo.Location = new System.Drawing.Point(12, 462);
+            this.gridExemplo.Name = "gridExemplo";
+            this.gridExemplo.RowTemplate.Height = 25;
+            this.gridExemplo.Size = new System.Drawing.Size(682, 109);
+            this.gridExemplo.TabIndex = 18;
+            this.gridExemplo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridExemplo_CellContentClick);
+            this.gridExemplo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gridExemplo_CellFormatting);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(259, 6);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(78, 17);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Data Hoje: ";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.txtObservacao);
+            this.panel1.Location = new System.Drawing.Point(863, 26);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(238, 179);
+            this.panel1.TabIndex = 20;
+            // 
+            // lblDataHoje
+            // 
+            this.lblDataHoje.AutoSize = true;
+            this.lblDataHoje.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblDataHoje.Location = new System.Drawing.Point(334, 6);
+            this.lblDataHoje.Name = "lblDataHoje";
+            this.lblDataHoje.Size = new System.Drawing.Size(41, 17);
+            this.lblDataHoje.TabIndex = 21;
+            this.lblDataHoje.Text = "Atual";
+            // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.lblId.Location = new System.Drawing.Point(12, 6);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(0, 15);
+            this.lblId.TabIndex = 22;
+            // 
+            // lblTotRegistrosGrid
+            // 
+            this.lblTotRegistrosGrid.AutoSize = true;
+            this.lblTotRegistrosGrid.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTotRegistrosGrid.Location = new System.Drawing.Point(143, 410);
+            this.lblTotRegistrosGrid.Name = "lblTotRegistrosGrid";
+            this.lblTotRegistrosGrid.Size = new System.Drawing.Size(41, 17);
+            this.lblTotRegistrosGrid.TabIndex = 23;
+            this.lblTotRegistrosGrid.Text = "Talão";
+            // 
+            // lblSomaTotal
+            // 
+            this.lblSomaTotal.AutoSize = true;
+            this.lblSomaTotal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblSomaTotal.Location = new System.Drawing.Point(616, 421);
+            this.lblSomaTotal.Name = "lblSomaTotal";
+            this.lblSomaTotal.Size = new System.Drawing.Size(41, 17);
+            this.lblSomaTotal.TabIndex = 24;
+            this.lblSomaTotal.Text = "Talão";
+            // 
             // frmAgendaPosVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1113, 441);
+            this.ClientSize = new System.Drawing.Size(1113, 624);
+            this.Controls.Add(this.lblSomaTotal);
+            this.Controls.Add(this.lblTotRegistrosGrid);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.lblDataHoje);
             this.Controls.Add(this.ckbPosVenda);
@@ -728,5 +752,7 @@
         private DataGridViewTextBoxColumn DataPosVenda;
         private DataGridViewTextBoxColumn Valor;
         private DataGridViewTextBoxColumn Observacao;
+        private Label lblTotRegistrosGrid;
+        private Label lblSomaTotal;
     }
 }

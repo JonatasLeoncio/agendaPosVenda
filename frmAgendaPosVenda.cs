@@ -4,6 +4,7 @@ using agendaPosVenda.Services;
 using Microsoft.Win32;
 using System.Data;
 using System.Data.Common;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace agendaPosVenda
@@ -35,7 +36,7 @@ namespace agendaPosVenda
 
             ListarGridRegistros();
             gridExemplo.CellFormatting += gridExemplo_CellFormatting;
-           
+
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -49,7 +50,7 @@ namespace agendaPosVenda
             novoRegistro.Telefone = txtTel.Text;
             novoRegistro.Status = cmbStatus.Text;
             novoRegistro.Data = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy HH:mm"));
-            novoRegistro.DataPrevEntrega = (txtDataPrevEntrega.Text == "  /  /")?null:Convert.ToDateTime(txtDataPrevEntrega.Text);
+            novoRegistro.DataPrevEntrega = (txtDataPrevEntrega.Text == "  /  /") ? null : Convert.ToDateTime(txtDataPrevEntrega.Text);
             novoRegistro.DataAberta = (txtDtAberto.Text == "  /  /") ? null : Convert.ToDateTime(txtDtAberto.Text);
             novoRegistro.DataEntrega = (txtDtEntregue.Text == "  /  /") ? null : Convert.ToDateTime(txtDtEntregue.Text);
             novoRegistro.DataPosVenda = (txtDtPosVenda.Text == "  /  /") ? null : Convert.ToDateTime(txtDtPosVenda.Text);
@@ -68,6 +69,8 @@ namespace agendaPosVenda
              }*/
 
             ListarGridRegistros();
+            MessageBox.Show("Salvo com Sucesso.");
+            Limpar_Campos();
             gridExemplo.DataSource = resp;
 
 
@@ -130,11 +133,11 @@ namespace agendaPosVenda
                 //               
 
                 if (resp[i].DataEntrega != null)
-                {                   
+                {
                     gridRegistros.Rows[i].Cells["DataEntrega"].Value = ((DateTime)resp[i].DataEntrega).ToString("dd/MM/yyyy");
                 }
                 else
-                {                    
+                {
                     gridRegistros.Rows[i].Cells["DataEntrega"].Value = "";
                 }
                 if (resp[i].DataPosVenda != null)
@@ -173,7 +176,7 @@ namespace agendaPosVenda
             }
 
             // gridRegistros.Columns[0].Visible = false;
-           
+
 
 
 
@@ -193,7 +196,7 @@ namespace agendaPosVenda
         {
 
 
-            
+
             //registroControler.ListarRegistros();
             //gridRegistros.DefaultCellStyle.SelectionBackColor = Color.Transparent;
             //gridRegistros.DefaultCellStyle.SelectionForeColor = Color.Black;
@@ -215,20 +218,25 @@ namespace agendaPosVenda
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            //gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            /*string testSemMascara = new String(txtDtEntregue.Text.Where(Char.IsDigit).ToArray());
-            MessageBox.Show(testSemMascara);*/
+            Limpar_Campos();
+        }
 
-            string valorSemMascara = txtDtEntregue.Text;
-            MessageBox.Show(valorSemMascara);
-            //if(txtDtEntregue.Text=="  /  /")
-            //{
-            //    MessageBox.Show("vazio");
-            //}
-            //else
-            //{
-            //    MessageBox.Show(txtDtEntregue.Text);
-            //}
+        private void Limpar_Campos()
+        {
+            txtTalao.Text = string.Empty;
+            lblId.Text = string.Empty;
+            txtNomeCliente.Text = string.Empty;
+
+            txtDataPrevEntrega.Text = string.Empty;
+            cmbStatus.SelectedIndex = 0;
+            txtCodCliente.Text = string.Empty;
+            txtTel.Text = string.Empty;
+            txtValor.Text = string.Empty;
+            txtDtAberto.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            txtDtEntregue.Text = string.Empty;
+            txtDtPosVenda.Text = string.Empty;
+            txtObservacao.Text = string.Empty;
+            txtObservacao.BackColor = Color.White;
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
@@ -246,7 +254,7 @@ namespace agendaPosVenda
             novoRegistro.CodCliente = Convert.ToInt32(txtCodCliente.Text);
             novoRegistro.NomeCliente = txtNomeCliente.Text;
             novoRegistro.Telefone = txtTel.Text;
-            if(txtDtAberto.Text != "  /  /"&& txtDtEntregue.Text == "  /  /"&& txtDtPosVenda.Text == "  /  /")
+            if (txtDtAberto.Text != "  /  /" && txtDtEntregue.Text == "  /  /" && txtDtPosVenda.Text == "  /  /")
             {
                 cmbStatus.Text = "Aberto";
             }
@@ -267,9 +275,9 @@ namespace agendaPosVenda
             novoRegistro.DataEntrega = (txtDtEntregue.Text == "  /  /") ? null : Convert.ToDateTime(txtDtEntregue.Text);
             novoRegistro.DataPosVenda = (txtDtPosVenda.Text == "  /  /") ? null : Convert.ToDateTime(txtDtPosVenda.Text);
             novoRegistro.Observacao = txtObservacao.Text;
-            novoRegistro.Valor = (txtValor.Text=="".Trim())?0:Convert.ToDecimal(txtValor.Text);
+            novoRegistro.Valor = (txtValor.Text == "".Trim()) ? 0 : Convert.ToDecimal(txtValor.Text);
 
-            novoRegistro.Observacao=txtObservacao.Text;
+            novoRegistro.Observacao = txtObservacao.Text;
 
 
             List<Registro> resp = new List<Registro>();
@@ -277,6 +285,8 @@ namespace agendaPosVenda
 
 
             ListarGridRegistros();
+            MessageBox.Show("Atualizado com Sucesso.");
+            Limpar_Campos();
             gridExemplo.DataSource = resp;
 
         }
@@ -296,17 +306,29 @@ namespace agendaPosVenda
                     return;
                 }
 
-                if (registroControler.ExcluirRegistro(id))
+
+                // Exibe uma MessageBox com opção Sim/Não
+                DialogResult resultado = MessageBox.Show("Gostaria realmente de Excluir esse Registro?", "Exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                // Verifica a escolha do usuário
+                if (resultado == DialogResult.Yes)
                 {
-                    MessageBox.Show("Registro Excluído com sucesso");
-                    id = 0;
-                    lblId.Text = "";
-                    ListarGridRegistros();
+                    // Código a ser executado se o usuário escolheu "Sim"
+                    if (registroControler.ExcluirRegistro(id))
+                    {
+                        MessageBox.Show("Registro Excluído com sucesso");
+                        Limpar_Campos();
+                        id = 0;
+                        ListarGridRegistros();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Não foi possivel excluir o registro");
+                    // Código a ser executado se o usuário escolheu "Não"
+                    // MessageBox.Show("Você escolheu Não!");
+                    return;
                 }
+
             }
             catch (Exception ex)
             {
@@ -360,27 +382,28 @@ namespace agendaPosVenda
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (gridRegistros.CurrentCell == null){
-                   // MessageBox.Show("Selecione algum registro");
+                if (gridRegistros.CurrentCell == null)
+                {
+                    // MessageBox.Show("Selecione algum registro");
                     gridRegistros.CurrentCell = null;
                     e.SuppressKeyPress = true;
                     return;
                 }
-                
+
                 // Faça o que você precisa fazer quando a tecla Enter é pressionada
                 // ...
                 lblId.Text = gridRegistros.CurrentRow.Cells[0].Value.ToString();
-               txtTalao.Text = gridRegistros.CurrentRow.Cells[1].Value.ToString();
-               cmbFuncionario.Text = gridRegistros.CurrentRow.Cells[2].Value.ToString();
-               txtCodCliente.Text = gridRegistros.CurrentRow.Cells[3].Value.ToString();
-               txtNomeCliente.Text = gridRegistros.CurrentRow.Cells[4].Value.ToString();
-               txtTel.Text = gridRegistros.CurrentRow.Cells[5].Value.ToString();
-               cmbStatus.Text = gridRegistros.CurrentRow.Cells[6].Value.ToString();
+                txtTalao.Text = gridRegistros.CurrentRow.Cells[1].Value.ToString();
+                cmbFuncionario.Text = gridRegistros.CurrentRow.Cells[2].Value.ToString();
+                txtCodCliente.Text = gridRegistros.CurrentRow.Cells[3].Value.ToString();
+                txtNomeCliente.Text = gridRegistros.CurrentRow.Cells[4].Value.ToString();
+                txtTel.Text = gridRegistros.CurrentRow.Cells[5].Value.ToString();
+                cmbStatus.Text = gridRegistros.CurrentRow.Cells[6].Value.ToString();
 
-               txtDtAberto.Text = gridRegistros.CurrentRow.Cells[7].Value.ToString();
+                txtDtAberto.Text = gridRegistros.CurrentRow.Cells[7].Value.ToString();
                 txtDataPrevEntrega.Text = gridRegistros.CurrentRow.Cells[8].Value.ToString();
-               txtDtEntregue.Text = gridRegistros.CurrentRow.Cells[9].Value.ToString();
-               txtDtPosVenda.Text = gridRegistros.CurrentRow.Cells[10].Value.ToString();
+                txtDtEntregue.Text = gridRegistros.CurrentRow.Cells[9].Value.ToString();
+                txtDtPosVenda.Text = gridRegistros.CurrentRow.Cells[10].Value.ToString();
                 txtValor.Text = gridRegistros.CurrentRow.Cells[11].Value.ToString();
                 txtObservacao.Text = gridRegistros.CurrentRow.Cells[12].Value.ToString();
 
@@ -452,7 +475,21 @@ namespace agendaPosVenda
 
         private void btnAlerta_Click(object sender, EventArgs e)
         {
-            StatusAlerta();
+            //StatusAlerta();
+            string caminho = Path.GetFullPath(@"Banco\BdCV.db");
+            //MessageBox.Show("KKK = " + System.IO.Directory.GetCurrentDirectory());
+
+            // string diretorioAtual = Directory.GetCurrentDirectory();
+
+
+
+
+
+
+
+
+
+            //MessageBox.Show("Res = "+ caminhoDestino);
 
         }
 
@@ -498,7 +535,7 @@ namespace agendaPosVenda
                 {
                     //listaEntregasAtrazadas.Add(item);
                     //lblAtrazado.Text = "\r\n";
-                    txtAlertaAtrazada.Text += $"Talao: {item.Talao} - Func: {item.Funcionario} - IdDoc: {item.Id}       está atrazado à ({diferencaEmDias*(-1)}) dias\r\n\r\n";
+                    txtAlertaAtrazada.Text += $"Talao: {item.Talao} - Func: {item.Funcionario} - IdDoc: {item.Id}       está atrazado à ({diferencaEmDias * (-1)}) dias\r\n\r\n";
                     txtAlertaAtrazada.ForeColor = Color.Red;
                     totAtrazada++;
                 }
@@ -511,17 +548,17 @@ namespace agendaPosVenda
 
         private void rbHoje_CheckedChanged(object sender, EventArgs e)
         {
-            if(rbHoje.Checked)
+            if (rbHoje.Checked)
             {
-                txtAlertaHoje.Visible= true;
-                txtAlertaAtrazada.Visible= false;
+                txtAlertaHoje.Visible = true;
+                txtAlertaAtrazada.Visible = false;
                 txtAlertaAmanha.Visible = false;
             }
         }
 
         private void rbAmanha_CheckedChanged(object sender, EventArgs e)
         {
-            if(rbAmanha.Checked)
+            if (rbAmanha.Checked)
             {
                 txtAlertaAmanha.Visible = true;
                 txtAlertaAtrazada.Visible = false;
@@ -531,7 +568,7 @@ namespace agendaPosVenda
 
         private void rbAtrazada_CheckedChanged(object sender, EventArgs e)
         {
-            if(rbAtrazada.Checked)
+            if (rbAtrazada.Checked)
             {
                 txtAlertaAtrazada.Visible = true;
                 txtAlertaHoje.Visible = false;

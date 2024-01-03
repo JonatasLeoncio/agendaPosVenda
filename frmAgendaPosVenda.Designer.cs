@@ -509,8 +509,9 @@
             this.gridRegistros.ReadOnly = true;
             this.gridRegistros.RowTemplate.Height = 25;
             this.gridRegistros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridRegistros.Size = new System.Drawing.Size(694, 296);
+            this.gridRegistros.Size = new System.Drawing.Size(715, 296);
             this.gridRegistros.TabIndex = 16;
+            
             this.gridRegistros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellContentClick);
             this.gridRegistros.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellDoubleClick);
             this.gridRegistros.Click += new System.EventHandler(this.gridRegistros_Click);
@@ -526,7 +527,7 @@
             this.Id.MinimumWidth = 4;
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
-            this.Id.Width = 4;
+            this.Id.Width = 55;
             // 
             // Talao
             // 
@@ -535,24 +536,28 @@
             this.Talao.HeaderText = "Talao";
             this.Talao.Name = "Talao";
             this.Talao.ReadOnly = true;
+            this.Talao.Width = 60;
             // 
             // Funcionario
             // 
             this.Funcionario.HeaderText = "Funcionario";
             this.Funcionario.Name = "Funcionario";
             this.Funcionario.ReadOnly = true;
+            this.Funcionario.Width = 150;
             // 
             // CodCliente
             // 
             this.CodCliente.HeaderText = "Cod Cliente";
             this.CodCliente.Name = "CodCliente";
             this.CodCliente.ReadOnly = true;
+            this.CodCliente.Width = 60;
             // 
             // cliente
             // 
             this.cliente.HeaderText = "Cliente";
             this.cliente.Name = "cliente";
             this.cliente.ReadOnly = true;
+            this.cliente.Width = 190;
             // 
             // Telefone
             // 
@@ -696,7 +701,7 @@
             // txtAlertaAtrazada
             // 
             this.txtAlertaAtrazada.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.txtAlertaAtrazada.Location = new System.Drawing.Point(8, 47);
+            this.txtAlertaAtrazada.Location = new System.Drawing.Point(7, 47);
             this.txtAlertaAtrazada.Multiline = true;
             this.txtAlertaAtrazada.Name = "txtAlertaAtrazada";
             this.txtAlertaAtrazada.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -707,7 +712,7 @@
             // txtAlertaHoje
             // 
             this.txtAlertaHoje.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.txtAlertaHoje.Location = new System.Drawing.Point(8, 47);
+            this.txtAlertaHoje.Location = new System.Drawing.Point(7, 47);
             this.txtAlertaHoje.Multiline = true;
             this.txtAlertaHoje.Name = "txtAlertaHoje";
             this.txtAlertaHoje.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -759,15 +764,15 @@
             this.panel2.Controls.Add(this.lblTotAmanha);
             this.panel2.Controls.Add(this.rbHoje);
             this.panel2.Controls.Add(this.lblTotHoje);
-            this.panel2.Location = new System.Drawing.Point(713, 241);
+            this.panel2.Location = new System.Drawing.Point(734, 241);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(386, 267);
+            this.panel2.Size = new System.Drawing.Size(372, 267);
             this.panel2.TabIndex = 33;
             // 
             // txtAlertaAmanha
             // 
             this.txtAlertaAmanha.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.txtAlertaAmanha.Location = new System.Drawing.Point(8, 47);
+            this.txtAlertaAmanha.Location = new System.Drawing.Point(7, 47);
             this.txtAlertaAmanha.Multiline = true;
             this.txtAlertaAmanha.Name = "txtAlertaAmanha";
             this.txtAlertaAmanha.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -924,6 +929,8 @@
         private RadioButton rbAtrazada;
         private RadioButton rbAmanha;
         private RadioButton rbHoje;
+        private TextBox txtAlertaAmanha;
+        private Label label13;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Talao;
         private DataGridViewTextBoxColumn Funcionario;
@@ -937,7 +944,5 @@
         private DataGridViewTextBoxColumn DataPosVenda;
         private DataGridViewTextBoxColumn Valor;
         private DataGridViewTextBoxColumn Observacao;
-        private TextBox txtAlertaAmanha;
-        private Label label13;
     }
 }

@@ -23,20 +23,153 @@ namespace agendaPosVenda
             txtAlertaHoje.Multiline = true;
             txtAlertaHoje.WordWrap = false;
             txtAlertaHoje.ScrollBars = ScrollBars.Both;
+            txtAlertaHoje.ReadOnly = true;
+            //txtAlertaHoje.Enabled = false;
+            txtAlertaHoje.BackColor= Color.White;
 
             txtAlertaAmanha.Multiline = true;
             txtAlertaAmanha.WordWrap = false;
             txtAlertaAmanha.ScrollBars = ScrollBars.Both;
+            txtAlertaAmanha.ReadOnly = true;
+            //txtAlertaAmanha.Enabled=false;
+            txtAlertaAmanha.BackColor = Color.White;
 
             txtAlertaAtrazada.Multiline = true;
             txtAlertaAtrazada.WordWrap = false;
             txtAlertaAtrazada.ScrollBars = ScrollBars.Both;
+            txtAlertaAtrazada.ReadOnly= true;
+            //txtAlertaAtrazada.Enabled=false;
+            txtAlertaAtrazada.BackColor = Color.White;
 
+            btnNovo.Enabled= true;
+            btnSalvar.Enabled= false;
+            btnAlterar.Enabled= false;
+            btnExcluir.Enabled= false;
 
+            InabilitaCampos();
 
             ListarGridRegistros();
             gridExemplo.CellFormatting += gridExemplo_CellFormatting;
 
+        }
+        private void frmAgendaPosVenda_Load(object sender, EventArgs e)
+        {
+
+
+
+            //registroControler.ListarRegistros();
+            //gridRegistros.DefaultCellStyle.SelectionBackColor = Color.Transparent;
+            //gridRegistros.DefaultCellStyle.SelectionForeColor = Color.Black;
+            // gridRegistros.Columns[0].Width = 00;
+            //gridRegistros.Columns[0].Visible = false;
+
+
+
+
+            gridRegistros.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
+            gridRegistros.CurrentCell = null;
+
+            gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+
+              gridRegistros.RowHeadersVisible = false;
+
+        }
+        //funcoes
+        private void InabilitaCampos()
+        {
+            //ReadOnly é o contrario de Enabled porem mantem a cor da escrita forte
+            lblId.Enabled = true;
+            txtTalao.ReadOnly = true;
+            cmbFuncionario.Enabled = false;           
+            txtNomeCliente.ReadOnly = true;
+            txtDataPrevEntrega.ReadOnly = true;
+            cmbStatus.SelectedIndex = 0;
+            cmbStatus.Enabled = false;
+            txtCodCliente.ReadOnly = true;
+            txtTel.ReadOnly = true;
+            txtValor.ReadOnly = true;
+            txtDtAberto.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            txtDtAberto.ReadOnly = true;
+            txtDtEntregue.ReadOnly = true;
+            txtDtPosVenda.ReadOnly = true;
+            txtObservacao.ReadOnly = true;
+            
+        }
+        private void HabilitaCampos()
+        {
+            //ReadOnly é o contrario de Enabled porem mantem a cor da escrita forte e permite a captura do control+C 
+            txtTalao.ReadOnly = false;
+            lblId.Enabled = true;
+            txtNomeCliente.ReadOnly = false;
+            cmbFuncionario.Enabled = true;
+            txtDataPrevEntrega.ReadOnly = false;
+            cmbStatus.SelectedIndex = 0;
+            cmbStatus.Enabled = true;
+            txtCodCliente.ReadOnly = false;
+            txtTel.ReadOnly = false;
+            txtValor.ReadOnly = false;
+            txtDtAberto.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            txtDtAberto.ReadOnly = false;
+            txtDtEntregue.ReadOnly = false;
+            txtDtPosVenda.ReadOnly = false;
+            txtObservacao.ReadOnly = false;
+           
+        }
+        private void Limpar_Campos()
+        {
+            txtTalao.Text = string.Empty;
+            lblId.Text = string.Empty;
+            txtNomeCliente.Text = string.Empty;
+
+            txtDataPrevEntrega.Text = string.Empty;
+            cmbStatus.SelectedIndex = 0;
+            txtCodCliente.Text = string.Empty;
+            txtTel.Text = string.Empty;
+            txtValor.Text = string.Empty;
+            txtDtAberto.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            txtDtEntregue.Text = string.Empty;
+            txtDtPosVenda.Text = string.Empty;
+            txtObservacao.Text = string.Empty;
+            txtObservacao.BackColor = Color.White;
+        }
+        private void CarregaCamposComGrid()
+        {
+            if (gridRegistros.CurrentCell == null)//caso clicar na parte vazia da DatagridView
+                return;
+
+            // Faça o que você precisa fazer quando a tecla Enter é pressionada
+            // ...
+            lblId.Text = gridRegistros.CurrentRow.Cells[0].Value.ToString();
+            txtTalao.Text = gridRegistros.CurrentRow.Cells[1].Value.ToString();
+            cmbFuncionario.Text = gridRegistros.CurrentRow.Cells[2].Value.ToString();
+            txtCodCliente.Text = gridRegistros.CurrentRow.Cells[3].Value.ToString();
+            txtNomeCliente.Text = gridRegistros.CurrentRow.Cells[4].Value.ToString();
+            txtTel.Text = gridRegistros.CurrentRow.Cells[5].Value.ToString();
+            cmbStatus.Text = gridRegistros.CurrentRow.Cells[6].Value.ToString();
+
+            txtDtAberto.Text = gridRegistros.CurrentRow.Cells[7].Value.ToString();
+            txtDataPrevEntrega.Text = gridRegistros.CurrentRow.Cells[8].Value.ToString();
+            txtDtEntregue.Text = gridRegistros.CurrentRow.Cells[9].Value.ToString();
+            txtDtPosVenda.Text = gridRegistros.CurrentRow.Cells[10].Value.ToString();
+            txtValor.Text = gridRegistros.CurrentRow.Cells[11].Value.ToString();
+            txtObservacao.Text = gridRegistros.CurrentRow.Cells[12].Value.ToString();
+
+            if (gridRegistros.CurrentRow.Cells[12].Value.ToString() != "".Trim())
+            {
+                txtObservacao.BackColor
+                    = Color.LightBlue;
+            }
+            else
+            {
+                txtObservacao.BackColor
+                    = Color.White;
+            }
+
+            
+
+            // Impede a mudança para a próxima linha
+            //e.SuppressKeyPress = true;
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -71,11 +204,15 @@ namespace agendaPosVenda
             ListarGridRegistros();
             MessageBox.Show("Salvo com Sucesso.");
             Limpar_Campos();
+            InabilitaCampos();
             gridExemplo.DataSource = resp;
 
 
 
-
+            btnNovo.Enabled = true;
+            btnSalvar.Enabled = false;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
 
 
 
@@ -192,52 +329,25 @@ namespace agendaPosVenda
             StatusAlerta();
         }
 
-        private void frmAgendaPosVenda_Load(object sender, EventArgs e)
-        {
-
-
-
-            //registroControler.ListarRegistros();
-            //gridRegistros.DefaultCellStyle.SelectionBackColor = Color.Transparent;
-            //gridRegistros.DefaultCellStyle.SelectionForeColor = Color.Black;
-            // gridRegistros.Columns[0].Width = 00;
-            //gridRegistros.Columns[0].Visible = false;
-
-
-
-
-            gridRegistros.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
-            gridRegistros.CurrentCell = null;
-
-            gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
-
-            //  gridRegistros.RowHeadersVisible = false;
-
-        }
+        
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
+
+
             Limpar_Campos();
+            HabilitaCampos();
+            gridRegistros.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
+            gridRegistros.CurrentCell = null;
+            gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            btnNovo.Enabled = true;
+            btnSalvar.Enabled = true;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
         }
 
-        private void Limpar_Campos()
-        {
-            txtTalao.Text = string.Empty;
-            lblId.Text = string.Empty;
-            txtNomeCliente.Text = string.Empty;
-
-            txtDataPrevEntrega.Text = string.Empty;
-            cmbStatus.SelectedIndex = 0;
-            txtCodCliente.Text = string.Empty;
-            txtTel.Text = string.Empty;
-            txtValor.Text = string.Empty;
-            txtDtAberto.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            txtDtEntregue.Text = string.Empty;
-            txtDtPosVenda.Text = string.Empty;
-            txtObservacao.Text = string.Empty;
-            txtObservacao.BackColor = Color.White;
-        }
+        
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
@@ -286,8 +396,14 @@ namespace agendaPosVenda
 
             ListarGridRegistros();
             MessageBox.Show("Atualizado com Sucesso.");
-            Limpar_Campos();
+            // Limpar_Campos();
+            InabilitaCampos();
             gridExemplo.DataSource = resp;
+
+            btnNovo.Enabled = true;
+            btnSalvar.Enabled = false;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
 
         }
 
@@ -320,6 +436,12 @@ namespace agendaPosVenda
                         Limpar_Campos();
                         id = 0;
                         ListarGridRegistros();
+                        InabilitaCampos();
+
+                        btnNovo.Enabled = true;
+                        btnSalvar.Enabled = false;
+                        btnAlterar.Enabled = false;
+                        btnExcluir.Enabled = false;
                     }
                 }
                 else
@@ -352,6 +474,9 @@ namespace agendaPosVenda
             gridRegistros.CurrentCell = null;
             lblId.Text = "";
 
+            Limpar_Campos();
+            InabilitaCampos();
+
 
             //gridRegistros.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
 
@@ -376,6 +501,14 @@ namespace agendaPosVenda
 
             gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
+            Limpar_Campos();
+            CarregaCamposComGrid();
+            InabilitaCampos();
+            btnNovo.Enabled = true;
+            btnSalvar.Enabled = false;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
+
         }
 
         private void gridRegistros_KeyDown(object sender, KeyEventArgs e)
@@ -389,38 +522,15 @@ namespace agendaPosVenda
                     e.SuppressKeyPress = true;
                     return;
                 }
-
-                // Faça o que você precisa fazer quando a tecla Enter é pressionada
-                // ...
-                lblId.Text = gridRegistros.CurrentRow.Cells[0].Value.ToString();
-                txtTalao.Text = gridRegistros.CurrentRow.Cells[1].Value.ToString();
-                cmbFuncionario.Text = gridRegistros.CurrentRow.Cells[2].Value.ToString();
-                txtCodCliente.Text = gridRegistros.CurrentRow.Cells[3].Value.ToString();
-                txtNomeCliente.Text = gridRegistros.CurrentRow.Cells[4].Value.ToString();
-                txtTel.Text = gridRegistros.CurrentRow.Cells[5].Value.ToString();
-                cmbStatus.Text = gridRegistros.CurrentRow.Cells[6].Value.ToString();
-
-                txtDtAberto.Text = gridRegistros.CurrentRow.Cells[7].Value.ToString();
-                txtDataPrevEntrega.Text = gridRegistros.CurrentRow.Cells[8].Value.ToString();
-                txtDtEntregue.Text = gridRegistros.CurrentRow.Cells[9].Value.ToString();
-                txtDtPosVenda.Text = gridRegistros.CurrentRow.Cells[10].Value.ToString();
-                txtValor.Text = gridRegistros.CurrentRow.Cells[11].Value.ToString();
-                txtObservacao.Text = gridRegistros.CurrentRow.Cells[12].Value.ToString();
-
-                if (gridRegistros.CurrentRow.Cells[12].Value.ToString() != "".Trim())
-                {
-                    txtObservacao.BackColor
-                        = Color.LightBlue;
-                }
-                else
-                {
-                    txtObservacao.BackColor
-                        = Color.White;
-                }
-
                 gridRegistros.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 128, 128);//coloca cor argb
 
-                // Impede a mudança para a próxima linha
+                CarregaCamposComGrid();
+                HabilitaCampos();
+                btnNovo.Enabled = true;
+                btnSalvar.Enabled = false;
+                btnAlterar.Enabled = true;
+                btnExcluir.Enabled = true;
+
                 e.SuppressKeyPress = true;
             }
         }
@@ -435,7 +545,9 @@ namespace agendaPosVenda
             if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
             {
 
-
+                InabilitaCampos();
+               // CarregaCamposComGrid();
+               Limpar_Campos();
                 gridRegistros.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
 
 
@@ -575,5 +687,7 @@ namespace agendaPosVenda
                 txtAlertaAmanha.Visible = false;
             }
         }
+
+        
     }
 }

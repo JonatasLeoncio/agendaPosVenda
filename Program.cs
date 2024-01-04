@@ -5,6 +5,12 @@ namespace agendaPosVenda
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
+        /// 
+        //Declarar as Variaveis Globais do progeto
+        public static string FuncionarioLogin;//variavel Global para armazenar dados Login
+
+
+
         [STAThread]
         static void Main()
         {

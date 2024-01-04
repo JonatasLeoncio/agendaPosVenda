@@ -61,6 +61,7 @@
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.pnlControles = new System.Windows.Forms.Panel();
+            this.cmbFilt_Funcionario = new System.Windows.Forms.ComboBox();
             this.pnlComandos = new System.Windows.Forms.Panel();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnAlerta = new System.Windows.Forms.Button();
@@ -100,7 +101,8 @@
             this.rbAmanha = new System.Windows.Forms.RadioButton();
             this.rbHoje = new System.Windows.Forms.RadioButton();
             this.label13 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtLogin = new System.Windows.Forms.TextBox();
+            this.cmbFuncLogin = new System.Windows.Forms.ComboBox();
             this.pnlEntidades.SuspendLayout();
             this.pnlStatus.SuspendLayout();
             this.pnlControles.SuspendLayout();
@@ -418,7 +420,7 @@
             // 
             this.pnlControles.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.pnlControles.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlControles.Controls.Add(this.comboBox1);
+            this.pnlControles.Controls.Add(this.cmbFilt_Funcionario);
             this.pnlControles.Controls.Add(this.pnlComandos);
             this.pnlControles.Controls.Add(this.btnAlerta);
             this.pnlControles.Location = new System.Drawing.Point(14, 152);
@@ -426,6 +428,19 @@
             this.pnlControles.Size = new System.Drawing.Size(1087, 53);
             this.pnlControles.TabIndex = 12;
             this.pnlControles.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlControles_Paint);
+            // 
+            // cmbFilt_Funcionario
+            // 
+            this.cmbFilt_Funcionario.FormattingEnabled = true;
+            this.cmbFilt_Funcionario.Items.AddRange(new object[] {
+            "Jonatas Leoncio",
+            "Leandro Leoncio",
+            "Leonardo",
+            "Rodrigo"});
+            this.cmbFilt_Funcionario.Location = new System.Drawing.Point(156, 15);
+            this.cmbFilt_Funcionario.Name = "cmbFilt_Funcionario";
+            this.cmbFilt_Funcionario.Size = new System.Drawing.Size(261, 23);
+            this.cmbFilt_Funcionario.TabIndex = 26;
             // 
             // pnlComandos
             // 
@@ -832,24 +847,38 @@
             this.label13.TabIndex = 34;
             this.label13.Text = "Acompanhamento de Entregas";
             // 
-            // comboBox1
+            // txtLogin
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.txtLogin.Location = new System.Drawing.Point(442, 3);
+            this.txtLogin.Name = "txtLogin";
+            this.txtLogin.Size = new System.Drawing.Size(30, 23);
+            this.txtLogin.TabIndex = 35;
+            // 
+            // cmbFuncLogin
+            // 
+            this.cmbFuncLogin.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.cmbFuncLogin.BackColor = System.Drawing.SystemColors.Window;
+            this.cmbFuncLogin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFuncLogin.FormattingEnabled = true;
+            this.cmbFuncLogin.Items.AddRange(new object[] {
+            "Admin",
             "Jonatas Leoncio",
             "Leandro Leoncio",
             "Leonardo",
             "Rodrigo"});
-            this.comboBox1.Location = new System.Drawing.Point(156, 15);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(261, 23);
-            this.comboBox1.TabIndex = 26;
+            this.cmbFuncLogin.Location = new System.Drawing.Point(501, 0);
+            this.cmbFuncLogin.Name = "cmbFuncLogin";
+            this.cmbFuncLogin.Size = new System.Drawing.Size(166, 23);
+            this.cmbFuncLogin.TabIndex = 36;
+            this.cmbFuncLogin.SelectedIndexChanged += new System.EventHandler(this.cmbFuncLogin_SelectedIndexChanged);
             // 
             // frmAgendaPosVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1113, 595);
+            this.Controls.Add(this.cmbFuncLogin);
+            this.Controls.Add(this.txtLogin);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblAtrazado);
@@ -961,6 +990,8 @@
         private DataGridViewTextBoxColumn DataPosVenda;
         private DataGridViewTextBoxColumn Valor;
         private DataGridViewTextBoxColumn Observacao;
-        private ComboBox comboBox1;
+        private ComboBox cmbFilt_Funcionario;
+        private TextBox txtLogin;
+        private ComboBox cmbFuncLogin;
     }
 }

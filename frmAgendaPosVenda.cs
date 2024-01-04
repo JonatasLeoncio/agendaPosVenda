@@ -48,7 +48,12 @@ namespace agendaPosVenda
 
             InabilitaCampos();
 
-            ListarGridRegistros("Rodrigo");
+            cmbFuncLogin.SelectedIndex = 0;
+
+            Program.FuncionarioLogin = cmbFuncLogin.Text;
+
+
+            ListarGridRegistros(Program.FuncionarioLogin);
             gridExemplo.CellFormatting += gridExemplo_CellFormatting;
 
         }
@@ -227,6 +232,22 @@ namespace agendaPosVenda
         private void ListarGridRegistros(string funcionario = null)
         {
             // gridRegistros.CellFormatting += gridRegistros_CellFormatting;
+            //if (txtLogin.Text != "".Trim())
+            //{
+            //    Program.FuncionarioLogin = txtLogin.Text;
+            //    funcionario = Program.FuncionarioLogin;
+            //}
+            if (cmbFuncLogin.Text == "Admin".Trim())
+            {
+                Program.FuncionarioLogin = null;
+                funcionario = Program.FuncionarioLogin;
+            }
+            else
+            {
+                Program.FuncionarioLogin = cmbFuncLogin.Text;
+                funcionario = Program.FuncionarioLogin;
+            }
+
             var resp = registroControler.ListarRegistros(funcionario);
             gridRegistros.Rows.Clear();
             double total = 0;
@@ -337,6 +358,15 @@ namespace agendaPosVenda
 
 
             Limpar_Campos();
+
+            if (cmbFuncLogin.Text.Trim() == "")
+            {
+                MessageBox.Show("vc precisa logar");
+                cmbFuncLogin.Focus();
+                return;
+            }
+
+
             HabilitaCampos();
             gridRegistros.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
             gridRegistros.CurrentCell = null;
@@ -497,6 +527,13 @@ namespace agendaPosVenda
             //gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //gridRegistros.CurrentCell = null;
             //lblId.Text = "";
+            if (cmbFuncLogin.Text.Trim() == "")
+            {
+                MessageBox.Show("vc precisa logar");
+                cmbFuncLogin.Focus();
+                return;
+            }
+
 
             gridRegistros.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
 
@@ -594,10 +631,10 @@ namespace agendaPosVenda
 
             // string diretorioAtual = Directory.GetCurrentDirectory();
 
-            double num = 1582.401233;
-            MessageBox.Show(num.ToString("C2"));
+            //double num = 1582.401233;
+            //MessageBox.Show(num.ToString("C2"));
 
-
+            ListarGridRegistros();
 
 
 
@@ -703,6 +740,17 @@ namespace agendaPosVenda
         private void pnlEntidades_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void cmbFuncLogin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListarGridRegistros();
+            cmbFuncionario.Text = "";
+            Limpar_Campos();
+            btnNovo.Enabled = true;
+            btnSalvar.Enabled = false;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
         }
     }
 }

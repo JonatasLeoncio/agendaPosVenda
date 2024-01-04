@@ -100,6 +100,7 @@
             this.rbAmanha = new System.Windows.Forms.RadioButton();
             this.rbHoje = new System.Windows.Forms.RadioButton();
             this.label13 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.pnlEntidades.SuspendLayout();
             this.pnlStatus.SuspendLayout();
             this.pnlControles.SuspendLayout();
@@ -178,6 +179,7 @@
             this.pnlEntidades.Name = "pnlEntidades";
             this.pnlEntidades.Size = new System.Drawing.Size(655, 120);
             this.pnlEntidades.TabIndex = 8;
+            this.pnlEntidades.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlEntidades_Paint);
             // 
             // label12
             // 
@@ -327,6 +329,7 @@
             this.pnlStatus.TabIndex = 9;
             this.pnlStatus.TabStop = true;
             this.pnlStatus.Tag = "";
+            this.pnlStatus.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlStatus_Paint);
             // 
             // txtDtPosVenda
             // 
@@ -415,12 +418,14 @@
             // 
             this.pnlControles.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.pnlControles.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlControles.Controls.Add(this.comboBox1);
             this.pnlControles.Controls.Add(this.pnlComandos);
             this.pnlControles.Controls.Add(this.btnAlerta);
             this.pnlControles.Location = new System.Drawing.Point(14, 152);
             this.pnlControles.Name = "pnlControles";
             this.pnlControles.Size = new System.Drawing.Size(1087, 53);
             this.pnlControles.TabIndex = 12;
+            this.pnlControles.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlControles_Paint);
             // 
             // pnlComandos
             // 
@@ -511,7 +516,6 @@
             this.gridRegistros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridRegistros.Size = new System.Drawing.Size(715, 296);
             this.gridRegistros.TabIndex = 16;
-            
             this.gridRegistros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellContentClick);
             this.gridRegistros.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellDoubleClick);
             this.gridRegistros.Click += new System.EventHandler(this.gridRegistros_Click);
@@ -828,6 +832,19 @@
             this.label13.TabIndex = 34;
             this.label13.Text = "Acompanhamento de Entregas";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Jonatas Leoncio",
+            "Leandro Leoncio",
+            "Leonardo",
+            "Rodrigo"});
+            this.comboBox1.Location = new System.Drawing.Point(156, 15);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(261, 23);
+            this.comboBox1.TabIndex = 26;
+            // 
             // frmAgendaPosVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -944,5 +961,6 @@
         private DataGridViewTextBoxColumn DataPosVenda;
         private DataGridViewTextBoxColumn Valor;
         private DataGridViewTextBoxColumn Observacao;
+        private ComboBox comboBox1;
     }
 }

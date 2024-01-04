@@ -18,9 +18,9 @@ namespace agendaPosVenda.Controller
            return servico.SalvarRegistro(novoRegistro);
         }
 
-        public List<Registro> ListarRegistros()
+        public List<Registro> ListarRegistros(string funcionario = null)
         {
-            return servico.ListarRegistros();
+            return servico.ListarRegistros(funcionario);
         }
 
         public bool ExcluirRegistro(int Id)

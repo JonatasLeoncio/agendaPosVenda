@@ -57,12 +57,15 @@ namespace agendaPosVenda.Repositories
                 return ListarGegistros();
             }
         }
-        public List<Registro> ListarGegistros()
-        {
+        public List<Registro> ListarGegistros(string funcionario = null)
+        {            
             using (var conexao = new SQLiteConnection("Data Source=" + caminhoDestino))
             {
-                string sql = "select * from registros Order By Id Desc";
-                var resp = conexao.Query<Registro>(sql).ToList();
+                string sql = (funcionario == null)
+                    ? "SELECT * FROM registros ORDER BY Id DESC"
+                    : "SELECT * FROM registros WHERE Funcionario = @Funcionario ORDER BY Id DESC";
+
+                var resp = conexao.Query<Registro>(sql, new { Funcionario = funcionario }).ToList();
                 return resp;
             }
         }
@@ -74,8 +77,8 @@ namespace agendaPosVenda.Repositories
 
             using (var conexao = new SQLiteConnection("Data Source=" + caminhoDestino))
             {
-                string sql = $"DELETE FROM registros WHERE Id = {Id}";
-                var linhasAfetadas = conexao.Execute(sql, Id);
+                string sql = $"DELETE FROM registros WHERE Id = @Id";
+                var linhasAfetadas = conexao.Execute(sql, new { Id });
                 if (linhasAfetadas > 0)
                 {
                     return true;

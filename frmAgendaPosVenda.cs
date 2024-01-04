@@ -48,7 +48,7 @@ namespace agendaPosVenda
 
             InabilitaCampos();
 
-            ListarGridRegistros();
+            ListarGridRegistros("Rodrigo");
             gridExemplo.CellFormatting += gridExemplo_CellFormatting;
 
         }
@@ -153,6 +153,7 @@ namespace agendaPosVenda
             txtDtEntregue.Text = gridRegistros.CurrentRow.Cells[9].Value.ToString();
             txtDtPosVenda.Text = gridRegistros.CurrentRow.Cells[10].Value.ToString();
             txtValor.Text = gridRegistros.CurrentRow.Cells[11].Value.ToString();
+
             txtObservacao.Text = gridRegistros.CurrentRow.Cells[12].Value.ToString();
 
             if (gridRegistros.CurrentRow.Cells[12].Value.ToString() != "".Trim())
@@ -223,10 +224,10 @@ namespace agendaPosVenda
 
         }
 
-        private void ListarGridRegistros()
+        private void ListarGridRegistros(string funcionario = null)
         {
             // gridRegistros.CellFormatting += gridRegistros_CellFormatting;
-            var resp = registroControler.ListarRegistros();
+            var resp = registroControler.ListarRegistros(funcionario);
             gridRegistros.Rows.Clear();
             double total = 0;
             for (int i = 0; i < resp.Count; i++)
@@ -307,9 +308,9 @@ namespace agendaPosVenda
                     gridRegistros.Rows[i].Cells["Status"].Style.ForeColor = Color.White; // Cor padrão
                     gridRegistros.Rows[i].Cells["Status"].Style.BackColor = Color.Blue;
                 }
-
-                gridRegistros.Rows[i].Cells["Valor"].Value = resp[i].Valor;
-                total += Convert.ToDouble(gridRegistros.Rows[i].Cells["Valor"].Value);
+                double valor = (double)resp[i].Valor;
+                gridRegistros.Rows[i].Cells["Valor"].Value = valor.ToString("N2");
+                total += valor;
             }
 
             // gridRegistros.Columns[0].Visible = false;
@@ -324,7 +325,7 @@ namespace agendaPosVenda
             gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             lblTotRegistrosGrid.Text = gridRegistros.RowCount.ToString();
-            lblSomaTotal.Text = total.ToString();
+            lblSomaTotal.Text = total.ToString("C2");
 
             StatusAlerta();
         }
@@ -588,12 +589,13 @@ namespace agendaPosVenda
         private void btnAlerta_Click(object sender, EventArgs e)
         {
             //StatusAlerta();
-            string caminho = Path.GetFullPath(@"Banco\BdCV.db");
+            // string caminho = Path.GetFullPath(@"Banco\BdCV.db");
             //MessageBox.Show("KKK = " + System.IO.Directory.GetCurrentDirectory());
 
             // string diretorioAtual = Directory.GetCurrentDirectory();
 
-
+            double num = 1582.401233;
+            MessageBox.Show(num.ToString("C2"));
 
 
 
@@ -688,6 +690,19 @@ namespace agendaPosVenda
             }
         }
 
-        
+        private void pnlControles_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnlStatus_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnlEntidades_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

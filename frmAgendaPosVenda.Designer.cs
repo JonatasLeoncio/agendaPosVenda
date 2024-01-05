@@ -37,11 +37,12 @@
             this.txtCodCliente = new System.Windows.Forms.TextBox();
             this.cmbFuncionario = new System.Windows.Forms.ComboBox();
             this.pnlEntidades = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtDataPrevEntrega = new System.Windows.Forms.MaskedTextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtDtAberto = new System.Windows.Forms.MaskedTextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtValor = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.txtValor = new System.Windows.Forms.TextBox();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.txtTel = new System.Windows.Forms.MaskedTextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -49,12 +50,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtDataPrevEntrega = new System.Windows.Forms.MaskedTextBox();
             this.txtDataTalao = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlStatus = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.txtDtPosVenda = new System.Windows.Forms.MaskedTextBox();
             this.txtDtEntregue = new System.Windows.Forms.MaskedTextBox();
-            this.txtDtAberto = new System.Windows.Forms.MaskedTextBox();
             this.ckbPosVenda = new System.Windows.Forms.CheckBox();
             this.ckbEntregur = new System.Windows.Forms.CheckBox();
             this.ckbAberto = new System.Windows.Forms.CheckBox();
@@ -147,6 +151,7 @@
             // 
             // cmbFuncionario
             // 
+            this.cmbFuncionario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFuncionario.FormattingEnabled = true;
             this.cmbFuncionario.Items.AddRange(new object[] {
             "Jonatas Leoncio",
@@ -161,11 +166,12 @@
             // pnlEntidades
             // 
             this.pnlEntidades.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlEntidades.Controls.Add(this.label12);
-            this.pnlEntidades.Controls.Add(this.txtDataPrevEntrega);
+            this.pnlEntidades.Controls.Add(this.label17);
+            this.pnlEntidades.Controls.Add(this.label14);
+            this.pnlEntidades.Controls.Add(this.txtDtAberto);
             this.pnlEntidades.Controls.Add(this.label11);
-            this.pnlEntidades.Controls.Add(this.txtValor);
             this.pnlEntidades.Controls.Add(this.label8);
+            this.pnlEntidades.Controls.Add(this.txtValor);
             this.pnlEntidades.Controls.Add(this.cmbStatus);
             this.pnlEntidades.Controls.Add(this.txtTel);
             this.pnlEntidades.Controls.Add(this.label6);
@@ -183,24 +189,36 @@
             this.pnlEntidades.TabIndex = 8;
             this.pnlEntidades.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlEntidades_Paint);
             // 
-            // label12
+            // label17
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(380, 5);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(130, 17);
-            this.label12.TabIndex = 24;
-            this.label12.Text = "Previsão de entrega";
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label17.Location = new System.Drawing.Point(525, 87);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(23, 17);
+            this.label17.TabIndex = 26;
+            this.label17.Text = "R$";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtDataPrevEntrega
+            // label14
             // 
-            this.txtDataPrevEntrega.Location = new System.Drawing.Point(380, 25);
-            this.txtDataPrevEntrega.Mask = "00/00/0000";
-            this.txtDataPrevEntrega.Name = "txtDataPrevEntrega";
-            this.txtDataPrevEntrega.Size = new System.Drawing.Size(131, 23);
-            this.txtDataPrevEntrega.TabIndex = 23;
-            this.txtDataPrevEntrega.ValidatingType = typeof(System.DateTime);
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label14.Location = new System.Drawing.Point(383, 5);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(82, 17);
+            this.label14.TabIndex = 25;
+            this.label14.Text = "Data Aberta";
+            // 
+            // txtDtAberto
+            // 
+            this.txtDtAberto.Location = new System.Drawing.Point(379, 25);
+            this.txtDtAberto.Mask = "00/00/0000";
+            this.txtDtAberto.Name = "txtDtAberto";
+            this.txtDtAberto.Size = new System.Drawing.Size(130, 23);
+            this.txtDtAberto.TabIndex = 15;
+            this.txtDtAberto.ValidatingType = typeof(System.DateTime);
+            this.txtDtAberto.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtDtAberto_MaskInputRejected);
             // 
             // label11
             // 
@@ -212,22 +230,22 @@
             this.label11.TabIndex = 21;
             this.label11.Text = "Valor";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(527, 3);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(46, 17);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Status";
+            // 
             // txtValor
             // 
             this.txtValor.Location = new System.Drawing.Point(551, 84);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(99, 23);
             this.txtValor.TabIndex = 20;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(531, 5);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 17);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Status";
             // 
             // cmbStatus
             // 
@@ -236,7 +254,7 @@
             "Aberto",
             "Entregue",
             "Pós Venda Feito"});
-            this.cmbStatus.Location = new System.Drawing.Point(531, 25);
+            this.cmbStatus.Location = new System.Drawing.Point(527, 23);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(123, 23);
             this.cmbStatus.TabIndex = 19;
@@ -247,7 +265,7 @@
             this.txtTel.Location = new System.Drawing.Point(398, 84);
             this.txtTel.Mask = "(99) 00000-0000";
             this.txtTel.Name = "txtTel";
-            this.txtTel.Size = new System.Drawing.Size(131, 23);
+            this.txtTel.Size = new System.Drawing.Size(103, 23);
             this.txtTel.TabIndex = 18;
             // 
             // label6
@@ -300,6 +318,25 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Talão";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(3, 25);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(57, 15);
+            this.label12.TabIndex = 24;
+            this.label12.Text = "Previsão:";
+            // 
+            // txtDataPrevEntrega
+            // 
+            this.txtDataPrevEntrega.Location = new System.Drawing.Point(78, 19);
+            this.txtDataPrevEntrega.Mask = "00/00/0000";
+            this.txtDataPrevEntrega.Name = "txtDataPrevEntrega";
+            this.txtDataPrevEntrega.Size = new System.Drawing.Size(101, 23);
+            this.txtDataPrevEntrega.TabIndex = 23;
+            this.txtDataPrevEntrega.ValidatingType = typeof(System.DateTime);
+            // 
             // txtDataTalao
             // 
             this.txtDataTalao.Location = new System.Drawing.Point(2, 611);
@@ -308,6 +345,7 @@
             this.txtDataTalao.Size = new System.Drawing.Size(146, 23);
             this.txtDataTalao.TabIndex = 14;
             this.txtDataTalao.ValidatingType = typeof(System.DateTime);
+            this.txtDataTalao.Visible = false;
             // 
             // label3
             // 
@@ -318,13 +356,17 @@
             this.label3.Size = new System.Drawing.Size(37, 17);
             this.label3.TabIndex = 9;
             this.label3.Text = "Data";
+            this.label3.Visible = false;
             // 
             // pnlStatus
             // 
             this.pnlStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlStatus.Controls.Add(this.label16);
+            this.pnlStatus.Controls.Add(this.label15);
+            this.pnlStatus.Controls.Add(this.label12);
             this.pnlStatus.Controls.Add(this.txtDtPosVenda);
+            this.pnlStatus.Controls.Add(this.txtDataPrevEntrega);
             this.pnlStatus.Controls.Add(this.txtDtEntregue);
-            this.pnlStatus.Controls.Add(this.txtDtAberto);
             this.pnlStatus.Location = new System.Drawing.Point(673, 26);
             this.pnlStatus.Name = "pnlStatus";
             this.pnlStatus.Size = new System.Drawing.Size(184, 120);
@@ -333,33 +375,44 @@
             this.pnlStatus.Tag = "";
             this.pnlStatus.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlStatus_Paint);
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label16.Location = new System.Drawing.Point(3, 99);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(66, 15);
+            this.label16.TabIndex = 26;
+            this.label16.Text = "Pós Venda:";
+            this.label16.Click += new System.EventHandler(this.label16_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label15.Location = new System.Drawing.Point(3, 62);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(61, 15);
+            this.label15.TabIndex = 25;
+            this.label15.Text = "Entregue:";
+            // 
             // txtDtPosVenda
             // 
-            this.txtDtPosVenda.Location = new System.Drawing.Point(39, 74);
+            this.txtDtPosVenda.Location = new System.Drawing.Point(78, 93);
             this.txtDtPosVenda.Mask = "00/00/0000";
             this.txtDtPosVenda.Name = "txtDtPosVenda";
-            this.txtDtPosVenda.Size = new System.Drawing.Size(131, 23);
+            this.txtDtPosVenda.Size = new System.Drawing.Size(101, 23);
             this.txtDtPosVenda.TabIndex = 17;
             this.txtDtPosVenda.ValidatingType = typeof(System.DateTime);
             // 
             // txtDtEntregue
             // 
-            this.txtDtEntregue.Location = new System.Drawing.Point(39, 45);
+            this.txtDtEntregue.Location = new System.Drawing.Point(78, 56);
             this.txtDtEntregue.Mask = "00/00/0000";
             this.txtDtEntregue.Name = "txtDtEntregue";
-            this.txtDtEntregue.Size = new System.Drawing.Size(131, 23);
+            this.txtDtEntregue.Size = new System.Drawing.Size(101, 23);
             this.txtDtEntregue.TabIndex = 16;
             this.txtDtEntregue.ValidatingType = typeof(System.DateTime);
-            // 
-            // txtDtAberto
-            // 
-            this.txtDtAberto.Location = new System.Drawing.Point(39, 16);
-            this.txtDtAberto.Mask = "00/00/0000";
-            this.txtDtAberto.Name = "txtDtAberto";
-            this.txtDtAberto.Size = new System.Drawing.Size(130, 23);
-            this.txtDtAberto.TabIndex = 15;
-            this.txtDtAberto.ValidatingType = typeof(System.DateTime);
-            this.txtDtAberto.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtDtAberto_MaskInputRejected);
             // 
             // ckbPosVenda
             // 
@@ -370,6 +423,7 @@
             this.ckbPosVenda.TabIndex = 10;
             this.ckbPosVenda.Text = "Pós Venda Em:";
             this.ckbPosVenda.UseVisualStyleBackColor = true;
+            this.ckbPosVenda.Visible = false;
             // 
             // ckbEntregur
             // 
@@ -380,6 +434,7 @@
             this.ckbEntregur.TabIndex = 9;
             this.ckbEntregur.Text = "Entregue Em:";
             this.ckbEntregur.UseVisualStyleBackColor = true;
+            this.ckbEntregur.Visible = false;
             // 
             // ckbAberto
             // 
@@ -393,6 +448,7 @@
             this.ckbAberto.TabIndex = 8;
             this.ckbAberto.Text = "Aberto Em:";
             this.ckbAberto.UseVisualStyleBackColor = true;
+            this.ckbAberto.Visible = false;
             // 
             // btnAlterar
             // 
@@ -441,6 +497,7 @@
             this.cmbFilt_Funcionario.Name = "cmbFilt_Funcionario";
             this.cmbFilt_Funcionario.Size = new System.Drawing.Size(261, 23);
             this.cmbFilt_Funcionario.TabIndex = 26;
+            this.cmbFilt_Funcionario.Visible = false;
             // 
             // pnlComandos
             // 
@@ -474,6 +531,7 @@
             this.btnAlerta.TabIndex = 25;
             this.btnAlerta.Text = "Novo";
             this.btnAlerta.UseVisualStyleBackColor = true;
+            this.btnAlerta.Visible = false;
             this.btnAlerta.Click += new System.EventHandler(this.btnAlerta_Click);
             // 
             // txtObservacao
@@ -644,6 +702,7 @@
             this.gridExemplo.RowTemplate.Height = 25;
             this.gridExemplo.Size = new System.Drawing.Size(125, 49);
             this.gridExemplo.TabIndex = 18;
+            this.gridExemplo.Visible = false;
             this.gridExemplo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridExemplo_CellContentClick);
             this.gridExemplo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gridExemplo_CellFormatting);
             // 
@@ -677,6 +736,7 @@
             this.lblAtrazado.Size = new System.Drawing.Size(41, 17);
             this.lblAtrazado.TabIndex = 27;
             this.lblAtrazado.Text = "Atual";
+            this.lblAtrazado.Visible = false;
             // 
             // lblDataHoje
             // 
@@ -853,6 +913,7 @@
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(30, 23);
             this.txtLogin.TabIndex = 35;
+            this.txtLogin.Visible = false;
             // 
             // cmbFuncLogin
             // 
@@ -876,7 +937,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1113, 595);
+            this.ClientSize = new System.Drawing.Size(1113, 550);
             this.Controls.Add(this.cmbFuncLogin);
             this.Controls.Add(this.txtLogin);
             this.Controls.Add(this.label13);
@@ -993,5 +1054,9 @@
         private ComboBox cmbFilt_Funcionario;
         private TextBox txtLogin;
         private ComboBox cmbFuncLogin;
+        private Label label14;
+        private Label label16;
+        private Label label15;
+        private Label label17;
     }
 }

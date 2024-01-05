@@ -5,6 +5,7 @@ using Microsoft.Win32;
 using System.Data;
 using System.Data.Common;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace agendaPosVenda
@@ -25,7 +26,7 @@ namespace agendaPosVenda
             txtAlertaHoje.ScrollBars = ScrollBars.Both;
             txtAlertaHoje.ReadOnly = true;
             //txtAlertaHoje.Enabled = false;
-            txtAlertaHoje.BackColor= Color.White;
+            txtAlertaHoje.BackColor = Color.White;
 
             txtAlertaAmanha.Multiline = true;
             txtAlertaAmanha.WordWrap = false;
@@ -37,14 +38,14 @@ namespace agendaPosVenda
             txtAlertaAtrazada.Multiline = true;
             txtAlertaAtrazada.WordWrap = false;
             txtAlertaAtrazada.ScrollBars = ScrollBars.Both;
-            txtAlertaAtrazada.ReadOnly= true;
+            txtAlertaAtrazada.ReadOnly = true;
             //txtAlertaAtrazada.Enabled=false;
             txtAlertaAtrazada.BackColor = Color.White;
 
-            btnNovo.Enabled= true;
-            btnSalvar.Enabled= false;
-            btnAlterar.Enabled= false;
-            btnExcluir.Enabled= false;
+            btnNovo.Enabled = true;
+            btnSalvar.Enabled = false;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
 
             InabilitaCampos();
 
@@ -77,7 +78,7 @@ namespace agendaPosVenda
             gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
 
-              gridRegistros.RowHeadersVisible = false;
+            gridRegistros.RowHeadersVisible = false;
 
         }
         //funcoes
@@ -86,7 +87,7 @@ namespace agendaPosVenda
             //ReadOnly é o contrario de Enabled porem mantem a cor da escrita forte
             lblId.Enabled = true;
             txtTalao.ReadOnly = true;
-            cmbFuncionario.Enabled = false;           
+            cmbFuncionario.Enabled = false;
             txtNomeCliente.ReadOnly = true;
             txtDataPrevEntrega.ReadOnly = true;
             cmbStatus.SelectedIndex = 0;
@@ -99,7 +100,7 @@ namespace agendaPosVenda
             txtDtEntregue.ReadOnly = true;
             txtDtPosVenda.ReadOnly = true;
             txtObservacao.ReadOnly = true;
-            
+
         }
         private void HabilitaCampos()
         {
@@ -110,7 +111,7 @@ namespace agendaPosVenda
             cmbFuncionario.Enabled = true;
             txtDataPrevEntrega.ReadOnly = false;
             cmbStatus.SelectedIndex = 0;
-            cmbStatus.Enabled = true;
+            cmbStatus.Enabled = false;
             txtCodCliente.ReadOnly = false;
             txtTel.ReadOnly = false;
             txtValor.ReadOnly = false;
@@ -119,7 +120,7 @@ namespace agendaPosVenda
             txtDtEntregue.ReadOnly = false;
             txtDtPosVenda.ReadOnly = false;
             txtObservacao.ReadOnly = false;
-           
+
         }
         private void Limpar_Campos()
         {
@@ -172,7 +173,7 @@ namespace agendaPosVenda
                     = Color.White;
             }
 
-            
+
 
             // Impede a mudança para a próxima linha
             //e.SuppressKeyPress = true;
@@ -180,6 +181,127 @@ namespace agendaPosVenda
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            //.............................................
+
+            // Utilizando expressão regular para verificar se o campo id contém apenas números inteiros.
+            Regex regex = new Regex(@"^\d+$");
+            if (!regex.IsMatch(txtTalao.Text))
+            {
+                MessageBox.Show("Campo Talao invalido!");
+                txtTalao.Focus();
+
+                return;
+            }
+            if (cmbFuncionario.Text.Trim() == "")
+            {
+                MessageBox.Show("Selecione o Funcionario");
+                cmbFuncionario.Focus();
+                return;
+            }
+
+
+            string formatoData = "dd/MM/yyyy";
+
+            // Tenta fazer o parse da string para DateTime utilizando o formato especificado.
+            if (txtDtAberto.Text == "  /  /")
+            {
+                MessageBox.Show("Campo data é Obrigatório");
+                txtDtAberto.Focus();
+                return;
+            }
+            if (!DateTime.TryParseExact(txtDtAberto.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+            {
+                MessageBox.Show("Data Inválida");
+                txtDtAberto.Focus();
+                return;
+            }
+
+            if (!regex.IsMatch(txtCodCliente.Text))
+            {
+                MessageBox.Show("Campo Talao invalido!");
+                txtCodCliente.Focus();
+                return;
+            }
+            if (txtNomeCliente.Text.Trim() == "")
+            {
+                MessageBox.Show("Selecione o Funcionario");
+                txtNomeCliente.Focus();
+                return;
+            }
+
+
+
+            if (txtDataPrevEntrega.Text != "  /  /")
+            {
+                if (!DateTime.TryParseExact(txtDataPrevEntrega.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+                {
+                    MessageBox.Show("Data Inválida");
+                    txtDataPrevEntrega.Focus();
+                    return;
+                }
+
+                DateTime dataIncial = DateTime.ParseExact(txtDtAberto.Text, "dd/MM/yyyy", null);
+                DateTime dataInciaFinal = DateTime.ParseExact(txtDataPrevEntrega.Text, "dd/MM/yyyy", null);
+                if (dataInciaFinal < dataIncial)
+                {
+                    MessageBox.Show("Data de Previsão de Entrega não pode ser menor que a Data de Abertura");
+                    txtDataPrevEntrega.Focus();
+                    return;
+                }
+            }
+
+            if (txtDtEntregue.Text != "  /  /")
+            {
+                if (!DateTime.TryParseExact(txtDtEntregue.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+                {
+                    MessageBox.Show("Data Inválida");
+                    txtDtEntregue.Focus();
+                    return;
+                }
+
+                DateTime dataIncial = DateTime.ParseExact(txtDtAberto.Text, "dd/MM/yyyy", null);
+                DateTime dataInciaFinal = DateTime.ParseExact(txtDtEntregue.Text, "dd/MM/yyyy", null);
+                if (dataInciaFinal < dataIncial)
+                {
+                    MessageBox.Show("Data de Entrega não pode ser menor que a Data de Abertura");
+                    txtDtEntregue.Focus();
+                    return;
+                }
+
+            }
+
+            if (txtDtPosVenda.Text != "  /  /")
+            {
+                if (!DateTime.TryParseExact(txtDtPosVenda.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+                {
+                    MessageBox.Show("Data Inválida");
+                    txtDtPosVenda.Focus();
+                    return;
+                }
+
+                DateTime dataIncial = DateTime.ParseExact(txtDtEntregue.Text, "dd/MM/yyyy", null);
+                DateTime dataInciaFinal = DateTime.ParseExact(txtDtPosVenda.Text, "dd/MM/yyyy", null);
+                if (dataInciaFinal < dataIncial)
+                {
+                    MessageBox.Show("Data de Pós Venda não pode ser menor que a Data de Entrega");
+                    txtDtPosVenda.Focus();
+                    return;
+                }
+
+            }
+            if (txtValor.Text.Trim() != "")
+            {
+                if (double.TryParse(txtValor.Text, out _) == false)
+                {
+                    MessageBox.Show("valor Invalido");
+                    txtValor.Focus();
+                    return;
+                }
+            }
+
+
+            //...............................................................
+
             Registro novoRegistro = new Registro();
             //novoRegistro.Id = 1;
             novoRegistro.Talao = Convert.ToInt32(txtTalao.Text);
@@ -275,7 +397,7 @@ namespace agendaPosVenda
                 else
                 {
                     // Se a data for nula, você pode manipular de acordo com sua lógica de tratamento
-                    gridRegistros.Rows[i].Cells["DataPrevEntrega"].Value = "";
+                    gridRegistros.Rows[i].Cells["DataAberta"].Value = "";
                 }
 
                 if (resp[i].DataPrevEntrega != null)
@@ -351,7 +473,7 @@ namespace agendaPosVenda
             StatusAlerta();
         }
 
-        
+
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
@@ -378,7 +500,7 @@ namespace agendaPosVenda
             btnExcluir.Enabled = false;
         }
 
-        
+
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
@@ -387,6 +509,127 @@ namespace agendaPosVenda
                 MessageBox.Show("Selecione algum registro na grade para alteração");
                 return;
             }
+
+            //....................................
+
+            // Utilizando expressão regular para verificar se o campo id contém apenas números inteiros.
+            Regex regex = new Regex(@"^\d+$");
+            if (!regex.IsMatch(txtTalao.Text))
+            {
+                MessageBox.Show("Campo Talao invalido!");
+                txtTalao.Focus();
+
+                return;
+            }
+            if (cmbFuncionario.Text.Trim() == "")
+            {
+                MessageBox.Show("Selecione o Funcionario");
+                cmbFuncionario.Focus();
+                return;
+            }
+
+
+            string formatoData = "dd/MM/yyyy";
+
+            // Tenta fazer o parse da string para DateTime utilizando o formato especificado.
+            if (txtDtAberto.Text == "  /  /")
+            {
+                MessageBox.Show("Campo data é Obrigatório");
+                txtDtAberto.Focus();
+                return;
+            }
+            if (!DateTime.TryParseExact(txtDtAberto.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+            {
+                MessageBox.Show("Data Inválida");
+                txtDtAberto.Focus();
+                return;
+            }
+
+            if (!regex.IsMatch(txtCodCliente.Text))
+            {
+                MessageBox.Show("Campo Talao invalido!");
+                txtCodCliente.Focus();
+                return;
+            }
+            if (txtNomeCliente.Text.Trim() == "")
+            {
+                MessageBox.Show("Selecione o Funcionario");
+                txtNomeCliente.Focus();
+                return;
+            }
+
+
+
+            if (txtDataPrevEntrega.Text != "  /  /")
+            {
+                if (!DateTime.TryParseExact(txtDataPrevEntrega.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+                {
+                    MessageBox.Show("Data Inválida");
+                    txtDataPrevEntrega.Focus();
+                    return;
+                }
+
+                DateTime dataIncial = DateTime.ParseExact(txtDtAberto.Text, "dd/MM/yyyy", null);
+                DateTime dataInciaFinal = DateTime.ParseExact(txtDataPrevEntrega.Text, "dd/MM/yyyy", null);
+                if (dataInciaFinal < dataIncial)
+                {
+                    MessageBox.Show("Data de Previsão de Entrega não pode ser menor que a Data de Abertura");
+                    txtDataPrevEntrega.Focus();
+                    return;
+                }
+            }
+
+            if (txtDtEntregue.Text != "  /  /")
+            {
+                if (!DateTime.TryParseExact(txtDtEntregue.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+                {
+                    MessageBox.Show("Data Inválida");
+                    txtDtEntregue.Focus();
+                    return;
+                }
+
+                DateTime dataIncial = DateTime.ParseExact(txtDtAberto.Text, "dd/MM/yyyy", null);
+                DateTime dataInciaFinal = DateTime.ParseExact(txtDtEntregue.Text, "dd/MM/yyyy", null);
+                if (dataInciaFinal < dataIncial)
+                {
+                    MessageBox.Show("Data de Entrega não pode ser menor que a Data de Abertura");
+                    txtDtEntregue.Focus();
+                    return;
+                }
+
+            }
+
+            if (txtDtPosVenda.Text != "  /  /")
+            {
+                if (!DateTime.TryParseExact(txtDtPosVenda.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+                {
+                    MessageBox.Show("Data Inválida");
+                    txtDtPosVenda.Focus();
+                    return;
+                }
+
+                DateTime dataIncial = DateTime.ParseExact(txtDtEntregue.Text, "dd/MM/yyyy", null);
+                DateTime dataInciaFinal = DateTime.ParseExact(txtDtPosVenda.Text, "dd/MM/yyyy", null);
+                if (dataInciaFinal < dataIncial)
+                {
+                    MessageBox.Show("Data de Pós Venda não pode ser menor que a Data de Entrega");
+                    txtDtPosVenda.Focus();
+                    return;
+                }
+
+            }
+            if (txtValor.Text.Trim() != "")
+            {
+                if (double.TryParse(txtValor.Text, out _) == false)
+                {
+                    MessageBox.Show("valor Invalido");
+                    txtValor.Focus();
+                    return;
+                }
+            }
+
+            //.............................................................
+
 
             Registro novoRegistro = new Registro();
             novoRegistro.Id = Convert.ToInt32(lblId.Text);
@@ -540,8 +783,8 @@ namespace agendaPosVenda
             gridRegistros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             Limpar_Campos();
-            CarregaCamposComGrid();
             InabilitaCampos();
+            CarregaCamposComGrid();
             btnNovo.Enabled = true;
             btnSalvar.Enabled = false;
             btnAlterar.Enabled = false;
@@ -562,12 +805,14 @@ namespace agendaPosVenda
                 }
                 gridRegistros.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 128, 128);//coloca cor argb
 
-                CarregaCamposComGrid();
+                //CarregaCamposComGrid();
                 HabilitaCampos();
                 btnNovo.Enabled = true;
                 btnSalvar.Enabled = false;
                 btnAlterar.Enabled = true;
                 btnExcluir.Enabled = true;
+
+                CarregaCamposComGrid();
 
                 e.SuppressKeyPress = true;
             }
@@ -584,8 +829,8 @@ namespace agendaPosVenda
             {
 
                 InabilitaCampos();
-               // CarregaCamposComGrid();
-               Limpar_Campos();
+                // CarregaCamposComGrid();
+                Limpar_Campos();
                 gridRegistros.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
 
 
@@ -625,6 +870,25 @@ namespace agendaPosVenda
 
         private void btnAlerta_Click(object sender, EventArgs e)
         {
+            ValidaCampos();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             //StatusAlerta();
             // string caminho = Path.GetFullPath(@"Banco\BdCV.db");
             //MessageBox.Show("KKK = " + System.IO.Directory.GetCurrentDirectory());
@@ -634,14 +898,129 @@ namespace agendaPosVenda
             //double num = 1582.401233;
             //MessageBox.Show(num.ToString("C2"));
 
-            ListarGridRegistros();
-
-
-
-
+            // ListarGridRegistros();
 
             //MessageBox.Show("Res = "+ caminhoDestino);
 
+        }
+
+        private void ValidaCampos()
+        {
+            // Utilizando expressão regular para verificar se o campo id contém apenas números inteiros.
+            Regex regex = new Regex(@"^\d+$");
+            if (!regex.IsMatch(txtTalao.Text))
+            {
+                MessageBox.Show("Campo Talao invalido!");
+                txtTalao.Focus();
+                
+                return;
+            }
+            if (cmbFuncionario.Text.Trim() == "")
+            {
+                MessageBox.Show("Selecione o Funcionario");
+                cmbFuncionario.Focus();
+                return;
+            }
+
+
+            string formatoData = "dd/MM/yyyy";
+
+            // Tenta fazer o parse da string para DateTime utilizando o formato especificado.
+            if (txtDtAberto.Text == "  /  /")
+            {
+                MessageBox.Show("Campo data é Obrigatório");
+                txtDtAberto.Focus();
+                return;
+            }
+            if (!DateTime.TryParseExact(txtDtAberto.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+            {
+                MessageBox.Show("Data Inválida");
+                txtDtAberto.Focus();
+                return;
+            }
+
+            if (!regex.IsMatch(txtCodCliente.Text))
+            {
+                MessageBox.Show("Campo Talao invalido!");
+                txtCodCliente.Focus();
+                return;
+            }
+            if (txtNomeCliente.Text.Trim() == "")
+            {
+                MessageBox.Show("Selecione o Funcionario");
+                txtNomeCliente.Focus();
+                return;
+            }
+
+
+
+            if (txtDataPrevEntrega.Text != "  /  /")
+            {
+                if (!DateTime.TryParseExact(txtDataPrevEntrega.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+                {
+                    MessageBox.Show("Data Inválida");
+                    txtDataPrevEntrega.Focus();
+                    return;
+                }
+
+                DateTime dataIncial = DateTime.ParseExact(txtDtAberto.Text, "dd/MM/yyyy", null);
+                DateTime dataInciaFinal = DateTime.ParseExact(txtDataPrevEntrega.Text, "dd/MM/yyyy", null);
+                if (dataInciaFinal < dataIncial)
+                {
+                    MessageBox.Show("Data de Previsão de Entrega não pode ser menor que a Data de Abertura");
+                    txtDataPrevEntrega.Focus();
+                    return;
+                }
+            }
+
+            if (txtDtEntregue.Text != "  /  /")
+            {
+                if (!DateTime.TryParseExact(txtDtEntregue.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+                {
+                    MessageBox.Show("Data Inválida");
+                    txtDtEntregue.Focus();
+                    return;
+                }
+
+                DateTime dataIncial = DateTime.ParseExact(txtDtAberto.Text, "dd/MM/yyyy", null);
+                DateTime dataInciaFinal = DateTime.ParseExact(txtDtEntregue.Text, "dd/MM/yyyy", null);
+                if (dataInciaFinal < dataIncial)
+                {
+                    MessageBox.Show("Data de Entrega não pode ser menor que a Data de Abertura");
+                    txtDtEntregue.Focus();
+                    return;
+                }
+
+            }
+
+            if (txtDtPosVenda.Text != "  /  /")
+            {
+                if (!DateTime.TryParseExact(txtDtPosVenda.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+                {
+                    MessageBox.Show("Data Inválida");
+                    txtDtPosVenda.Focus();
+                    return;
+                }
+
+                DateTime dataIncial = DateTime.ParseExact(txtDtEntregue.Text, "dd/MM/yyyy", null);
+                DateTime dataInciaFinal = DateTime.ParseExact(txtDtPosVenda.Text, "dd/MM/yyyy", null);
+                if (dataInciaFinal < dataIncial)
+                {
+                    MessageBox.Show("Data de Pós Venda não pode ser menor que a Data de Entrega");
+                    txtDtPosVenda.Focus();
+                    return;
+                }
+
+            }
+            if (txtValor.Text.Trim() != "")
+            {
+                if (double.TryParse(txtValor.Text, out _) == false)
+                {
+                    MessageBox.Show("valor Invalido");
+                    txtValor.Focus();
+                    return;
+                }
+            }
         }
 
         private void StatusAlerta()
@@ -660,37 +1039,43 @@ namespace agendaPosVenda
 
             foreach (var item in dados)
             {
-                string dataPrevEntrega = ((DateTime)item.DataPrevEntrega).ToString("dd/MM/yyyy");
-                // Converta as strings para objetos DateTime usando o formato desejado
-                DateTime data2 = DateTime.ParseExact(dataPrevEntrega, "dd/MM/yyyy", null);
-                DateTime data1 = DateTime.ParseExact(dataHoje, "dd/MM/yyyy", null);
-                // Subtraia as datas e obtenha a diferença em dias
-                TimeSpan diferenca = data2 - data1;
-                int diferencaEmDias = diferenca.Days;
+                if (item.DataPrevEntrega != null)
+                {
+                    // MessageBox.Show("nnnn");
 
-                if (diferencaEmDias == 0 && item.Status == "Aberto")
-                {
-                    //listaEntregasHoje.Add(item);
-                    txtAlertaHoje.Text += $"Talao: {item.Talao}  - Func: {item.Funcionario}         IdDoc: {item.Id}\r\n\r\n";
-                    txtAlertaHoje.ForeColor = Color.Blue;
-                    totHoje++;
-                }
-                if (diferencaEmDias == 1 && item.Status == "Aberto")
-                {
-                    //listaEntregasAmanha.Add(item);
-                    txtAlertaAmanha.Text += $"Talao: {item.Talao}  - Func: {item.Funcionario}         IdDoc: {item.Id}\r\n\r\n";
-                    txtAlertaAmanha.ForeColor = Color.Green;
-                    totAmanha++;
-                }
-                if (diferencaEmDias < 0 && item.Status == "Aberto")
-                {
-                    //listaEntregasAtrazadas.Add(item);
-                    //lblAtrazado.Text = "\r\n";
-                    txtAlertaAtrazada.Text += $"Talao: {item.Talao} - Func: {item.Funcionario} - IdDoc: {item.Id}       está atrazado à ({diferencaEmDias * (-1)}) dias\r\n\r\n";
-                    txtAlertaAtrazada.ForeColor = Color.Red;
-                    totAtrazada++;
-                }
 
+                    string dataPrevEntrega = ((DateTime)item.DataPrevEntrega).ToString("dd/MM/yyyy");
+                    // Converta as strings para objetos DateTime usando o formato desejado
+                    DateTime data2 = DateTime.ParseExact(dataPrevEntrega, "dd/MM/yyyy", null);
+                    DateTime data1 = DateTime.ParseExact(dataHoje, "dd/MM/yyyy", null);
+                    // Subtraia as datas e obtenha a diferença em dias
+                    TimeSpan diferenca = data2 - data1;
+                    int diferencaEmDias = diferenca.Days;
+
+                    if (diferencaEmDias == 0 && item.Status == "Aberto")
+                    {
+                        //listaEntregasHoje.Add(item);
+                        txtAlertaHoje.Text += $"Talao: {item.Talao}  - Func: {item.Funcionario}         IdDoc: {item.Id}\r\n\r\n";
+                        txtAlertaHoje.ForeColor = Color.Blue;
+                        totHoje++;
+                    }
+                    if (diferencaEmDias == 1 && item.Status == "Aberto")
+                    {
+                        //listaEntregasAmanha.Add(item);
+                        txtAlertaAmanha.Text += $"Talao: {item.Talao}  - Func: {item.Funcionario}         IdDoc: {item.Id}\r\n\r\n";
+                        txtAlertaAmanha.ForeColor = Color.Green;
+                        totAmanha++;
+                    }
+                    if (diferencaEmDias < 0 && item.Status == "Aberto")
+                    {
+                        //listaEntregasAtrazadas.Add(item);
+                        //lblAtrazado.Text = "\r\n";
+                        txtAlertaAtrazada.Text += $"Talao: {item.Talao} - Func: {item.Funcionario} - IdDoc: {item.Id}       está atrazado à ({diferencaEmDias * (-1)}) dias\r\n\r\n";
+                        txtAlertaAtrazada.ForeColor = Color.Red;
+                        totAtrazada++;
+                    }
+
+                }
             }
             lblTotHoje.Text = totHoje.ToString();
             lblTotAmanha.Text = totAmanha.ToString();
@@ -751,6 +1136,11 @@ namespace agendaPosVenda
             btnSalvar.Enabled = false;
             btnAlterar.Enabled = false;
             btnExcluir.Enabled = false;
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

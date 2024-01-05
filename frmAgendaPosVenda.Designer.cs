@@ -71,20 +71,6 @@
             this.btnAlerta = new System.Windows.Forms.Button();
             this.txtObservacao = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.gridRegistros = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Talao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Funcionario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataAberta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataPrevEntrega = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataEntrega = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataPosVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Observacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
             this.gridExemplo = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
@@ -107,14 +93,28 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txtLogin = new System.Windows.Forms.TextBox();
             this.cmbFuncLogin = new System.Windows.Forms.ComboBox();
+            this.Observacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataPosVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataEntrega = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataPrevEntrega = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataAberta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Funcionario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Talao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridRegistros = new System.Windows.Forms.DataGridView();
             this.pnlEntidades.SuspendLayout();
             this.pnlStatus.SuspendLayout();
             this.pnlControles.SuspendLayout();
             this.pnlComandos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridRegistros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridExemplo)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridRegistros)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSalvar
@@ -134,6 +134,7 @@
             this.txtNomeCliente.Name = "txtNomeCliente";
             this.txtNomeCliente.Size = new System.Drawing.Size(282, 23);
             this.txtNomeCliente.TabIndex = 1;
+            this.txtNomeCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNomeCliente_KeyPress);
             // 
             // txtTalao
             // 
@@ -154,10 +155,10 @@
             this.cmbFuncionario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFuncionario.FormattingEnabled = true;
             this.cmbFuncionario.Items.AddRange(new object[] {
-            "Jonatas Leoncio",
-            "Leandro Leoncio",
-            "Leonardo",
-            "Rodrigo"});
+            "LEONARDO",
+            "JONATAS LEONCIO",
+            "RODRIGO",
+            "LEANDRO LEONCIO"});
             this.cmbFuncionario.Location = new System.Drawing.Point(101, 25);
             this.cmbFuncionario.Name = "cmbFuncionario";
             this.cmbFuncionario.Size = new System.Drawing.Size(261, 23);
@@ -249,6 +250,7 @@
             // 
             // cmbStatus
             // 
+            this.cmbStatus.Enabled = false;
             this.cmbStatus.FormattingEnabled = true;
             this.cmbStatus.Items.AddRange(new object[] {
             "Aberto",
@@ -553,137 +555,6 @@
             this.label7.TabIndex = 15;
             this.label7.Text = "Total de Registros:";
             // 
-            // gridRegistros
-            // 
-            this.gridRegistros.AllowUserToAddRows = false;
-            this.gridRegistros.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridRegistros.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.gridRegistros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridRegistros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.Talao,
-            this.Funcionario,
-            this.CodCliente,
-            this.cliente,
-            this.Telefone,
-            this.Status,
-            this.DataAberta,
-            this.DataPrevEntrega,
-            this.DataEntrega,
-            this.DataPosVenda,
-            this.Valor,
-            this.Observacao});
-            this.gridRegistros.EnableHeadersVisualStyles = false;
-            this.gridRegistros.Location = new System.Drawing.Point(13, 212);
-            this.gridRegistros.MultiSelect = false;
-            this.gridRegistros.Name = "gridRegistros";
-            this.gridRegistros.ReadOnly = true;
-            this.gridRegistros.RowTemplate.Height = 25;
-            this.gridRegistros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridRegistros.Size = new System.Drawing.Size(715, 296);
-            this.gridRegistros.TabIndex = 16;
-            this.gridRegistros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellContentClick);
-            this.gridRegistros.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellDoubleClick);
-            this.gridRegistros.Click += new System.EventHandler(this.gridRegistros_Click);
-            this.gridRegistros.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridRegistros_KeyDown);
-            this.gridRegistros.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.gridRegistros_PreviewKeyDown);
-            // 
-            // Id
-            // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Id.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Id.HeaderText = "Id";
-            this.Id.MinimumWidth = 4;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Width = 55;
-            // 
-            // Talao
-            // 
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Talao.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Talao.HeaderText = "Talao";
-            this.Talao.Name = "Talao";
-            this.Talao.ReadOnly = true;
-            this.Talao.Width = 60;
-            // 
-            // Funcionario
-            // 
-            this.Funcionario.HeaderText = "Funcionario";
-            this.Funcionario.Name = "Funcionario";
-            this.Funcionario.ReadOnly = true;
-            this.Funcionario.Width = 150;
-            // 
-            // CodCliente
-            // 
-            this.CodCliente.HeaderText = "Cod Cliente";
-            this.CodCliente.Name = "CodCliente";
-            this.CodCliente.ReadOnly = true;
-            this.CodCliente.Width = 60;
-            // 
-            // cliente
-            // 
-            this.cliente.HeaderText = "Cliente";
-            this.cliente.Name = "cliente";
-            this.cliente.ReadOnly = true;
-            this.cliente.Width = 190;
-            // 
-            // Telefone
-            // 
-            this.Telefone.HeaderText = "Telefone";
-            this.Telefone.Name = "Telefone";
-            this.Telefone.ReadOnly = true;
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            // 
-            // DataAberta
-            // 
-            this.DataAberta.HeaderText = "Data Aberta";
-            this.DataAberta.Name = "DataAberta";
-            this.DataAberta.ReadOnly = true;
-            // 
-            // DataPrevEntrega
-            // 
-            this.DataPrevEntrega.HeaderText = "Previsão de Entrega";
-            this.DataPrevEntrega.Name = "DataPrevEntrega";
-            this.DataPrevEntrega.ReadOnly = true;
-            // 
-            // DataEntrega
-            // 
-            this.DataEntrega.HeaderText = "Data Entrega";
-            this.DataEntrega.Name = "DataEntrega";
-            this.DataEntrega.ReadOnly = true;
-            // 
-            // DataPosVenda
-            // 
-            this.DataPosVenda.HeaderText = "Data Pós Venda";
-            this.DataPosVenda.Name = "DataPosVenda";
-            this.DataPosVenda.ReadOnly = true;
-            // 
-            // Valor
-            // 
-            this.Valor.HeaderText = "Valor R$";
-            this.Valor.Name = "Valor";
-            this.Valor.ReadOnly = true;
-            // 
-            // Observacao
-            // 
-            this.Observacao.HeaderText = "Observacao";
-            this.Observacao.Name = "Observacao";
-            this.Observacao.ReadOnly = true;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -923,15 +794,146 @@
             this.cmbFuncLogin.FormattingEnabled = true;
             this.cmbFuncLogin.Items.AddRange(new object[] {
             "Admin",
-            "Jonatas Leoncio",
-            "Leandro Leoncio",
-            "Leonardo",
-            "Rodrigo"});
+            "LEONARDO",
+            "JONATAS LEONCIO",
+            "RODRIGO",
+            "LEANDRO LEONCIO"});
             this.cmbFuncLogin.Location = new System.Drawing.Point(501, 0);
             this.cmbFuncLogin.Name = "cmbFuncLogin";
             this.cmbFuncLogin.Size = new System.Drawing.Size(166, 23);
             this.cmbFuncLogin.TabIndex = 36;
             this.cmbFuncLogin.SelectedIndexChanged += new System.EventHandler(this.cmbFuncLogin_SelectedIndexChanged);
+            // 
+            // Observacao
+            // 
+            this.Observacao.HeaderText = "Observacao";
+            this.Observacao.Name = "Observacao";
+            this.Observacao.ReadOnly = true;
+            // 
+            // Valor
+            // 
+            this.Valor.HeaderText = "Valor R$";
+            this.Valor.Name = "Valor";
+            this.Valor.ReadOnly = true;
+            // 
+            // DataPosVenda
+            // 
+            this.DataPosVenda.HeaderText = "Data Pós Venda";
+            this.DataPosVenda.Name = "DataPosVenda";
+            this.DataPosVenda.ReadOnly = true;
+            // 
+            // DataEntrega
+            // 
+            this.DataEntrega.HeaderText = "Data Entrega";
+            this.DataEntrega.Name = "DataEntrega";
+            this.DataEntrega.ReadOnly = true;
+            // 
+            // DataPrevEntrega
+            // 
+            this.DataPrevEntrega.HeaderText = "Previsão de Entrega";
+            this.DataPrevEntrega.Name = "DataPrevEntrega";
+            this.DataPrevEntrega.ReadOnly = true;
+            // 
+            // DataAberta
+            // 
+            this.DataAberta.HeaderText = "Data Aberta";
+            this.DataAberta.Name = "DataAberta";
+            this.DataAberta.ReadOnly = true;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
+            // Telefone
+            // 
+            this.Telefone.HeaderText = "Telefone";
+            this.Telefone.Name = "Telefone";
+            this.Telefone.ReadOnly = true;
+            // 
+            // cliente
+            // 
+            this.cliente.HeaderText = "Cliente";
+            this.cliente.Name = "cliente";
+            this.cliente.ReadOnly = true;
+            this.cliente.Width = 190;
+            // 
+            // CodCliente
+            // 
+            this.CodCliente.HeaderText = "Cod Cliente";
+            this.CodCliente.Name = "CodCliente";
+            this.CodCliente.ReadOnly = true;
+            this.CodCliente.Width = 60;
+            // 
+            // Funcionario
+            // 
+            this.Funcionario.HeaderText = "Funcionario";
+            this.Funcionario.Name = "Funcionario";
+            this.Funcionario.ReadOnly = true;
+            this.Funcionario.Width = 150;
+            // 
+            // Talao
+            // 
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Talao.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Talao.HeaderText = "Talao";
+            this.Talao.Name = "Talao";
+            this.Talao.ReadOnly = true;
+            this.Talao.Width = 60;
+            // 
+            // Id
+            // 
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Id.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 4;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 55;
+            // 
+            // gridRegistros
+            // 
+            this.gridRegistros.AllowUserToAddRows = false;
+            this.gridRegistros.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridRegistros.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.gridRegistros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridRegistros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Talao,
+            this.Funcionario,
+            this.CodCliente,
+            this.cliente,
+            this.Telefone,
+            this.Status,
+            this.DataAberta,
+            this.DataPrevEntrega,
+            this.DataEntrega,
+            this.DataPosVenda,
+            this.Valor,
+            this.Observacao});
+            this.gridRegistros.EnableHeadersVisualStyles = false;
+            this.gridRegistros.Location = new System.Drawing.Point(13, 212);
+            this.gridRegistros.MultiSelect = false;
+            this.gridRegistros.Name = "gridRegistros";
+            this.gridRegistros.ReadOnly = true;
+            this.gridRegistros.RowTemplate.Height = 25;
+            this.gridRegistros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridRegistros.Size = new System.Drawing.Size(715, 296);
+            this.gridRegistros.TabIndex = 16;
+            this.gridRegistros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellContentClick);
+            this.gridRegistros.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellDoubleClick);
+            this.gridRegistros.Click += new System.EventHandler(this.gridRegistros_Click);
+            this.gridRegistros.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridRegistros_KeyDown);
+            this.gridRegistros.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.gridRegistros_PreviewKeyDown);
             // 
             // frmAgendaPosVenda
             // 
@@ -969,12 +971,12 @@
             this.pnlStatus.PerformLayout();
             this.pnlControles.ResumeLayout(false);
             this.pnlComandos.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridRegistros)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridExemplo)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridRegistros)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1012,7 +1014,6 @@
         private Label label7;
         private Label label8;
         private ComboBox cmbStatus;
-        private DataGridView gridRegistros;
         private Label label9;
         private DataGridView gridExemplo;
         private Label label10;
@@ -1038,19 +1039,6 @@
         private RadioButton rbHoje;
         private TextBox txtAlertaAmanha;
         private Label label13;
-        private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn Talao;
-        private DataGridViewTextBoxColumn Funcionario;
-        private DataGridViewTextBoxColumn CodCliente;
-        private DataGridViewTextBoxColumn cliente;
-        private DataGridViewTextBoxColumn Telefone;
-        private DataGridViewTextBoxColumn Status;
-        private DataGridViewTextBoxColumn DataAberta;
-        private DataGridViewTextBoxColumn DataPrevEntrega;
-        private DataGridViewTextBoxColumn DataEntrega;
-        private DataGridViewTextBoxColumn DataPosVenda;
-        private DataGridViewTextBoxColumn Valor;
-        private DataGridViewTextBoxColumn Observacao;
         private ComboBox cmbFilt_Funcionario;
         private TextBox txtLogin;
         private ComboBox cmbFuncLogin;
@@ -1058,5 +1046,19 @@
         private Label label16;
         private Label label15;
         private Label label17;
+        private DataGridViewTextBoxColumn Observacao;
+        private DataGridViewTextBoxColumn Valor;
+        private DataGridViewTextBoxColumn DataPosVenda;
+        private DataGridViewTextBoxColumn DataEntrega;
+        private DataGridViewTextBoxColumn DataPrevEntrega;
+        private DataGridViewTextBoxColumn DataAberta;
+        private DataGridViewTextBoxColumn Status;
+        private DataGridViewTextBoxColumn Telefone;
+        private DataGridViewTextBoxColumn cliente;
+        private DataGridViewTextBoxColumn CodCliente;
+        private DataGridViewTextBoxColumn Funcionario;
+        private DataGridViewTextBoxColumn Talao;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridView gridRegistros;
     }
 }

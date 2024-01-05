@@ -63,7 +63,7 @@ namespace agendaPosVenda.Repositories
             {
                 string sql = (funcionario == null)
                     ? "SELECT * FROM registros ORDER BY Id DESC"
-                    : "SELECT * FROM registros WHERE Funcionario = @Funcionario ORDER BY Id DESC";
+                    : "SELECT * FROM registros WHERE LOWER(Funcionario) = LOWER(@Funcionario) ORDER BY Id DESC";
 
                 var resp = conexao.Query<Registro>(sql, new { Funcionario = funcionario }).ToList();
                 return resp;

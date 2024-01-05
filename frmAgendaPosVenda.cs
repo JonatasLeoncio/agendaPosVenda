@@ -808,7 +808,7 @@ namespace agendaPosVenda
                 //CarregaCamposComGrid();
                 HabilitaCampos();
                 btnNovo.Enabled = true;
-                btnSalvar.Enabled = false;
+                btnSalvar.Enabled = true;
                 btnAlterar.Enabled = true;
                 btnExcluir.Enabled = true;
 
@@ -1141,6 +1141,21 @@ namespace agendaPosVenda
         private void label16_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtNomeCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verifica se o caractere digitado é uma letra
+            if (char.IsLetter(e.KeyChar))
+            {
+                // Converte o caractere para maiúsculo
+                e.KeyChar = char.ToUpper(e.KeyChar);
+            }
+            else if (!char.IsControl(e.KeyChar))
+            {
+                // Se não for uma letra e não for um caractere de controle, ignora a tecla
+                e.Handled = true;
+            }
         }
     }
 }

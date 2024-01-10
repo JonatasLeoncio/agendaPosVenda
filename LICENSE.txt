@@ -21,3 +21,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 //addicionando registros no banco 95df4196963fa4100f22af8fc43d3f4bfcf25206
+//configurando para sistema operacional 32bits  fe7816f1999155e411a1b70b43edcfa3d0f73672

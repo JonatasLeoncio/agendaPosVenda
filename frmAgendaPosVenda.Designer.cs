@@ -123,7 +123,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(82, 7);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(78, 28);
-            this.btnSalvar.TabIndex = 0;
+            this.btnSalvar.TabIndex = 13;
             this.btnSalvar.Text = "Adicionar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -133,7 +133,7 @@
             this.txtNomeCliente.Location = new System.Drawing.Point(101, 84);
             this.txtNomeCliente.Name = "txtNomeCliente";
             this.txtNomeCliente.Size = new System.Drawing.Size(282, 23);
-            this.txtNomeCliente.TabIndex = 1;
+            this.txtNomeCliente.TabIndex = 6;
             this.txtNomeCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNomeCliente_KeyPress);
             // 
             // txtTalao
@@ -141,14 +141,14 @@
             this.txtTalao.Location = new System.Drawing.Point(7, 25);
             this.txtTalao.Name = "txtTalao";
             this.txtTalao.Size = new System.Drawing.Size(76, 23);
-            this.txtTalao.TabIndex = 2;
+            this.txtTalao.TabIndex = 1;
             // 
             // txtCodCliente
             // 
             this.txtCodCliente.Location = new System.Drawing.Point(7, 84);
             this.txtCodCliente.Name = "txtCodCliente";
             this.txtCodCliente.Size = new System.Drawing.Size(76, 23);
-            this.txtCodCliente.TabIndex = 3;
+            this.txtCodCliente.TabIndex = 5;
             // 
             // cmbFuncionario
             // 
@@ -162,7 +162,7 @@
             this.cmbFuncionario.Location = new System.Drawing.Point(101, 25);
             this.cmbFuncionario.Name = "cmbFuncionario";
             this.cmbFuncionario.Size = new System.Drawing.Size(261, 23);
-            this.cmbFuncionario.TabIndex = 5;
+            this.cmbFuncionario.TabIndex = 2;
             // 
             // pnlEntidades
             // 
@@ -217,7 +217,7 @@
             this.txtDtAberto.Mask = "00/00/0000";
             this.txtDtAberto.Name = "txtDtAberto";
             this.txtDtAberto.Size = new System.Drawing.Size(130, 23);
-            this.txtDtAberto.TabIndex = 15;
+            this.txtDtAberto.TabIndex = 3;
             this.txtDtAberto.ValidatingType = typeof(System.DateTime);
             this.txtDtAberto.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtDtAberto_MaskInputRejected);
             // 
@@ -246,7 +246,7 @@
             this.txtValor.Location = new System.Drawing.Point(551, 84);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(99, 23);
-            this.txtValor.TabIndex = 20;
+            this.txtValor.TabIndex = 8;
             // 
             // cmbStatus
             // 
@@ -268,7 +268,7 @@
             this.txtTel.Mask = "(99) 00000-0000";
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(103, 23);
-            this.txtTel.TabIndex = 18;
+            this.txtTel.TabIndex = 7;
             // 
             // label6
             // 
@@ -336,7 +336,7 @@
             this.txtDataPrevEntrega.Mask = "00/00/0000";
             this.txtDataPrevEntrega.Name = "txtDataPrevEntrega";
             this.txtDataPrevEntrega.Size = new System.Drawing.Size(101, 23);
-            this.txtDataPrevEntrega.TabIndex = 23;
+            this.txtDataPrevEntrega.TabIndex = 9;
             this.txtDataPrevEntrega.ValidatingType = typeof(System.DateTime);
             // 
             // txtDataTalao
@@ -404,7 +404,7 @@
             this.txtDtPosVenda.Mask = "00/00/0000";
             this.txtDtPosVenda.Name = "txtDtPosVenda";
             this.txtDtPosVenda.Size = new System.Drawing.Size(101, 23);
-            this.txtDtPosVenda.TabIndex = 17;
+            this.txtDtPosVenda.TabIndex = 11;
             this.txtDtPosVenda.ValidatingType = typeof(System.DateTime);
             // 
             // txtDtEntregue
@@ -413,7 +413,7 @@
             this.txtDtEntregue.Mask = "00/00/0000";
             this.txtDtEntregue.Name = "txtDtEntregue";
             this.txtDtEntregue.Size = new System.Drawing.Size(101, 23);
-            this.txtDtEntregue.TabIndex = 16;
+            this.txtDtEntregue.TabIndex = 10;
             this.txtDtEntregue.ValidatingType = typeof(System.DateTime);
             // 
             // ckbPosVenda
@@ -458,7 +458,7 @@
             this.btnAlterar.Location = new System.Drawing.Point(168, 7);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(71, 28);
-            this.btnAlterar.TabIndex = 10;
+            this.btnAlterar.TabIndex = 114;
             this.btnAlterar.Text = "Atualizar";
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
@@ -469,7 +469,7 @@
             this.btnExcluir.Location = new System.Drawing.Point(245, 7);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(65, 28);
-            this.btnExcluir.TabIndex = 11;
+            this.btnExcluir.TabIndex = 15;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
@@ -519,7 +519,7 @@
             this.btnNovo.Location = new System.Drawing.Point(11, 7);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(65, 28);
-            this.btnNovo.TabIndex = 12;
+            this.btnNovo.TabIndex = 16;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
@@ -543,7 +543,7 @@
             this.txtObservacao.Name = "txtObservacao";
             this.txtObservacao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtObservacao.Size = new System.Drawing.Size(228, 93);
-            this.txtObservacao.TabIndex = 14;
+            this.txtObservacao.TabIndex = 0;
             // 
             // label7
             // 

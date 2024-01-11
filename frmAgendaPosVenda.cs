@@ -18,7 +18,7 @@ namespace agendaPosVenda
         {
             InitializeComponent();
             lblDataHoje.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            txtDtAberto.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            //txtDtAberto.Text = DateTime.Now.ToString("dd/MM/yyyy");
             gridExemplo.DataSource = registroControler.ListarRegistros();
 
 
@@ -58,8 +58,13 @@ namespace agendaPosVenda
             ListarGridRegistros(Program.FuncionarioLogin);
             gridExemplo.CellFormatting += gridExemplo_CellFormatting;
 
-           
-            
+            txtDtAberto.KeyPress += txtDtAberto_KeyPress;
+            txtDataPrevEntrega.KeyPress+= txtDataPrevEntrega_KeyPress;
+            txtDtPosVenda.KeyPress += txtDtPosVenda_KeyPress;
+            cmbFuncionario.KeyPress+= cmbFuncionario_KeyPress;
+
+
+
 
         }
         private void frmAgendaPosVenda_Load(object sender, EventArgs e)
@@ -122,7 +127,7 @@ namespace agendaPosVenda
             txtCodCliente.ReadOnly = false;
             txtTel.ReadOnly = false;
             txtValor.ReadOnly = false;
-            txtDtAberto.Text = DateTime.Now.ToString("dd/MM/yyyy");
+           // txtDtAberto.Text = DateTime.Now.ToString("dd/MM/yyyy");
             txtDtAberto.ReadOnly = false;
             txtDtEntregue.ReadOnly = false;
             txtDtPosVenda.ReadOnly = false;
@@ -140,7 +145,7 @@ namespace agendaPosVenda
             txtCodCliente.Text = string.Empty;
             txtTel.Text = string.Empty;
             txtValor.Text = string.Empty;
-            txtDtAberto.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            txtDtAberto.Text = string.Empty;
             txtDtEntregue.Text = string.Empty;
             txtDtPosVenda.Text = string.Empty;
             txtObservacao.Text = string.Empty;
@@ -1218,6 +1223,66 @@ namespace agendaPosVenda
                  e.Handled = true;
              }*/
             e.KeyChar = char.ToUpper(e.KeyChar);
+        }
+
+        private void txtDtAberto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (( e.KeyChar == (char)Keys.Enter) && (txtDtAberto.Text=="  /  /"))
+            {
+                // Defina a data padrão (por exemplo, 01/01/2022)
+                txtDtAberto.Text = DateTime.Now.ToString("dd/MM/yyyy");
+
+                // Impede que o caractere seja inserido na MaskedTextBox
+                e.Handled = true;
+            }
+        }
+
+        private void txtDataPrevEntrega_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar == (char)Keys.Enter) && (txtDataPrevEntrega.Text == "  /  /"))
+            {
+                // Defina a data padrão (por exemplo, 01/01/2022)
+                txtDataPrevEntrega.Text = DateTime.Now.ToString("dd/MM/yyyy");
+
+                // Impede que o caractere seja inserido na MaskedTextBox
+                e.Handled = true;
+            }
+        }
+
+        private void txtDtEntregue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar == (char)Keys.Enter) && (txtDtEntregue.Text == "  /  /"))
+            {
+                // Defina a data padrão (por exemplo, 01/01/2022)
+                txtDtEntregue.Text = DateTime.Now.ToString("dd/MM/yyyy");
+
+                // Impede que o caractere seja inserido na MaskedTextBox
+                e.Handled = true;
+            }
+        }
+
+        private void txtDtPosVenda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar == (char)Keys.Enter) && (txtDtPosVenda.Text == "  /  /"))
+            {
+                // Defina a data padrão (por exemplo, 01/01/2022)
+                txtDtPosVenda.Text = DateTime.Now.ToString("dd/MM/yyyy");
+
+                // Impede que o caractere seja inserido na MaskedTextBox
+                e.Handled = true;
+            }
+        }
+
+        private void cmbFuncionario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar == (char)Keys.Enter) && (cmbFuncionario.Text == ""))
+            {
+                // Defina a data padrão (por exemplo, 01/01/2022)
+                cmbFuncionario.Text = cmbFuncLogin.Text;
+
+               
+                
+            }
         }
     }
 }

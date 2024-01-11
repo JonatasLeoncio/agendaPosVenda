@@ -65,9 +65,9 @@
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.pnlControles = new System.Windows.Forms.Panel();
+            this.btnNovo = new System.Windows.Forms.Button();
             this.cmbFilt_Funcionario = new System.Windows.Forms.ComboBox();
             this.pnlComandos = new System.Windows.Forms.Panel();
-            this.btnNovo = new System.Windows.Forms.Button();
             this.btnAlerta = new System.Windows.Forms.Button();
             this.txtObservacao = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -120,7 +120,7 @@
             // btnSalvar
             // 
             this.btnSalvar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSalvar.Location = new System.Drawing.Point(82, 7);
+            this.btnSalvar.Location = new System.Drawing.Point(18, 7);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(78, 28);
             this.btnSalvar.TabIndex = 13;
@@ -155,14 +155,15 @@
             this.cmbFuncionario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFuncionario.FormattingEnabled = true;
             this.cmbFuncionario.Items.AddRange(new object[] {
-            "LEONARDO",
+            "LEONARDO METAL",
             "JONATAS LEONCIO",
-            "RODRIGO",
+            "RODRIGO MACHADO",
             "LEANDRO LEONCIO"});
             this.cmbFuncionario.Location = new System.Drawing.Point(101, 25);
             this.cmbFuncionario.Name = "cmbFuncionario";
             this.cmbFuncionario.Size = new System.Drawing.Size(261, 23);
             this.cmbFuncionario.TabIndex = 2;
+            this.cmbFuncionario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbFuncionario_KeyPress);
             // 
             // pnlEntidades
             // 
@@ -220,6 +221,7 @@
             this.txtDtAberto.TabIndex = 3;
             this.txtDtAberto.ValidatingType = typeof(System.DateTime);
             this.txtDtAberto.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtDtAberto_MaskInputRejected);
+            this.txtDtAberto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDtAberto_KeyPress);
             // 
             // label11
             // 
@@ -338,6 +340,7 @@
             this.txtDataPrevEntrega.Size = new System.Drawing.Size(101, 23);
             this.txtDataPrevEntrega.TabIndex = 9;
             this.txtDataPrevEntrega.ValidatingType = typeof(System.DateTime);
+            this.txtDataPrevEntrega.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDataPrevEntrega_KeyPress);
             // 
             // txtDataTalao
             // 
@@ -406,6 +409,7 @@
             this.txtDtPosVenda.Size = new System.Drawing.Size(101, 23);
             this.txtDtPosVenda.TabIndex = 11;
             this.txtDtPosVenda.ValidatingType = typeof(System.DateTime);
+            this.txtDtPosVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDtPosVenda_KeyPress);
             // 
             // txtDtEntregue
             // 
@@ -415,6 +419,7 @@
             this.txtDtEntregue.Size = new System.Drawing.Size(101, 23);
             this.txtDtEntregue.TabIndex = 10;
             this.txtDtEntregue.ValidatingType = typeof(System.DateTime);
+            this.txtDtEntregue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDtEntregue_KeyPress);
             // 
             // ckbPosVenda
             // 
@@ -455,7 +460,7 @@
             // btnAlterar
             // 
             this.btnAlterar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAlterar.Location = new System.Drawing.Point(168, 7);
+            this.btnAlterar.Location = new System.Drawing.Point(125, 7);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(71, 28);
             this.btnAlterar.TabIndex = 114;
@@ -466,7 +471,7 @@
             // btnExcluir
             // 
             this.btnExcluir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnExcluir.Location = new System.Drawing.Point(245, 7);
+            this.btnExcluir.Location = new System.Drawing.Point(221, 7);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(65, 28);
             this.btnExcluir.TabIndex = 15;
@@ -478,6 +483,7 @@
             // 
             this.pnlControles.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.pnlControles.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlControles.Controls.Add(this.btnNovo);
             this.pnlControles.Controls.Add(this.cmbFilt_Funcionario);
             this.pnlControles.Controls.Add(this.pnlComandos);
             this.pnlControles.Controls.Add(this.btnAlerta);
@@ -487,6 +493,17 @@
             this.pnlControles.TabIndex = 12;
             this.pnlControles.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlControles_Paint);
             // 
+            // btnNovo
+            // 
+            this.btnNovo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnNovo.Location = new System.Drawing.Point(3, 10);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(53, 33);
+            this.btnNovo.TabIndex = 16;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            // 
             // cmbFilt_Funcionario
             // 
             this.cmbFilt_Funcionario.FormattingEnabled = true;
@@ -495,7 +512,7 @@
             "Leandro Leoncio",
             "Leonardo",
             "Rodrigo"});
-            this.cmbFilt_Funcionario.Location = new System.Drawing.Point(156, 15);
+            this.cmbFilt_Funcionario.Location = new System.Drawing.Point(87, 17);
             this.cmbFilt_Funcionario.Name = "cmbFilt_Funcionario";
             this.cmbFilt_Funcionario.Size = new System.Drawing.Size(261, 23);
             this.cmbFilt_Funcionario.TabIndex = 26;
@@ -504,25 +521,13 @@
             // pnlComandos
             // 
             this.pnlComandos.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pnlComandos.Controls.Add(this.btnNovo);
             this.pnlComandos.Controls.Add(this.btnSalvar);
             this.pnlComandos.Controls.Add(this.btnAlterar);
             this.pnlComandos.Controls.Add(this.btnExcluir);
-            this.pnlComandos.Location = new System.Drawing.Point(698, 3);
+            this.pnlComandos.Location = new System.Drawing.Point(692, 3);
             this.pnlComandos.Name = "pnlComandos";
-            this.pnlComandos.Size = new System.Drawing.Size(318, 43);
+            this.pnlComandos.Size = new System.Drawing.Size(308, 43);
             this.pnlComandos.TabIndex = 13;
-            // 
-            // btnNovo
-            // 
-            this.btnNovo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnNovo.Location = new System.Drawing.Point(11, 7);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(65, 28);
-            this.btnNovo.TabIndex = 16;
-            this.btnNovo.Text = "Novo";
-            this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnAlerta
             // 
@@ -794,9 +799,9 @@
             this.cmbFuncLogin.FormattingEnabled = true;
             this.cmbFuncLogin.Items.AddRange(new object[] {
             "Admin",
-            "LEONARDO",
+            "LEONARDO METAL",
             "JONATAS LEONCIO",
-            "RODRIGO",
+            "RODRIGO MACHADO",
             "LEANDRO LEONCIO"});
             this.cmbFuncLogin.Location = new System.Drawing.Point(501, 0);
             this.cmbFuncLogin.Name = "cmbFuncLogin";

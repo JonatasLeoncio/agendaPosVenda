@@ -11,6 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="bfv2ufzd.1cj~" />
+    <None Remove="frmAgendaPosVenda.cs~RF20da47.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.24" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.115.5" />
   </ItemGroup>

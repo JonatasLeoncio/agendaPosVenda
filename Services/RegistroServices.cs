@@ -16,9 +16,9 @@ namespace agendaPosVenda.Services
         {
             return registroRepositories.SalvarRegistro(registro);
         }
-        public List<Registro> ListarRegistros(string funcionario = null)
+        public List<Registro> ListarRegistros(string funcionario = null, string status = null)
         {
-            return registroRepositories.ListarGegistros(funcionario);
+            return registroRepositories.ListarGegistros(funcionario,status);
         }
 
         public bool ExcluirRegistro(int id)

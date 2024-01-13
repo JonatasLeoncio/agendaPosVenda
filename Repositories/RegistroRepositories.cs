@@ -7,6 +7,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace agendaPosVenda.Repositories
 {
@@ -57,16 +58,31 @@ namespace agendaPosVenda.Repositories
                 return ListarGegistros();
             }
         }
-        public List<Registro> ListarGegistros(string funcionario = null)
+        public List<Registro> ListarGegistros(string funcionario = null, string status = null)
         {            
             using (var conexao = new SQLiteConnection("Data Source=" + caminhoDestino))
             {
-                string sql = (funcionario == null)
-                    ? "SELECT * FROM registros ORDER BY Id DESC"
-                    : "SELECT * FROM registros WHERE LOWER(Funcionario) = LOWER(@Funcionario) ORDER BY Id DESC";
+                //var parametros = new DynamicParameters();
+                //var parametros = new { Funcionario = funcionario, Status = status };
 
-                var resp = conexao.Query<Registro>(sql, new { Funcionario = funcionario }).ToList();
-                return resp;
+                string sql = "SELECT * FROM registros WHERE 1 = 1 ";
+
+                if (!string.IsNullOrEmpty(funcionario))
+                {
+                    sql += "AND LOWER(Funcionario) = LOWER(@Funcionario) ";
+                    //parametros.Add("@Funcionario", funcionario);
+                }
+
+                if (!string.IsNullOrEmpty(status))
+                {
+                    sql += "AND Status = @Status ";
+                    //parametros.Add("@Status", status);
+                }
+
+
+                sql += "ORDER BY Id DESC";
+                var registros = conexao.Query<Registro>(sql, new { Funcionario = funcionario, Status = status }).ToList();
+                return registros;
             }
         }
 

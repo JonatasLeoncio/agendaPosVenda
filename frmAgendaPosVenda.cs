@@ -19,7 +19,7 @@ namespace agendaPosVenda
             InitializeComponent();
             lblDataHoje.Text = DateTime.Now.ToString("dd/MM/yyyy");
             //txtDtAberto.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            gridExemplo.DataSource = registroControler.ListarRegistros();
+           // gridExemplo.DataSource = registroControler.ListarRegistros();
 
 
             txtAlertaHoje.Multiline = true;
@@ -51,6 +51,7 @@ namespace agendaPosVenda
             InabilitaCampos();
 
             cmbFuncLogin.SelectedIndex = 0;
+            cmb_Filt_Status.SelectedIndex = 0;
 
             Program.FuncionarioLogin = cmbFuncLogin.Text;
 
@@ -592,7 +593,7 @@ namespace agendaPosVenda
 
         }
 
-        private void ListarGridRegistros(string funcionario = null)
+        private void ListarGridRegistros(string funcionario = null, string status = null)
         {
             // gridRegistros.CellFormatting += gridRegistros_CellFormatting;
             //if (txtLogin.Text != "".Trim())
@@ -600,7 +601,7 @@ namespace agendaPosVenda
             //    Program.FuncionarioLogin = txtLogin.Text;
             //    funcionario = Program.FuncionarioLogin;
             //}
-            if (cmbFuncLogin.Text == "Admin".Trim())
+            if (cmbFuncLogin.Text.Trim() == "Admin")
             {
                 Program.FuncionarioLogin = null;
                 funcionario = Program.FuncionarioLogin;
@@ -611,7 +612,12 @@ namespace agendaPosVenda
                 funcionario = Program.FuncionarioLogin;
             }
 
-            var resp = registroControler.ListarRegistros(funcionario);
+            if (cmb_Filt_Status.Text.Trim() != "Todos")
+            {
+                status = cmb_Filt_Status.Text;
+            }
+
+            var resp = registroControler.ListarRegistros(funcionario,status);
             gridRegistros.Rows.Clear();
             double total = 0;
             for (int i = 0; i < resp.Count; i++)
@@ -1283,6 +1289,16 @@ namespace agendaPosVenda
                
                 
             }
+        }
+
+        private void cmb_Filt_Status_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFiltrat_Click(object sender, EventArgs e)
+        {
+            ListarGridRegistros();
         }
     }
 }

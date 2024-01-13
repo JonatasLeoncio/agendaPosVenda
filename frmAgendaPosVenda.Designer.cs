@@ -65,6 +65,8 @@
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.pnlControles = new System.Windows.Forms.Panel();
+            this.btnFiltrat = new System.Windows.Forms.Button();
+            this.cmb_Filt_Status = new System.Windows.Forms.ComboBox();
             this.btnNovo = new System.Windows.Forms.Button();
             this.cmbFilt_Funcionario = new System.Windows.Forms.ComboBox();
             this.pnlComandos = new System.Windows.Forms.Panel();
@@ -483,6 +485,8 @@
             // 
             this.pnlControles.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.pnlControles.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlControles.Controls.Add(this.btnFiltrat);
+            this.pnlControles.Controls.Add(this.cmb_Filt_Status);
             this.pnlControles.Controls.Add(this.btnNovo);
             this.pnlControles.Controls.Add(this.cmbFilt_Funcionario);
             this.pnlControles.Controls.Add(this.pnlComandos);
@@ -492,6 +496,32 @@
             this.pnlControles.Size = new System.Drawing.Size(1087, 53);
             this.pnlControles.TabIndex = 12;
             this.pnlControles.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlControles_Paint);
+            // 
+            // btnFiltrat
+            // 
+            this.btnFiltrat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnFiltrat.Location = new System.Drawing.Point(406, 16);
+            this.btnFiltrat.Name = "btnFiltrat";
+            this.btnFiltrat.Size = new System.Drawing.Size(76, 27);
+            this.btnFiltrat.TabIndex = 29;
+            this.btnFiltrat.Text = "Filtrar";
+            this.btnFiltrat.UseVisualStyleBackColor = true;
+            this.btnFiltrat.Click += new System.EventHandler(this.btnFiltrat_Click);
+            // 
+            // cmb_Filt_Status
+            // 
+            this.cmb_Filt_Status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_Filt_Status.FormattingEnabled = true;
+            this.cmb_Filt_Status.Items.AddRange(new object[] {
+            "Todos",
+            "Aberto",
+            "Entregue",
+            "Pós Venda Feito"});
+            this.cmb_Filt_Status.Location = new System.Drawing.Point(243, 17);
+            this.cmb_Filt_Status.Name = "cmb_Filt_Status";
+            this.cmb_Filt_Status.Size = new System.Drawing.Size(145, 23);
+            this.cmb_Filt_Status.TabIndex = 28;
+            this.cmb_Filt_Status.SelectedIndexChanged += new System.EventHandler(this.cmb_Filt_Status_SelectedIndexChanged);
             // 
             // btnNovo
             // 
@@ -514,7 +544,7 @@
             "Rodrigo"});
             this.cmbFilt_Funcionario.Location = new System.Drawing.Point(87, 17);
             this.cmbFilt_Funcionario.Name = "cmbFilt_Funcionario";
-            this.cmbFilt_Funcionario.Size = new System.Drawing.Size(261, 23);
+            this.cmbFilt_Funcionario.Size = new System.Drawing.Size(62, 23);
             this.cmbFilt_Funcionario.TabIndex = 26;
             this.cmbFilt_Funcionario.Visible = false;
             // 
@@ -1065,5 +1095,7 @@
         private DataGridViewTextBoxColumn Talao;
         private DataGridViewTextBoxColumn Id;
         private DataGridView gridRegistros;
+        private ComboBox cmb_Filt_Status;
+        private Button btnFiltrat;
     }
 }

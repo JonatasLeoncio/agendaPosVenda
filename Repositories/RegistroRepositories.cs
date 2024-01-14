@@ -58,7 +58,7 @@ namespace agendaPosVenda.Repositories
                 return ListarGegistros();
             }
         }
-        public List<Registro> ListarGegistros(string funcionario = null, string status = null)
+        public List<Registro> ListarGegistros(string funcionario = null, string status = null, int talao = 0)
         {            
             using (var conexao = new SQLiteConnection("Data Source=" + caminhoDestino))
             {
@@ -79,9 +79,16 @@ namespace agendaPosVenda.Repositories
                     //parametros.Add("@Status", status);
                 }
 
+                if (talao > 0)
+                {
+                    sql += "AND Talao = @Talao ";
+                    //parametros.Add("@Status", status);
+                }
 
                 sql += "ORDER BY Id DESC";
-                var registros = conexao.Query<Registro>(sql, new { Funcionario = funcionario, Status = status }).ToList();
+
+
+                var registros = conexao.Query<Registro>(sql, new { Funcionario = funcionario, Status = status, Talao = talao }).ToList();
                 return registros;
             }
         }

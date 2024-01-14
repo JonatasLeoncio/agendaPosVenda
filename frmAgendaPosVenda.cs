@@ -244,7 +244,7 @@ namespace agendaPosVenda
 
             if (!regex.IsMatch(txtCodCliente.Text))
             {
-                MessageBox.Show("Campo Talao invalido!");
+                MessageBox.Show("Campo Codigo do Cliente invalido!");
                 txtCodCliente.Focus();
                 return;
             }
@@ -593,7 +593,7 @@ namespace agendaPosVenda
 
         }
 
-        private void ListarGridRegistros(string funcionario = null, string status = null)
+        private void ListarGridRegistros( string funcionario = null, string status = null, int talao = 0)
         {
             // gridRegistros.CellFormatting += gridRegistros_CellFormatting;
             //if (txtLogin.Text != "".Trim())
@@ -617,7 +617,13 @@ namespace agendaPosVenda
                 status = cmb_Filt_Status.Text;
             }
 
-            var resp = registroControler.ListarRegistros(funcionario,status);
+            if (txtFilt_Talao.Text.Trim()  != "")
+            {
+                talao = Convert.ToInt32(txtFilt_Talao.Text);
+            }
+            //talao = (txtFilt_Talao.Text.Trim() == "" ? 0 : Convert.ToInt32(txtFilt_Talao.Text));
+
+            var resp = registroControler.ListarRegistros(funcionario,status,talao);
             gridRegistros.Rows.Clear();
             double total = 0;
             for (int i = 0; i < resp.Count; i++)
@@ -1299,6 +1305,37 @@ namespace agendaPosVenda
         private void btnFiltrat_Click(object sender, EventArgs e)
         {
             ListarGridRegistros();
+        }
+
+        private void txtFilt_Talao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           
+        }
+
+        private void txtFilt_Talao_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Regex regex = new Regex(@"^\d+$");
+            //if (!regex.IsMatch(txtFilt_Talao.Text)&&(txtFilt_Talao.Text.Length>0))
+            //{
+            //    MessageBox.Show("Campo Filtro Talao invalido!");
+            //    txtFilt_Talao.Text = "";
+            //    txtFilt_Talao.Focus();
+
+            //    return;
+            //}
+        }
+
+        private void txtFilt_Talao_TextChanged(object sender, EventArgs e)
+        {
+            Regex regex = new Regex(@"^\d+$");
+            if (!regex.IsMatch(txtFilt_Talao.Text) && (txtFilt_Talao.Text.Length > 0))
+            {
+                MessageBox.Show("Campo Filtro Talao invalido!");
+                txtFilt_Talao.Text = "";
+                txtFilt_Talao.Focus();
+
+                return;
+            }
         }
     }
 }

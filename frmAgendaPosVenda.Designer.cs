@@ -65,6 +65,14 @@
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.pnlControles = new System.Windows.Forms.Panel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txt_Filt_DtAberto_Final = new System.Windows.Forms.MaskedTextBox();
+            this.txt_Filt_DtAberto_Inicial = new System.Windows.Forms.MaskedTextBox();
+            this.txtFilt_Talao = new System.Windows.Forms.TextBox();
             this.btnFiltrat = new System.Windows.Forms.Button();
             this.cmb_Filt_Status = new System.Windows.Forms.ComboBox();
             this.btnNovo = new System.Windows.Forms.Button();
@@ -254,17 +262,17 @@
             // 
             // cmbStatus
             // 
-            this.cmbStatus.Enabled = false;
+            this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStatus.FormattingEnabled = true;
             this.cmbStatus.Items.AddRange(new object[] {
             "Aberto",
             "Entregue",
-            "Pós Venda Feito"});
+            "Pós Venda Feito",
+            "Pendente"});
             this.cmbStatus.Location = new System.Drawing.Point(527, 23);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(123, 23);
             this.cmbStatus.TabIndex = 19;
-            this.cmbStatus.Text = "Aberto";
             // 
             // txtTel
             // 
@@ -346,7 +354,7 @@
             // 
             // txtDataTalao
             // 
-            this.txtDataTalao.Location = new System.Drawing.Point(2, 611);
+            this.txtDataTalao.Location = new System.Drawing.Point(28, 668);
             this.txtDataTalao.Mask = "00/00/0000";
             this.txtDataTalao.Name = "txtDataTalao";
             this.txtDataTalao.Size = new System.Drawing.Size(146, 23);
@@ -358,7 +366,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(2, 591);
+            this.label3.Location = new System.Drawing.Point(28, 648);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 17);
             this.label3.TabIndex = 9;
@@ -426,7 +434,7 @@
             // ckbPosVenda
             // 
             this.ckbPosVenda.AutoSize = true;
-            this.ckbPosVenda.Location = new System.Drawing.Point(172, 648);
+            this.ckbPosVenda.Location = new System.Drawing.Point(198, 705);
             this.ckbPosVenda.Name = "ckbPosVenda";
             this.ckbPosVenda.Size = new System.Drawing.Size(103, 19);
             this.ckbPosVenda.TabIndex = 10;
@@ -437,7 +445,7 @@
             // ckbEntregur
             // 
             this.ckbEntregur.AutoSize = true;
-            this.ckbEntregur.Location = new System.Drawing.Point(172, 619);
+            this.ckbEntregur.Location = new System.Drawing.Point(198, 676);
             this.ckbEntregur.Name = "ckbEntregur";
             this.ckbEntregur.Size = new System.Drawing.Size(96, 19);
             this.ckbEntregur.TabIndex = 9;
@@ -451,7 +459,7 @@
             this.ckbAberto.Checked = true;
             this.ckbAberto.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckbAberto.Enabled = false;
-            this.ckbAberto.Location = new System.Drawing.Point(172, 589);
+            this.ckbAberto.Location = new System.Drawing.Point(198, 646);
             this.ckbAberto.Name = "ckbAberto";
             this.ckbAberto.Size = new System.Drawing.Size(85, 19);
             this.ckbAberto.TabIndex = 8;
@@ -485,6 +493,14 @@
             // 
             this.pnlControles.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.pnlControles.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlControles.Controls.Add(this.label22);
+            this.pnlControles.Controls.Add(this.label21);
+            this.pnlControles.Controls.Add(this.label19);
+            this.pnlControles.Controls.Add(this.label20);
+            this.pnlControles.Controls.Add(this.label18);
+            this.pnlControles.Controls.Add(this.txt_Filt_DtAberto_Final);
+            this.pnlControles.Controls.Add(this.txt_Filt_DtAberto_Inicial);
+            this.pnlControles.Controls.Add(this.txtFilt_Talao);
             this.pnlControles.Controls.Add(this.btnFiltrat);
             this.pnlControles.Controls.Add(this.cmb_Filt_Status);
             this.pnlControles.Controls.Add(this.btnNovo);
@@ -493,14 +509,92 @@
             this.pnlControles.Controls.Add(this.btnAlerta);
             this.pnlControles.Location = new System.Drawing.Point(14, 152);
             this.pnlControles.Name = "pnlControles";
-            this.pnlControles.Size = new System.Drawing.Size(1087, 53);
+            this.pnlControles.Size = new System.Drawing.Size(1087, 77);
             this.pnlControles.TabIndex = 12;
             this.pnlControles.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlControles_Paint);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.label22.Location = new System.Drawing.Point(338, 3);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(144, 13);
+            this.label22.TabIndex = 38;
+            this.label22.Text = "Data de abertura do talão";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.label21.Location = new System.Drawing.Point(441, 25);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(27, 13);
+            this.label21.TabIndex = 37;
+            this.label21.Text = "até:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.label19.Location = new System.Drawing.Point(86, 2);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(36, 13);
+            this.label19.TabIndex = 32;
+            this.label19.Text = "Talão";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.label20.Location = new System.Drawing.Point(338, 25);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(24, 13);
+            this.label20.TabIndex = 36;
+            this.label20.Text = "De:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.label18.Location = new System.Drawing.Point(176, 2);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(40, 13);
+            this.label18.TabIndex = 31;
+            this.label18.Text = "Status";
+            // 
+            // txt_Filt_DtAberto_Final
+            // 
+            this.txt_Filt_DtAberto_Final.Location = new System.Drawing.Point(468, 18);
+            this.txt_Filt_DtAberto_Final.Mask = "00/00/0000";
+            this.txt_Filt_DtAberto_Final.Name = "txt_Filt_DtAberto_Final";
+            this.txt_Filt_DtAberto_Final.Size = new System.Drawing.Size(69, 23);
+            this.txt_Filt_DtAberto_Final.TabIndex = 34;
+            this.txt_Filt_DtAberto_Final.ValidatingType = typeof(System.DateTime);
+            // 
+            // txt_Filt_DtAberto_Inicial
+            // 
+            this.txt_Filt_DtAberto_Inicial.Location = new System.Drawing.Point(365, 18);
+            this.txt_Filt_DtAberto_Inicial.Mask = "00/00/0000";
+            this.txt_Filt_DtAberto_Inicial.Name = "txt_Filt_DtAberto_Inicial";
+            this.txt_Filt_DtAberto_Inicial.Size = new System.Drawing.Size(67, 23);
+            this.txt_Filt_DtAberto_Inicial.TabIndex = 33;
+            this.txt_Filt_DtAberto_Inicial.ValidatingType = typeof(System.DateTime);
+            // 
+            // txtFilt_Talao
+            // 
+            this.txtFilt_Talao.Location = new System.Drawing.Point(86, 18);
+            this.txtFilt_Talao.Name = "txtFilt_Talao";
+            this.txtFilt_Talao.Size = new System.Drawing.Size(75, 23);
+            this.txtFilt_Talao.TabIndex = 30;
+            this.txtFilt_Talao.TextChanged += new System.EventHandler(this.txtFilt_Talao_TextChanged);
+            this.txtFilt_Talao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFilt_Talao_KeyDown);
+            this.txtFilt_Talao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilt_Talao_KeyPress);
             // 
             // btnFiltrat
             // 
             this.btnFiltrat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnFiltrat.Location = new System.Drawing.Point(406, 16);
+            this.btnFiltrat.Location = new System.Drawing.Point(4, 15);
             this.btnFiltrat.Name = "btnFiltrat";
             this.btnFiltrat.Size = new System.Drawing.Size(76, 27);
             this.btnFiltrat.TabIndex = 29;
@@ -516,17 +610,18 @@
             "Todos",
             "Aberto",
             "Entregue",
-            "Pós Venda Feito"});
-            this.cmb_Filt_Status.Location = new System.Drawing.Point(243, 17);
+            "Pós Venda Feito",
+            "Pendente"});
+            this.cmb_Filt_Status.Location = new System.Drawing.Point(176, 18);
             this.cmb_Filt_Status.Name = "cmb_Filt_Status";
-            this.cmb_Filt_Status.Size = new System.Drawing.Size(145, 23);
+            this.cmb_Filt_Status.Size = new System.Drawing.Size(129, 23);
             this.cmb_Filt_Status.TabIndex = 28;
             this.cmb_Filt_Status.SelectedIndexChanged += new System.EventHandler(this.cmb_Filt_Status_SelectedIndexChanged);
             // 
             // btnNovo
             // 
             this.btnNovo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnNovo.Location = new System.Drawing.Point(3, 10);
+            this.btnNovo.Location = new System.Drawing.Point(1006, 8);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(53, 33);
             this.btnNovo.TabIndex = 16;
@@ -542,7 +637,7 @@
             "Leandro Leoncio",
             "Leonardo",
             "Rodrigo"});
-            this.cmbFilt_Funcionario.Location = new System.Drawing.Point(87, 17);
+            this.cmbFilt_Funcionario.Location = new System.Drawing.Point(600, 10);
             this.cmbFilt_Funcionario.Name = "cmbFilt_Funcionario";
             this.cmbFilt_Funcionario.Size = new System.Drawing.Size(62, 23);
             this.cmbFilt_Funcionario.TabIndex = 26;
@@ -562,9 +657,9 @@
             // btnAlerta
             // 
             this.btnAlerta.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAlerta.Location = new System.Drawing.Point(1016, 10);
+            this.btnAlerta.Location = new System.Drawing.Point(1061, 10);
             this.btnAlerta.Name = "btnAlerta";
-            this.btnAlerta.Size = new System.Drawing.Size(65, 28);
+            this.btnAlerta.Size = new System.Drawing.Size(20, 28);
             this.btnAlerta.TabIndex = 25;
             this.btnAlerta.Text = "Novo";
             this.btnAlerta.UseVisualStyleBackColor = true;
@@ -584,7 +679,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(25, 523);
+            this.label7.Location = new System.Drawing.Point(25, 546);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(123, 17);
             this.label7.TabIndex = 15;
@@ -603,7 +698,7 @@
             // gridExemplo
             // 
             this.gridExemplo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridExemplo.Location = new System.Drawing.Point(334, 574);
+            this.gridExemplo.Location = new System.Drawing.Point(360, 631);
             this.gridExemplo.Name = "gridExemplo";
             this.gridExemplo.RowTemplate.Height = 25;
             this.gridExemplo.Size = new System.Drawing.Size(125, 49);
@@ -637,7 +732,7 @@
             // 
             this.lblAtrazado.AutoSize = true;
             this.lblAtrazado.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblAtrazado.Location = new System.Drawing.Point(501, 560);
+            this.lblAtrazado.Location = new System.Drawing.Point(527, 617);
             this.lblAtrazado.Name = "lblAtrazado";
             this.lblAtrazado.Size = new System.Drawing.Size(41, 17);
             this.lblAtrazado.TabIndex = 27;
@@ -667,7 +762,7 @@
             // 
             this.lblTotRegistrosGrid.AutoSize = true;
             this.lblTotRegistrosGrid.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTotRegistrosGrid.Location = new System.Drawing.Point(154, 524);
+            this.lblTotRegistrosGrid.Location = new System.Drawing.Point(154, 547);
             this.lblTotRegistrosGrid.Name = "lblTotRegistrosGrid";
             this.lblTotRegistrosGrid.Size = new System.Drawing.Size(41, 17);
             this.lblTotRegistrosGrid.TabIndex = 23;
@@ -677,7 +772,7 @@
             // 
             this.lblSomaTotal.AutoSize = true;
             this.lblSomaTotal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblSomaTotal.Location = new System.Drawing.Point(616, 524);
+            this.lblSomaTotal.Location = new System.Drawing.Point(616, 547);
             this.lblSomaTotal.Name = "lblSomaTotal";
             this.lblSomaTotal.Size = new System.Drawing.Size(40, 17);
             this.lblSomaTotal.TabIndex = 24;
@@ -749,7 +844,7 @@
             this.panel2.Controls.Add(this.lblTotAmanha);
             this.panel2.Controls.Add(this.rbHoje);
             this.panel2.Controls.Add(this.lblTotHoje);
-            this.panel2.Location = new System.Drawing.Point(734, 241);
+            this.panel2.Location = new System.Drawing.Point(734, 264);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(372, 267);
             this.panel2.TabIndex = 33;
@@ -807,7 +902,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(793, 221);
+            this.label13.Location = new System.Drawing.Point(793, 244);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(198, 17);
             this.label13.TabIndex = 34;
@@ -838,6 +933,8 @@
             this.cmbFuncLogin.Size = new System.Drawing.Size(166, 23);
             this.cmbFuncLogin.TabIndex = 36;
             this.cmbFuncLogin.SelectedIndexChanged += new System.EventHandler(this.cmbFuncLogin_SelectedIndexChanged);
+            this.cmbFuncLogin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbFuncLogin_KeyDown);
+            this.cmbFuncLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbFuncLogin_KeyPress);
             // 
             // Observacao
             // 
@@ -956,7 +1053,7 @@
             this.Valor,
             this.Observacao});
             this.gridRegistros.EnableHeadersVisualStyles = false;
-            this.gridRegistros.Location = new System.Drawing.Point(13, 212);
+            this.gridRegistros.Location = new System.Drawing.Point(13, 235);
             this.gridRegistros.MultiSelect = false;
             this.gridRegistros.Name = "gridRegistros";
             this.gridRegistros.ReadOnly = true;
@@ -974,7 +1071,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1113, 550);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(1113, 572);
             this.Controls.Add(this.cmbFuncLogin);
             this.Controls.Add(this.txtLogin);
             this.Controls.Add(this.label13);
@@ -1005,6 +1103,7 @@
             this.pnlStatus.ResumeLayout(false);
             this.pnlStatus.PerformLayout();
             this.pnlControles.ResumeLayout(false);
+            this.pnlControles.PerformLayout();
             this.pnlComandos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridExemplo)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -1097,5 +1196,13 @@
         private DataGridView gridRegistros;
         private ComboBox cmb_Filt_Status;
         private Button btnFiltrat;
+        private TextBox txtFilt_Talao;
+        private Label label19;
+        private Label label18;
+        private MaskedTextBox txt_Filt_DtAberto_Inicial;
+        private MaskedTextBox txt_Filt_DtAberto_Final;
+        private Label label22;
+        private Label label21;
+        private Label label20;
     }
 }

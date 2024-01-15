@@ -19,7 +19,7 @@ namespace agendaPosVenda
             InitializeComponent();
             lblDataHoje.Text = DateTime.Now.ToString("dd/MM/yyyy");
             //txtDtAberto.Text = DateTime.Now.ToString("dd/MM/yyyy");
-           // gridExemplo.DataSource = registroControler.ListarRegistros();
+            // gridExemplo.DataSource = registroControler.ListarRegistros();
 
 
             txtAlertaHoje.Multiline = true;
@@ -50,8 +50,10 @@ namespace agendaPosVenda
 
             InabilitaCampos();
 
-            cmbFuncLogin.SelectedIndex = 0;
+            //cmbFuncLogin.SelectedIndex = 0;
+           // cmbFuncLogin.Text = "Admin";
             cmb_Filt_Status.SelectedIndex = 0;
+          
 
             Program.FuncionarioLogin = cmbFuncLogin.Text;
 
@@ -60,9 +62,9 @@ namespace agendaPosVenda
             gridExemplo.CellFormatting += gridExemplo_CellFormatting;
 
             txtDtAberto.KeyPress += txtDtAberto_KeyPress;
-            txtDataPrevEntrega.KeyPress+= txtDataPrevEntrega_KeyPress;
+            txtDataPrevEntrega.KeyPress += txtDataPrevEntrega_KeyPress;
             txtDtPosVenda.KeyPress += txtDtPosVenda_KeyPress;
-            cmbFuncionario.KeyPress+= cmbFuncionario_KeyPress;
+            cmbFuncionario.KeyPress += cmbFuncionario_KeyPress;
 
 
 
@@ -70,7 +72,7 @@ namespace agendaPosVenda
         }
         private void frmAgendaPosVenda_Load(object sender, EventArgs e)
         {
-
+            
 
 
             //registroControler.ListarRegistros();
@@ -108,7 +110,7 @@ namespace agendaPosVenda
             txtCodCliente.ReadOnly = true;
             txtTel.ReadOnly = true;
             txtValor.ReadOnly = true;
-           // txtDtAberto.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            // txtDtAberto.Text = DateTime.Now.ToString("dd/MM/yyyy");
             txtDtAberto.ReadOnly = true;
             txtDtEntregue.ReadOnly = true;
             txtDtPosVenda.ReadOnly = true;
@@ -124,11 +126,11 @@ namespace agendaPosVenda
             cmbFuncionario.Enabled = true;
             txtDataPrevEntrega.ReadOnly = false;
             cmbStatus.SelectedIndex = 0;
-            cmbStatus.Enabled = false;
+            cmbStatus.Enabled = true;//------------------
             txtCodCliente.ReadOnly = false;
             txtTel.ReadOnly = false;
             txtValor.ReadOnly = false;
-           // txtDtAberto.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            // txtDtAberto.Text = DateTime.Now.ToString("dd/MM/yyyy");
             txtDtAberto.ReadOnly = false;
             txtDtEntregue.ReadOnly = false;
             txtDtPosVenda.ReadOnly = false;
@@ -178,7 +180,7 @@ namespace agendaPosVenda
             if (gridRegistros.CurrentRow.Cells[12].Value.ToString() != "".Trim())
             {
                 txtObservacao.BackColor
-                    = Color.LightBlue;
+                    = Color.LightYellow;
             }
             else
             {
@@ -223,10 +225,12 @@ namespace agendaPosVenda
                 return;
             }
             //
-           // verifica se a data é maior que hoje
-            if(DateTime.TryParseExact(txtDtAberto.Text, "dd/MM/yyyy", null, DateTimeStyles.None, out DateTime dataInserida))
+            // verifica se a data esta no formato valido
+            if (DateTime.TryParseExact(txtDtAberto.Text, "dd/MM/yyyy", null, DateTimeStyles.None, out DateTime dataInserida))
             {
-                if (dataInserida>DateTime.Today) {
+                // verifica se a data é maior que hoje
+                if (dataInserida > DateTime.Today)
+                {
                     MessageBox.Show("Data de aertura não pode ser maior que hoje");
                     txtDtAberto.Focus();
                     return;
@@ -244,7 +248,7 @@ namespace agendaPosVenda
 
             if (!regex.IsMatch(txtCodCliente.Text))
             {
-                MessageBox.Show("Campo Talao invalido!");
+                MessageBox.Show("Campo Codigo do Cliente invalido!");
                 txtCodCliente.Focus();
                 return;
             }
@@ -319,7 +323,7 @@ namespace agendaPosVenda
                     txtDtPosVenda.Focus();
                     return;
                 }
-               
+
 
             }
             if (txtValor.Text.Trim() != "")
@@ -344,15 +348,15 @@ namespace agendaPosVenda
             novoRegistro.Telefone = txtTel.Text;
             //
 
-            if (txtDtAberto.Text != "  /  /" && txtDtEntregue.Text == "  /  /" && txtDtPosVenda.Text == "  /  /")
+            if (txtDtAberto.Text != "  /  /" && txtDtEntregue.Text == "  /  /" && txtDtPosVenda.Text == "  /  /"&& cmbStatus.Text!="Pendente")
             {
                 cmbStatus.Text = "Aberto";
             }
-            if (txtDtAberto.Text != "  /  /" && txtDtEntregue.Text != "  /  /" && txtDtPosVenda.Text == "  /  /")
+            if (txtDtAberto.Text != "  /  /" && txtDtEntregue.Text != "  /  /" && txtDtPosVenda.Text == "  /  /" && cmbStatus.Text != "Pendente")
             {
                 cmbStatus.Text = "Entregue";
             }
-            if (txtDtAberto.Text != "  /  /" && txtDtEntregue.Text != "  /  /" && txtDtPosVenda.Text != "  /  /")
+            if (txtDtAberto.Text != "  /  /" && txtDtEntregue.Text != "  /  /" && txtDtPosVenda.Text != "  /  /" && cmbStatus.Text != "Pendente")
             {
                 cmbStatus.Text = "Pós Venda Feito";
             }
@@ -550,15 +554,15 @@ namespace agendaPosVenda
             novoRegistro.CodCliente = Convert.ToInt32(txtCodCliente.Text);
             novoRegistro.NomeCliente = txtNomeCliente.Text;
             novoRegistro.Telefone = txtTel.Text;
-            if (txtDtAberto.Text != "  /  /" && txtDtEntregue.Text == "  /  /" && txtDtPosVenda.Text == "  /  /")
+            if (txtDtAberto.Text != "  /  /" && txtDtEntregue.Text == "  /  /" && txtDtPosVenda.Text == "  /  /" && cmbStatus.Text != "Pendente")
             {
                 cmbStatus.Text = "Aberto";
             }
-            if (txtDtAberto.Text != "  /  /" && txtDtEntregue.Text != "  /  /" && txtDtPosVenda.Text == "  /  /")
+            if (txtDtAberto.Text != "  /  /" && txtDtEntregue.Text != "  /  /" && txtDtPosVenda.Text == "  /  /" )
             {
                 cmbStatus.Text = "Entregue";
             }
-            if (txtDtAberto.Text != "  /  /" && txtDtEntregue.Text != "  /  /" && txtDtPosVenda.Text != "  /  /")
+            if (txtDtAberto.Text != "  /  /" && txtDtEntregue.Text != "  /  /" && txtDtPosVenda.Text != "  /  /" && cmbStatus.Text != "Pendente")
             {
                 cmbStatus.Text = "Pós Venda Feito";
             }
@@ -593,7 +597,7 @@ namespace agendaPosVenda
 
         }
 
-        private void ListarGridRegistros(string funcionario = null, string status = null)
+        private void ListarGridRegistros(string funcionario = null, string status = null, int talao = 0, string dataAberturaInicial="  /  /", string dataAberturaFinal = "  /  /")
         {
             // gridRegistros.CellFormatting += gridRegistros_CellFormatting;
             //if (txtLogin.Text != "".Trim())
@@ -617,7 +621,59 @@ namespace agendaPosVenda
                 status = cmb_Filt_Status.Text;
             }
 
-            var resp = registroControler.ListarRegistros(funcionario,status);
+            if (txtFilt_Talao.Text.Trim() != "")
+            {
+                talao = Convert.ToInt32(txtFilt_Talao.Text);
+            }
+            //datas
+            if (txt_Filt_DtAberto_Inicial.Text != "  /  /")
+            {
+                if (!DateTime.TryParseExact(txt_Filt_DtAberto_Inicial.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+                {
+                    MessageBox.Show("Data Para Filtro Inválida");
+                    txt_Filt_DtAberto_Inicial.Focus();
+                    return;
+                }
+            }
+            if (txt_Filt_DtAberto_Final.Text != "  /  /")
+            {
+                if (!DateTime.TryParseExact(txt_Filt_DtAberto_Final.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+                {
+                    MessageBox.Show("Data Para Filtro Inválida");
+                    txt_Filt_DtAberto_Final.Focus();
+                    return;
+                }
+            }
+            DateTime? dataIncialFilt =  DateTime.MinValue;
+            DateTime? dataFinalFilt = DateTime.MaxValue;
+            
+            if ((txt_Filt_DtAberto_Inicial.Text != "  /  /") &&( txt_Filt_DtAberto_Final.Text != "  /  /") )
+            {
+                var dataIncial = DateTime.ParseExact(txt_Filt_DtAberto_Inicial.Text, "dd/MM/yyyy", null);
+                var dataFinal = DateTime.ParseExact(txt_Filt_DtAberto_Final.Text, "dd/MM/yyyy", null);
+
+                if (dataFinal < dataIncial)
+                {
+                    MessageBox.Show("Data Inicial não pode ser Maior que a data Final");
+                    txt_Filt_DtAberto_Inicial.Focus();
+                    return;
+                }
+                
+            }
+            if(txt_Filt_DtAberto_Inicial.Text != "  /  /")
+            {
+                dataIncialFilt= DateTime.ParseExact(txt_Filt_DtAberto_Inicial.Text, "dd/MM/yyyy", null);
+            }
+            if ((txt_Filt_DtAberto_Final.Text != "  /  /"))
+            {
+                dataFinalFilt = DateTime.ParseExact(txt_Filt_DtAberto_Final.Text, "dd/MM/yyyy", null);
+            }
+
+           
+
+
+
+            var resp = registroControler.ListarRegistros(funcionario, status, talao,dataIncialFilt,dataFinalFilt);
             gridRegistros.Rows.Clear();
             double total = 0;
             for (int i = 0; i < resp.Count; i++)
@@ -693,11 +749,17 @@ namespace agendaPosVenda
                     gridRegistros.Rows[i].Cells["Status"].Style.ForeColor = Color.White; // Cor padrão
                     gridRegistros.Rows[i].Cells["Status"].Style.BackColor = Color.Green;
                 }
-                else
+                else if(resp[i].Status == "Pós Venda Feito")
                 {
                     gridRegistros.Rows[i].Cells["Status"].Style.ForeColor = Color.White; // Cor padrão
                     gridRegistros.Rows[i].Cells["Status"].Style.BackColor = Color.Blue;
                 }
+                else if (resp[i].Status == "Pendente")
+                {
+                    gridRegistros.Rows[i].Cells["Status"].Style.ForeColor = Color.White; // Cor padrão
+                    gridRegistros.Rows[i].Cells["Status"].Style.BackColor = Color.Red;
+                }
+
                 double valor = (double)resp[i].Valor;
                 gridRegistros.Rows[i].Cells["Valor"].Value = valor.ToString("N2");
                 total += valor;
@@ -751,7 +813,7 @@ namespace agendaPosVenda
 
 
 
-       
+
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
@@ -984,7 +1046,7 @@ namespace agendaPosVenda
             {
                 MessageBox.Show("Campo Talao invalido!");
                 txtTalao.Focus();
-                
+
                 return;
             }
             if (cmbFuncionario.Text.Trim() == "")
@@ -1233,7 +1295,7 @@ namespace agendaPosVenda
 
         private void txtDtAberto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (( e.KeyChar == (char)Keys.Enter) && (txtDtAberto.Text=="  /  /"))
+            if ((e.KeyChar == (char)Keys.Enter) && (txtDtAberto.Text == "  /  /"))
             {
                 // Defina a data padrão (por exemplo, 01/01/2022)
                 txtDtAberto.Text = DateTime.Now.ToString("dd/MM/yyyy");
@@ -1286,8 +1348,8 @@ namespace agendaPosVenda
                 // Defina a data padrão (por exemplo, 01/01/2022)
                 cmbFuncionario.Text = cmbFuncLogin.Text;
 
-               
-                
+
+
             }
         }
 
@@ -1299,6 +1361,47 @@ namespace agendaPosVenda
         private void btnFiltrat_Click(object sender, EventArgs e)
         {
             ListarGridRegistros();
+        }
+
+        private void txtFilt_Talao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txtFilt_Talao_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Regex regex = new Regex(@"^\d+$");
+            //if (!regex.IsMatch(txtFilt_Talao.Text)&&(txtFilt_Talao.Text.Length>0))
+            //{
+            //    MessageBox.Show("Campo Filtro Talao invalido!");
+            //    txtFilt_Talao.Text = "";
+            //    txtFilt_Talao.Focus();
+
+            //    return;
+            //}
+        }
+
+        private void txtFilt_Talao_TextChanged(object sender, EventArgs e)
+        {
+            Regex regex = new Regex(@"^\d+$");
+            if (!regex.IsMatch(txtFilt_Talao.Text) && (txtFilt_Talao.Text.Length > 0))
+            {
+                MessageBox.Show("Campo Filtro Talao invalido!");
+                txtFilt_Talao.Text = "";
+                txtFilt_Talao.Focus();
+
+                return;
+            }
+        }
+
+        private void cmbFuncLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void cmbFuncLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           
         }
     }
 }

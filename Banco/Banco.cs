@@ -19,7 +19,7 @@ namespace agendaPosVenda.Banco
             registro.Id=num++;
             registros.Add(registro);
 
-           
+           ///////aaaaaaaa
             return registros;
         }
     }

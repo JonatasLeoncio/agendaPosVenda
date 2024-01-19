@@ -65,6 +65,7 @@
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.pnlControles = new System.Windows.Forms.Panel();
+            this.ckbMesAtual = new System.Windows.Forms.CheckBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -493,6 +494,7 @@
             // 
             this.pnlControles.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.pnlControles.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlControles.Controls.Add(this.ckbMesAtual);
             this.pnlControles.Controls.Add(this.label22);
             this.pnlControles.Controls.Add(this.label21);
             this.pnlControles.Controls.Add(this.label19);
@@ -512,6 +514,17 @@
             this.pnlControles.Size = new System.Drawing.Size(1087, 77);
             this.pnlControles.TabIndex = 12;
             this.pnlControles.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlControles_Paint);
+            // 
+            // ckbMesAtual
+            // 
+            this.ckbMesAtual.AutoSize = true;
+            this.ckbMesAtual.Location = new System.Drawing.Point(365, 51);
+            this.ckbMesAtual.Name = "ckbMesAtual";
+            this.ckbMesAtual.Size = new System.Drawing.Size(76, 19);
+            this.ckbMesAtual.TabIndex = 40;
+            this.ckbMesAtual.Text = "MesAtual";
+            this.ckbMesAtual.UseVisualStyleBackColor = true;
+            this.ckbMesAtual.CheckedChanged += new System.EventHandler(this.ckbMesAtual_CheckedChanged);
             // 
             // label22
             // 
@@ -1063,6 +1076,7 @@
             this.gridRegistros.TabIndex = 16;
             this.gridRegistros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellContentClick);
             this.gridRegistros.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellDoubleClick);
+            this.gridRegistros.SelectionChanged += new System.EventHandler(this.gridRegistros_SelectionChanged);
             this.gridRegistros.Click += new System.EventHandler(this.gridRegistros_Click);
             this.gridRegistros.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridRegistros_KeyDown);
             this.gridRegistros.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.gridRegistros_PreviewKeyDown);
@@ -1096,6 +1110,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pnlEntidades);
             this.Name = "frmAgendaPosVenda";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agenda controle";
             this.Load += new System.EventHandler(this.frmAgendaPosVenda_Load);
             this.pnlEntidades.ResumeLayout(false);
@@ -1204,5 +1219,6 @@
         private Label label22;
         private Label label21;
         private Label label20;
+        private CheckBox ckbMesAtual;
     }
 }

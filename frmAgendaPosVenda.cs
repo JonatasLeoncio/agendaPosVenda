@@ -8,6 +8,7 @@ using System.Globalization;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace agendaPosVenda
 {
@@ -51,9 +52,9 @@ namespace agendaPosVenda
             InabilitaCampos();
 
             //cmbFuncLogin.SelectedIndex = 0;
-           // cmbFuncLogin.Text = "Admin";
+            // cmbFuncLogin.Text = "Admin";
             cmb_Filt_Status.SelectedIndex = 0;
-          
+
 
             Program.FuncionarioLogin = cmbFuncLogin.Text;
 
@@ -72,7 +73,7 @@ namespace agendaPosVenda
         }
         private void frmAgendaPosVenda_Load(object sender, EventArgs e)
         {
-            
+
 
 
             //registroControler.ListarRegistros();
@@ -105,7 +106,7 @@ namespace agendaPosVenda
             cmbFuncionario.Enabled = false;
             txtNomeCliente.ReadOnly = true;
             txtDataPrevEntrega.ReadOnly = true;
-            cmbStatus.SelectedIndex = 0;
+            // cmbStatus.SelectedIndex = 0;
             cmbStatus.Enabled = false;
             txtCodCliente.ReadOnly = true;
             txtTel.ReadOnly = true;
@@ -348,7 +349,7 @@ namespace agendaPosVenda
             novoRegistro.Telefone = txtTel.Text;
             //
 
-            if (txtDtAberto.Text != "  /  /" && txtDtEntregue.Text == "  /  /" && txtDtPosVenda.Text == "  /  /"&& cmbStatus.Text!="Pendente")
+            if (txtDtAberto.Text != "  /  /" && txtDtEntregue.Text == "  /  /" && txtDtPosVenda.Text == "  /  /" && cmbStatus.Text != "Pendente")
             {
                 cmbStatus.Text = "Aberto";
             }
@@ -558,7 +559,7 @@ namespace agendaPosVenda
             {
                 cmbStatus.Text = "Aberto";
             }
-            if (txtDtAberto.Text != "  /  /" && txtDtEntregue.Text != "  /  /" && txtDtPosVenda.Text == "  /  /" )
+            if (txtDtAberto.Text != "  /  /" && txtDtEntregue.Text != "  /  /" && txtDtPosVenda.Text == "  /  /")
             {
                 cmbStatus.Text = "Entregue";
             }
@@ -597,7 +598,7 @@ namespace agendaPosVenda
 
         }
 
-        private void ListarGridRegistros(string funcionario = null, string status = null, int talao = 0, string dataAberturaInicial="  /  /", string dataAberturaFinal = "  /  /")
+        private void ListarGridRegistros(string funcionario = null, string status = null, int talao = 0, string dataAberturaInicial = "  /  /", string dataAberturaFinal = "  /  /")
         {
             // gridRegistros.CellFormatting += gridRegistros_CellFormatting;
             //if (txtLogin.Text != "".Trim())
@@ -644,10 +645,10 @@ namespace agendaPosVenda
                     return;
                 }
             }
-            DateTime? dataIncialFilt =  DateTime.MinValue;
+            DateTime? dataIncialFilt = DateTime.MinValue;
             DateTime? dataFinalFilt = DateTime.MaxValue;
-            
-            if ((txt_Filt_DtAberto_Inicial.Text != "  /  /") &&( txt_Filt_DtAberto_Final.Text != "  /  /") )
+
+            if ((txt_Filt_DtAberto_Inicial.Text != "  /  /") && (txt_Filt_DtAberto_Final.Text != "  /  /"))
             {
                 var dataIncial = DateTime.ParseExact(txt_Filt_DtAberto_Inicial.Text, "dd/MM/yyyy", null);
                 var dataFinal = DateTime.ParseExact(txt_Filt_DtAberto_Final.Text, "dd/MM/yyyy", null);
@@ -658,22 +659,22 @@ namespace agendaPosVenda
                     txt_Filt_DtAberto_Inicial.Focus();
                     return;
                 }
-                
+
             }
-            if(txt_Filt_DtAberto_Inicial.Text != "  /  /")
+            if (txt_Filt_DtAberto_Inicial.Text != "  /  /")
             {
-                dataIncialFilt= DateTime.ParseExact(txt_Filt_DtAberto_Inicial.Text, "dd/MM/yyyy", null);
+                dataIncialFilt = DateTime.ParseExact(txt_Filt_DtAberto_Inicial.Text, "dd/MM/yyyy", null);
             }
             if ((txt_Filt_DtAberto_Final.Text != "  /  /"))
             {
                 dataFinalFilt = DateTime.ParseExact(txt_Filt_DtAberto_Final.Text, "dd/MM/yyyy", null);
             }
 
-           
 
 
 
-            var resp = registroControler.ListarRegistros(funcionario, status, talao,dataIncialFilt,dataFinalFilt);
+
+            var resp = registroControler.ListarRegistros(funcionario, status, talao, dataIncialFilt, dataFinalFilt);
             gridRegistros.Rows.Clear();
             double total = 0;
             for (int i = 0; i < resp.Count; i++)
@@ -749,7 +750,7 @@ namespace agendaPosVenda
                     gridRegistros.Rows[i].Cells["Status"].Style.ForeColor = Color.White; // Cor padrão
                     gridRegistros.Rows[i].Cells["Status"].Style.BackColor = Color.Green;
                 }
-                else if(resp[i].Status == "Pós Venda Feito")
+                else if (resp[i].Status == "Pós Venda Feito")
                 {
                     gridRegistros.Rows[i].Cells["Status"].Style.ForeColor = Color.White; // Cor padrão
                     gridRegistros.Rows[i].Cells["Status"].Style.BackColor = Color.Blue;
@@ -948,7 +949,7 @@ namespace agendaPosVenda
 
                 CarregaCamposComGrid();
 
-                e.SuppressKeyPress = true;
+                e.SuppressKeyPress = true;             
             }
         }
 
@@ -963,9 +964,12 @@ namespace agendaPosVenda
             {
 
                 InabilitaCampos();
+
                 // CarregaCamposComGrid();
                 Limpar_Campos();
                 gridRegistros.DefaultCellStyle.SelectionBackColor = SystemColors.Highlight;
+
+
 
 
             }
@@ -1396,11 +1400,35 @@ namespace agendaPosVenda
 
         private void cmbFuncLogin_KeyDown(object sender, KeyEventArgs e)
         {
-            
+
         }
 
         private void cmbFuncLogin_KeyPress(object sender, KeyPressEventArgs e)
         {
+
+        }
+
+        private void ckbMesAtual_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckbMesAtual.Checked)
+            {
+                //MessageBox.Show("acionado");
+                txt_Filt_DtAberto_Final.Text = DateTime.Now.ToString("dd/MM/yyyy");
+
+                txt_Filt_DtAberto_Inicial.Text = DateTime.Now.ToString("01/MM/yyyy");
+
+
+            }
+            else
+            {
+                // MessageBox.Show("Desacionado");
+                txt_Filt_DtAberto_Final.Text = null;
+                txt_Filt_DtAberto_Inicial.Text = null;
+            }
+        }
+
+        private void gridRegistros_SelectionChanged(object sender, EventArgs e)
+        {         
            
         }
     }

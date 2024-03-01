@@ -1167,10 +1167,12 @@ namespace agendaPosVenda
 
             int totHoje = 0;
             int totAmanha = 0;
+            int totDepoisDeAmanha = 0;
             int totAtrazada = 0;
 
             txtAlertaHoje.Clear();
             txtAlertaAmanha.Clear();
+            txtAlertaDepoisDeAmanha.Clear();
             txtAlertaAtrazada.Clear();
 
             string dataHoje = DateTime.Now.ToString("dd/MM/yyyy");
@@ -1204,11 +1206,18 @@ namespace agendaPosVenda
                         txtAlertaAmanha.ForeColor = Color.Green;
                         totAmanha++;
                     }
+                    if (diferencaEmDias == 2 && item.Status == "Aberto")
+                    {
+                        //listaEntregasDepoisDeAmanha.Add(item);
+                        txtAlertaDepoisDeAmanha.Text += $"Talao: {item.Talao}  - Func: {item.Funcionario}         IdDoc: {item.Id}\r\n\r\n";
+                        txtAlertaDepoisDeAmanha.ForeColor = Color.Orange;
+                        totDepoisDeAmanha++;
+                    }
                     if (diferencaEmDias < 0 && item.Status == "Aberto")
                     {
                         //listaEntregasAtrazadas.Add(item);
                         //lblAtrazado.Text = "\r\n";
-                        txtAlertaAtrazada.Text += $"Talao: {item.Talao} - Func: {item.Funcionario} - IdDoc: {item.Id}       está atrazado à ({diferencaEmDias * (-1)}) dias\r\n\r\n";
+                        txtAlertaAtrazada.Text += $"Talão: {item.Talao} - Func: {item.Funcionario} - Id: {item.Id},  está atrazado à ({diferencaEmDias * (-1)}) dias\r\n\r\n";
                         txtAlertaAtrazada.ForeColor = Color.Red;
                         totAtrazada++;
                     }
@@ -1217,6 +1226,7 @@ namespace agendaPosVenda
             }
             lblTotHoje.Text = totHoje.ToString();
             lblTotAmanha.Text = totAmanha.ToString();
+            lblTotDepoisDeAmanha.Text = totDepoisDeAmanha.ToString();
             lblTotAtrazada.Text = totAtrazada.ToString();
         }
 
@@ -1227,6 +1237,7 @@ namespace agendaPosVenda
                 txtAlertaHoje.Visible = true;
                 txtAlertaAtrazada.Visible = false;
                 txtAlertaAmanha.Visible = false;
+                txtAlertaDepoisDeAmanha.Visible=false;
             }
         }
 
@@ -1237,8 +1248,21 @@ namespace agendaPosVenda
                 txtAlertaAmanha.Visible = true;
                 txtAlertaAtrazada.Visible = false;
                 txtAlertaHoje.Visible = false;
+                txtAlertaDepoisDeAmanha.Visible = false;
             }
         }
+        private void rbDepoisDeAmanha_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (rbDepoisDeAmanha.Checked)
+            {
+                txtAlertaDepoisDeAmanha.Visible = true;
+                txtAlertaAmanha.Visible = false;
+                txtAlertaAtrazada.Visible = false;
+                txtAlertaHoje.Visible = false;
+            }
+
+        }
+
 
         private void rbAtrazada_CheckedChanged(object sender, EventArgs e)
         {
@@ -1247,6 +1271,7 @@ namespace agendaPosVenda
                 txtAlertaAtrazada.Visible = true;
                 txtAlertaHoje.Visible = false;
                 txtAlertaAmanha.Visible = false;
+                txtAlertaDepoisDeAmanha.Visible = false;
             }
         }
 
@@ -1431,5 +1456,14 @@ namespace agendaPosVenda
         {         
            
         }
+
+       
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+       
     }
 }

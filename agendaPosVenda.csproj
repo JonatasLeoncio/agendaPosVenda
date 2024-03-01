@@ -13,6 +13,7 @@
   <ItemGroup>
     <None Remove="bfv2ufzd.1cj~" />
     <None Remove="frmAgendaPosVenda.cs~RF20da47.TMP" />
+    <None Remove="frmAgendaPosVenda.resx~RF4669e1.TMP" />
   </ItemGroup>
 
   <ItemGroup>

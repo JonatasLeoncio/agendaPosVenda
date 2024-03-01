@@ -97,6 +97,9 @@
             this.lblTotAmanha = new System.Windows.Forms.Label();
             this.lblTotAtrazada = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.rbDepoisDeAmanha = new System.Windows.Forms.RadioButton();
+            this.lblTotDepoisDeAmanha = new System.Windows.Forms.Label();
+            this.txtAlertaDepoisDeAmanha = new System.Windows.Forms.TextBox();
             this.txtAlertaAmanha = new System.Windows.Forms.TextBox();
             this.rbAtrazada = new System.Windows.Forms.RadioButton();
             this.rbAmanha = new System.Windows.Forms.RadioButton();
@@ -511,7 +514,7 @@
             this.pnlControles.Controls.Add(this.btnAlerta);
             this.pnlControles.Location = new System.Drawing.Point(14, 152);
             this.pnlControles.Name = "pnlControles";
-            this.pnlControles.Size = new System.Drawing.Size(1087, 77);
+            this.pnlControles.Size = new System.Drawing.Size(1249, 77);
             this.pnlControles.TabIndex = 12;
             this.pnlControles.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlControles_Paint);
             // 
@@ -685,7 +688,7 @@
             this.txtObservacao.Multiline = true;
             this.txtObservacao.Name = "txtObservacao";
             this.txtObservacao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtObservacao.Size = new System.Drawing.Size(228, 93);
+            this.txtObservacao.Size = new System.Drawing.Size(386, 93);
             this.txtObservacao.TabIndex = 0;
             // 
             // label7
@@ -738,7 +741,7 @@
             this.panel1.Controls.Add(this.txtObservacao);
             this.panel1.Location = new System.Drawing.Point(863, 26);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(238, 120);
+            this.panel1.Size = new System.Drawing.Size(400, 120);
             this.panel1.TabIndex = 20;
             // 
             // lblAtrazado
@@ -798,7 +801,7 @@
             this.txtAlertaAtrazada.Multiline = true;
             this.txtAlertaAtrazada.Name = "txtAlertaAtrazada";
             this.txtAlertaAtrazada.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtAlertaAtrazada.Size = new System.Drawing.Size(357, 213);
+            this.txtAlertaAtrazada.Size = new System.Drawing.Size(500, 213);
             this.txtAlertaAtrazada.TabIndex = 26;
             this.txtAlertaAtrazada.Visible = false;
             // 
@@ -809,7 +812,7 @@
             this.txtAlertaHoje.Multiline = true;
             this.txtAlertaHoje.Name = "txtAlertaHoje";
             this.txtAlertaHoje.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtAlertaHoje.Size = new System.Drawing.Size(357, 213);
+            this.txtAlertaHoje.Size = new System.Drawing.Size(500, 213);
             this.txtAlertaHoje.TabIndex = 29;
             // 
             // lblTotHoje
@@ -828,7 +831,7 @@
             this.lblTotAmanha.AutoSize = true;
             this.lblTotAmanha.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTotAmanha.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lblTotAmanha.Location = new System.Drawing.Point(193, 5);
+            this.lblTotAmanha.Location = new System.Drawing.Point(166, 7);
             this.lblTotAmanha.Name = "lblTotAmanha";
             this.lblTotAmanha.Size = new System.Drawing.Size(15, 17);
             this.lblTotAmanha.TabIndex = 31;
@@ -839,7 +842,7 @@
             this.lblTotAtrazada.AutoSize = true;
             this.lblTotAtrazada.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTotAtrazada.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lblTotAtrazada.Location = new System.Drawing.Point(341, 7);
+            this.lblTotAtrazada.Location = new System.Drawing.Point(469, 7);
             this.lblTotAtrazada.Name = "lblTotAtrazada";
             this.lblTotAtrazada.Size = new System.Drawing.Size(15, 17);
             this.lblTotAtrazada.TabIndex = 32;
@@ -848,6 +851,9 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.rbDepoisDeAmanha);
+            this.panel2.Controls.Add(this.lblTotDepoisDeAmanha);
+            this.panel2.Controls.Add(this.txtAlertaDepoisDeAmanha);
             this.panel2.Controls.Add(this.txtAlertaAmanha);
             this.panel2.Controls.Add(this.txtAlertaHoje);
             this.panel2.Controls.Add(this.rbAtrazada);
@@ -857,10 +863,46 @@
             this.panel2.Controls.Add(this.lblTotAmanha);
             this.panel2.Controls.Add(this.rbHoje);
             this.panel2.Controls.Add(this.lblTotHoje);
-            this.panel2.Location = new System.Drawing.Point(734, 264);
+            this.panel2.Location = new System.Drawing.Point(746, 264);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(372, 267);
+            this.panel2.Size = new System.Drawing.Size(517, 267);
             this.panel2.TabIndex = 33;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // rbDepoisDeAmanha
+            // 
+            this.rbDepoisDeAmanha.AutoSize = true;
+            this.rbDepoisDeAmanha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.rbDepoisDeAmanha.Location = new System.Drawing.Point(204, 7);
+            this.rbDepoisDeAmanha.Name = "rbDepoisDeAmanha";
+            this.rbDepoisDeAmanha.Size = new System.Drawing.Size(123, 19);
+            this.rbDepoisDeAmanha.TabIndex = 38;
+            this.rbDepoisDeAmanha.Text = "Depois de amanhã";
+            this.rbDepoisDeAmanha.UseVisualStyleBackColor = true;
+            this.rbDepoisDeAmanha.CheckedChanged += new System.EventHandler(this.rbDepoisDeAmanha_CheckedChanged_1);
+            // 
+            // lblTotDepoisDeAmanha
+            // 
+            this.lblTotDepoisDeAmanha.AutoSize = true;
+            this.lblTotDepoisDeAmanha.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTotDepoisDeAmanha.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.lblTotDepoisDeAmanha.Location = new System.Drawing.Point(334, 7);
+            this.lblTotDepoisDeAmanha.Name = "lblTotDepoisDeAmanha";
+            this.lblTotDepoisDeAmanha.Size = new System.Drawing.Size(15, 17);
+            this.lblTotDepoisDeAmanha.TabIndex = 39;
+            this.lblTotDepoisDeAmanha.Text = "0";
+            // 
+            // txtAlertaDepoisDeAmanha
+            // 
+            this.txtAlertaDepoisDeAmanha.BackColor = System.Drawing.SystemColors.Window;
+            this.txtAlertaDepoisDeAmanha.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.txtAlertaDepoisDeAmanha.Location = new System.Drawing.Point(7, 47);
+            this.txtAlertaDepoisDeAmanha.Multiline = true;
+            this.txtAlertaDepoisDeAmanha.Name = "txtAlertaDepoisDeAmanha";
+            this.txtAlertaDepoisDeAmanha.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtAlertaDepoisDeAmanha.Size = new System.Drawing.Size(500, 213);
+            this.txtAlertaDepoisDeAmanha.TabIndex = 37;
+            this.txtAlertaDepoisDeAmanha.Visible = false;
             // 
             // txtAlertaAmanha
             // 
@@ -869,7 +911,7 @@
             this.txtAlertaAmanha.Multiline = true;
             this.txtAlertaAmanha.Name = "txtAlertaAmanha";
             this.txtAlertaAmanha.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtAlertaAmanha.Size = new System.Drawing.Size(357, 213);
+            this.txtAlertaAmanha.Size = new System.Drawing.Size(500, 213);
             this.txtAlertaAmanha.TabIndex = 34;
             this.txtAlertaAmanha.Visible = false;
             // 
@@ -877,7 +919,7 @@
             // 
             this.rbAtrazada.AutoSize = true;
             this.rbAtrazada.ForeColor = System.Drawing.Color.Red;
-            this.rbAtrazada.Location = new System.Drawing.Point(268, 5);
+            this.rbAtrazada.Location = new System.Drawing.Point(396, 5);
             this.rbAtrazada.Name = "rbAtrazada";
             this.rbAtrazada.Size = new System.Drawing.Size(76, 19);
             this.rbAtrazada.TabIndex = 2;
@@ -889,7 +931,7 @@
             // 
             this.rbAmanha.AutoSize = true;
             this.rbAmanha.ForeColor = System.Drawing.Color.Green;
-            this.rbAmanha.Location = new System.Drawing.Point(125, 5);
+            this.rbAmanha.Location = new System.Drawing.Point(98, 7);
             this.rbAmanha.Name = "rbAmanha";
             this.rbAmanha.Size = new System.Drawing.Size(70, 19);
             this.rbAmanha.TabIndex = 1;
@@ -1072,7 +1114,7 @@
             this.gridRegistros.ReadOnly = true;
             this.gridRegistros.RowTemplate.Height = 25;
             this.gridRegistros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridRegistros.Size = new System.Drawing.Size(715, 296);
+            this.gridRegistros.Size = new System.Drawing.Size(730, 296);
             this.gridRegistros.TabIndex = 16;
             this.gridRegistros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellContentClick);
             this.gridRegistros.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRegistros_CellDoubleClick);
@@ -1086,7 +1128,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1113, 572);
+            this.ClientSize = new System.Drawing.Size(1267, 572);
             this.Controls.Add(this.cmbFuncLogin);
             this.Controls.Add(this.txtLogin);
             this.Controls.Add(this.label13);
@@ -1220,5 +1262,8 @@
         private Label label21;
         private Label label20;
         private CheckBox ckbMesAtual;
+        private TextBox txtAlertaDepoisDeAmanha;
+        private RadioButton rbDepoisDeAmanha;
+        private Label lblTotDepoisDeAmanha;
     }
 }

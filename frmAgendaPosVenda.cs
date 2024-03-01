@@ -255,7 +255,7 @@ namespace agendaPosVenda
             }
             if (txtNomeCliente.Text.Trim() == "")
             {
-                MessageBox.Show("Selecione o Funcionario");
+                MessageBox.Show("Preencha o nome do cliente");
                 txtNomeCliente.Focus();
                 return;
             }

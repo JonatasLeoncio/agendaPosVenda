@@ -65,6 +65,8 @@
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.pnlControles = new System.Windows.Forms.Panel();
+            this.rb_Desc = new System.Windows.Forms.RadioButton();
+            this.rb_Asc = new System.Windows.Forms.RadioButton();
             this.ckbMesAtual = new System.Windows.Forms.CheckBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -497,6 +499,8 @@
             // 
             this.pnlControles.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.pnlControles.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlControles.Controls.Add(this.rb_Desc);
+            this.pnlControles.Controls.Add(this.rb_Asc);
             this.pnlControles.Controls.Add(this.ckbMesAtual);
             this.pnlControles.Controls.Add(this.label22);
             this.pnlControles.Controls.Add(this.label21);
@@ -518,10 +522,34 @@
             this.pnlControles.TabIndex = 12;
             this.pnlControles.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlControles_Paint);
             // 
+            // rb_Desc
+            // 
+            this.rb_Desc.AutoSize = true;
+            this.rb_Desc.Location = new System.Drawing.Point(0, 56);
+            this.rb_Desc.Name = "rb_Desc";
+            this.rb_Desc.Size = new System.Drawing.Size(50, 19);
+            this.rb_Desc.TabIndex = 42;
+            this.rb_Desc.TabStop = true;
+            this.rb_Desc.Text = "Desc";
+            this.rb_Desc.UseVisualStyleBackColor = true;
+            this.rb_Desc.CheckedChanged += new System.EventHandler(this.rb_Desc_CheckedChanged);
+            // 
+            // rb_Asc
+            // 
+            this.rb_Asc.AutoSize = true;
+            this.rb_Asc.Location = new System.Drawing.Point(51, 56);
+            this.rb_Asc.Name = "rb_Asc";
+            this.rb_Asc.Size = new System.Drawing.Size(44, 19);
+            this.rb_Asc.TabIndex = 41;
+            this.rb_Asc.TabStop = true;
+            this.rb_Asc.Text = "Asc";
+            this.rb_Asc.UseVisualStyleBackColor = true;
+            this.rb_Asc.CheckedChanged += new System.EventHandler(this.rb_Asc_CheckedChanged);
+            // 
             // ckbMesAtual
             // 
             this.ckbMesAtual.AutoSize = true;
-            this.ckbMesAtual.Location = new System.Drawing.Point(365, 51);
+            this.ckbMesAtual.Location = new System.Drawing.Point(343, 51);
             this.ckbMesAtual.Name = "ckbMesAtual";
             this.ckbMesAtual.Size = new System.Drawing.Size(76, 19);
             this.ckbMesAtual.TabIndex = 40;
@@ -533,17 +561,18 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label22.Location = new System.Drawing.Point(338, 3);
+            this.label22.Location = new System.Drawing.Point(380, 2);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(144, 13);
             this.label22.TabIndex = 38;
             this.label22.Text = "Data de abertura do talão";
+            this.label22.Visible = false;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label21.Location = new System.Drawing.Point(441, 25);
+            this.label21.Location = new System.Drawing.Point(419, 25);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(27, 13);
             this.label21.TabIndex = 37;
@@ -563,7 +592,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label20.Location = new System.Drawing.Point(338, 25);
+            this.label20.Location = new System.Drawing.Point(316, 25);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(24, 13);
             this.label20.TabIndex = 36;
@@ -581,7 +610,7 @@
             // 
             // txt_Filt_Dt_Final
             // 
-            this.txt_Filt_Dt_Final.Location = new System.Drawing.Point(468, 18);
+            this.txt_Filt_Dt_Final.Location = new System.Drawing.Point(446, 18);
             this.txt_Filt_Dt_Final.Mask = "00/00/0000";
             this.txt_Filt_Dt_Final.Name = "txt_Filt_Dt_Final";
             this.txt_Filt_Dt_Final.Size = new System.Drawing.Size(69, 23);
@@ -590,7 +619,7 @@
             // 
             // txt_Filt_Dt_Inicial
             // 
-            this.txt_Filt_Dt_Inicial.Location = new System.Drawing.Point(365, 18);
+            this.txt_Filt_Dt_Inicial.Location = new System.Drawing.Point(343, 18);
             this.txt_Filt_Dt_Inicial.Mask = "00/00/0000";
             this.txt_Filt_Dt_Inicial.Name = "txt_Filt_Dt_Inicial";
             this.txt_Filt_Dt_Inicial.Size = new System.Drawing.Size(67, 23);
@@ -654,7 +683,7 @@
             "Leandro Leoncio",
             "Leonardo",
             "Rodrigo"});
-            this.cmbFilt_Funcionario.Location = new System.Drawing.Point(600, 10);
+            this.cmbFilt_Funcionario.Location = new System.Drawing.Point(553, 15);
             this.cmbFilt_Funcionario.Name = "cmbFilt_Funcionario";
             this.cmbFilt_Funcionario.Size = new System.Drawing.Size(62, 23);
             this.cmbFilt_Funcionario.TabIndex = 26;
@@ -691,6 +720,7 @@
             this.txtObservacao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtObservacao.Size = new System.Drawing.Size(386, 93);
             this.txtObservacao.TabIndex = 0;
+            this.txtObservacao.TextChanged += new System.EventHandler(this.txtObservacao_TextChanged);
             // 
             // label7
             // 
@@ -1266,5 +1296,7 @@
         private TextBox txtAlertaDepoisDeAmanha;
         private RadioButton rbDepoisDeAmanha;
         private Label lblTotDepoisDeAmanha;
+        private RadioButton rb_Desc;
+        private RadioButton rb_Asc;
     }
 }

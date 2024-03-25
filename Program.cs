@@ -8,6 +8,7 @@ namespace agendaPosVenda
         /// 
         //Declarar as Variaveis Globais do progeto
         public static string FuncionarioLogin;//variavel Global para armazenar dados Login
+        public static bool OrderListDesc = true;
 
 
 

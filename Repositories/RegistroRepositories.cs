@@ -116,12 +116,16 @@ namespace agendaPosVenda.Repositories
                     {
                         status = "Aberto";
                     }
+                    
+                    
                     sql += "AND Status = @Status ";
                     //parametros.Add("@Status", status);
                 }
 
 
-                sql += "ORDER BY Id DESC";
+               // string orderby = (Program.OrderListDesc)?"":"";
+
+                 sql += (Program.OrderListDesc) ? "ORDER BY Id DESC" : "ORDER BY Id ASC"; 
                // MessageBox.Show(sql);
 
                 var registros = conexao.Query<Registro>(sql, new { Funcionario = funcionario, Status = status, Talao = talao, DataInicio = dataInicio,DataFinal = dataFinal }).ToList();

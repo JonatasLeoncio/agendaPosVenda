@@ -15,6 +15,7 @@ namespace agendaPosVenda
     public partial class frmAgendaPosVenda : Form
     {
         RegistroControler registroControler = new RegistroControler();
+      
         public frmAgendaPosVenda()
         {
             InitializeComponent();
@@ -66,6 +67,9 @@ namespace agendaPosVenda
             txtDataPrevEntrega.KeyPress += txtDataPrevEntrega_KeyPress;
             txtDtPosVenda.KeyPress += txtDtPosVenda_KeyPress;
             cmbFuncionario.KeyPress += cmbFuncionario_KeyPress;
+
+            rb_Desc.Checked = true;
+            rb_Asc.Checked = false;
 
 
 
@@ -181,7 +185,7 @@ namespace agendaPosVenda
             if (gridRegistros.CurrentRow.Cells[12].Value.ToString() != "".Trim())
             {
                 txtObservacao.BackColor
-                    = Color.LightYellow;
+                    = Color.Aquamarine;
             }
             else
             {
@@ -1497,6 +1501,29 @@ namespace agendaPosVenda
 
         }
 
-       
+        private void rb_Asc_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rb_Desc.Checked == false)
+            {
+                this.rb_Asc.Checked = true;
+                Program.OrderListDesc = false;
+               // ListarGridRegistros();
+            }
+        }
+
+        private void rb_Desc_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rb_Asc.Checked == false)
+            {
+                this.rb_Desc.Checked = true;
+                Program.OrderListDesc = true;
+                //ListarGridRegistros();
+            }
+        }
+
+        private void txtObservacao_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

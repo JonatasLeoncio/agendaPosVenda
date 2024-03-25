@@ -598,7 +598,7 @@ namespace agendaPosVenda
 
         }
 
-        private void ListarGridRegistros(string funcionario = null, string status = null, int talao = 0, string dataAberturaInicial = "  /  /", string dataAberturaFinal = "  /  /")
+        private void ListarGridRegistros(string funcionario = null, string status = null, int talao = 0, string dataAberturaInicial = "  /  /", string dataAberturaFinal = "  /  /", string dataEntregaInicial = "  /  /", string dataEntregaFinal = "  /  /")
         {
             // gridRegistros.CellFormatting += gridRegistros_CellFormatting;
             //if (txtLogin.Text != "".Trim())
@@ -627,48 +627,81 @@ namespace agendaPosVenda
                 talao = Convert.ToInt32(txtFilt_Talao.Text);
             }
             //datas
-            if (txt_Filt_DtAberto_Inicial.Text != "  /  /")
+            if (txt_Filt_Dt_Inicial.Text != "  /  /")
             {
-                if (!DateTime.TryParseExact(txt_Filt_DtAberto_Inicial.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+                if (!DateTime.TryParseExact(txt_Filt_Dt_Inicial.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
                 {
                     MessageBox.Show("Data Para Filtro Inválida");
-                    txt_Filt_DtAberto_Inicial.Focus();
+                    txt_Filt_Dt_Inicial.Focus();
                     return;
                 }
             }
-            if (txt_Filt_DtAberto_Final.Text != "  /  /")
+            if (txt_Filt_Dt_Final.Text != "  /  /")
             {
-                if (!DateTime.TryParseExact(txt_Filt_DtAberto_Final.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+                if (!DateTime.TryParseExact(txt_Filt_Dt_Final.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
                 {
                     MessageBox.Show("Data Para Filtro Inválida");
-                    txt_Filt_DtAberto_Final.Focus();
+                    txt_Filt_Dt_Final.Focus();
                     return;
                 }
             }
+
+
+            //++
+
+
+            //if (txt_Filt_Dt_Inicial.Text != "  /  /")
+            //{
+            //    if (!DateTime.TryParseExact(txt_Filt_Dt_Inicial.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+            //    {
+            //        MessageBox.Show("Data Para Filtro Inválida");
+            //        txt_Filt_Dt_Inicial.Focus();
+            //        return;
+            //    }
+            //}
+            //if (txt_Filt_Dt_Final.Text != "  /  /")
+            //{
+            //    if (!DateTime.TryParseExact(txt_Filt_Dt_Final.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+            //    {
+            //        MessageBox.Show("Data Para Filtro Inválida");
+            //        txt_Filt_Dt_Final.Focus();
+            //        return;
+            //    }
+            //}
+
+
+            //++
+
+
+
             DateTime? dataIncialFilt = DateTime.MinValue;
             DateTime? dataFinalFilt = DateTime.MaxValue;
 
-            if ((txt_Filt_DtAberto_Inicial.Text != "  /  /") && (txt_Filt_DtAberto_Final.Text != "  /  /"))
+            if ((txt_Filt_Dt_Inicial.Text != "  /  /") && (txt_Filt_Dt_Final.Text != "  /  /"))
             {
-                var dataIncial = DateTime.ParseExact(txt_Filt_DtAberto_Inicial.Text, "dd/MM/yyyy", null);
-                var dataFinal = DateTime.ParseExact(txt_Filt_DtAberto_Final.Text, "dd/MM/yyyy", null);
+                var dataIncial = DateTime.ParseExact(txt_Filt_Dt_Inicial.Text, "dd/MM/yyyy", null);
+                var dataFinal = DateTime.ParseExact(txt_Filt_Dt_Final.Text, "dd/MM/yyyy", null);
 
                 if (dataFinal < dataIncial)
                 {
                     MessageBox.Show("Data Inicial não pode ser Maior que a data Final");
-                    txt_Filt_DtAberto_Inicial.Focus();
+                    txt_Filt_Dt_Inicial.Focus();
                     return;
                 }
 
             }
-            if (txt_Filt_DtAberto_Inicial.Text != "  /  /")
+            if (txt_Filt_Dt_Inicial.Text != "  /  /")
             {
-                dataIncialFilt = DateTime.ParseExact(txt_Filt_DtAberto_Inicial.Text, "dd/MM/yyyy", null);
+                dataIncialFilt = DateTime.ParseExact(txt_Filt_Dt_Inicial.Text, "dd/MM/yyyy", null);
             }
-            if ((txt_Filt_DtAberto_Final.Text != "  /  /"))
+            if ((txt_Filt_Dt_Final.Text != "  /  /"))
             {
-                dataFinalFilt = DateTime.ParseExact(txt_Filt_DtAberto_Final.Text, "dd/MM/yyyy", null);
+                dataFinalFilt = DateTime.ParseExact(txt_Filt_Dt_Final.Text, "dd/MM/yyyy", null);
             }
+
+            //++
+
+            //++
 
 
 
@@ -1438,17 +1471,17 @@ namespace agendaPosVenda
             if (ckbMesAtual.Checked)
             {
                 //MessageBox.Show("acionado");
-                txt_Filt_DtAberto_Final.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                txt_Filt_Dt_Final.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
-                txt_Filt_DtAberto_Inicial.Text = DateTime.Now.ToString("01/MM/yyyy");
+                txt_Filt_Dt_Inicial.Text = DateTime.Now.ToString("01/MM/yyyy");
 
 
             }
             else
             {
                 // MessageBox.Show("Desacionado");
-                txt_Filt_DtAberto_Final.Text = null;
-                txt_Filt_DtAberto_Inicial.Text = null;
+                txt_Filt_Dt_Final.Text = null;
+                txt_Filt_Dt_Inicial.Text = null;
             }
         }
 

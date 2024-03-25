@@ -71,8 +71,8 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.txt_Filt_DtAberto_Final = new System.Windows.Forms.MaskedTextBox();
-            this.txt_Filt_DtAberto_Inicial = new System.Windows.Forms.MaskedTextBox();
+            this.txt_Filt_Dt_Final = new System.Windows.Forms.MaskedTextBox();
+            this.txt_Filt_Dt_Inicial = new System.Windows.Forms.MaskedTextBox();
             this.txtFilt_Talao = new System.Windows.Forms.TextBox();
             this.btnFiltrat = new System.Windows.Forms.Button();
             this.cmb_Filt_Status = new System.Windows.Forms.ComboBox();
@@ -503,8 +503,8 @@
             this.pnlControles.Controls.Add(this.label19);
             this.pnlControles.Controls.Add(this.label20);
             this.pnlControles.Controls.Add(this.label18);
-            this.pnlControles.Controls.Add(this.txt_Filt_DtAberto_Final);
-            this.pnlControles.Controls.Add(this.txt_Filt_DtAberto_Inicial);
+            this.pnlControles.Controls.Add(this.txt_Filt_Dt_Final);
+            this.pnlControles.Controls.Add(this.txt_Filt_Dt_Inicial);
             this.pnlControles.Controls.Add(this.txtFilt_Talao);
             this.pnlControles.Controls.Add(this.btnFiltrat);
             this.pnlControles.Controls.Add(this.cmb_Filt_Status);
@@ -579,23 +579,23 @@
             this.label18.TabIndex = 31;
             this.label18.Text = "Status";
             // 
-            // txt_Filt_DtAberto_Final
+            // txt_Filt_Dt_Final
             // 
-            this.txt_Filt_DtAberto_Final.Location = new System.Drawing.Point(468, 18);
-            this.txt_Filt_DtAberto_Final.Mask = "00/00/0000";
-            this.txt_Filt_DtAberto_Final.Name = "txt_Filt_DtAberto_Final";
-            this.txt_Filt_DtAberto_Final.Size = new System.Drawing.Size(69, 23);
-            this.txt_Filt_DtAberto_Final.TabIndex = 34;
-            this.txt_Filt_DtAberto_Final.ValidatingType = typeof(System.DateTime);
+            this.txt_Filt_Dt_Final.Location = new System.Drawing.Point(468, 18);
+            this.txt_Filt_Dt_Final.Mask = "00/00/0000";
+            this.txt_Filt_Dt_Final.Name = "txt_Filt_Dt_Final";
+            this.txt_Filt_Dt_Final.Size = new System.Drawing.Size(69, 23);
+            this.txt_Filt_Dt_Final.TabIndex = 34;
+            this.txt_Filt_Dt_Final.ValidatingType = typeof(System.DateTime);
             // 
-            // txt_Filt_DtAberto_Inicial
+            // txt_Filt_Dt_Inicial
             // 
-            this.txt_Filt_DtAberto_Inicial.Location = new System.Drawing.Point(365, 18);
-            this.txt_Filt_DtAberto_Inicial.Mask = "00/00/0000";
-            this.txt_Filt_DtAberto_Inicial.Name = "txt_Filt_DtAberto_Inicial";
-            this.txt_Filt_DtAberto_Inicial.Size = new System.Drawing.Size(67, 23);
-            this.txt_Filt_DtAberto_Inicial.TabIndex = 33;
-            this.txt_Filt_DtAberto_Inicial.ValidatingType = typeof(System.DateTime);
+            this.txt_Filt_Dt_Inicial.Location = new System.Drawing.Point(365, 18);
+            this.txt_Filt_Dt_Inicial.Mask = "00/00/0000";
+            this.txt_Filt_Dt_Inicial.Name = "txt_Filt_Dt_Inicial";
+            this.txt_Filt_Dt_Inicial.Size = new System.Drawing.Size(67, 23);
+            this.txt_Filt_Dt_Inicial.TabIndex = 33;
+            this.txt_Filt_Dt_Inicial.ValidatingType = typeof(System.DateTime);
             // 
             // txtFilt_Talao
             // 
@@ -626,6 +626,7 @@
             "Todos",
             "Aberto",
             "Entregue",
+            "Previsão de Entrega",
             "Pós Venda Feito",
             "Pendente"});
             this.cmb_Filt_Status.Location = new System.Drawing.Point(176, 18);
@@ -1128,7 +1129,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1267, 572);
+            this.ClientSize = new System.Drawing.Size(1267, 579);
             this.Controls.Add(this.cmbFuncLogin);
             this.Controls.Add(this.txtLogin);
             this.Controls.Add(this.label13);
@@ -1256,8 +1257,8 @@
         private TextBox txtFilt_Talao;
         private Label label19;
         private Label label18;
-        private MaskedTextBox txt_Filt_DtAberto_Inicial;
-        private MaskedTextBox txt_Filt_DtAberto_Final;
+        private MaskedTextBox txt_Filt_Dt_Inicial;
+        private MaskedTextBox txt_Filt_Dt_Final;
         private Label label22;
         private Label label21;
         private Label label20;

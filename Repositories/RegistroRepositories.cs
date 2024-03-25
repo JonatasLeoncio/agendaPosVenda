@@ -58,7 +58,7 @@ namespace agendaPosVenda.Repositories
                 return ListarGegistros();
             }
         }
-        public List<Registro> ListarGegistros(string funcionario = null, string status = null, int talao = 0,DateTime? dataAbertaInicio = null, DateTime? dataAbertaFinal = null)
+        public List<Registro> ListarGegistros(string funcionario = null, string status = null, int talao = 0,DateTime? dataInicio = null, DateTime? dataFinal = null)
         {            
             using (var conexao = new SQLiteConnection("Data Source=" + caminhoDestino))
             {
@@ -73,30 +73,59 @@ namespace agendaPosVenda.Repositories
                     //parametros.Add("@Funcionario", funcionario);
                 }
 
-                if (!string.IsNullOrEmpty(status))
-                {
-                    sql += "AND Status = @Status ";
-                    //parametros.Add("@Status", status);
-                }
+               
 
                 if (talao > 0)
                 {
                     sql += "AND Talao = @Talao ";
                     //parametros.Add("@Status", status);
                 }
-                if(dataAbertaInicio != null)
-                {
-                    sql += "AND DataAberta >= @DataAbertaInicio ";
+                string colunaData = "DataAberta";
+
+                if (!string.IsNullOrEmpty(status)){
+
+                    if (status =="Entregue")
+                    {
+                        colunaData = "DataEntrega";
+                    }
+                    if (status == "Pós Venda Feito")
+                    {
+                        colunaData = "DataPosVenda";
+                    }
+                    if (status == "Previsão de Entrega")
+                    {
+                        colunaData = "DataPrevEntrega";
+                    }
                 }
-                if (dataAbertaFinal != null)
+                
+
+                if (dataInicio != null)
                 {
-                    sql += "AND DataAberta <= @DataAbertaFim ";
+                    sql += $"AND {colunaData} >= @DataInicio ";
                 }
+                if (dataFinal != null)
+                {
+                    sql += $"AND {colunaData} <= @DataFinal ";
+                }
+
+
+
+                if (!string.IsNullOrEmpty(status))
+                {
+                    if(status== "Previsão de Entrega")
+                    {
+                        status = "Aberto";
+                    }
+                    sql += "AND Status = @Status ";
+                    //parametros.Add("@Status", status);
+                }
+
 
                 sql += "ORDER BY Id DESC";
+               // MessageBox.Show(sql);
 
+                var registros = conexao.Query<Registro>(sql, new { Funcionario = funcionario, Status = status, Talao = talao, DataInicio = dataInicio,DataFinal = dataFinal }).ToList();
 
-                var registros = conexao.Query<Registro>(sql, new { Funcionario = funcionario, Status = status, Talao = talao, DataAbertaInicio = dataAbertaInicio,DataAbertaFim = dataAbertaFinal }).ToList();
                 return registros;
             }
         }

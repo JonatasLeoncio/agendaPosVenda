@@ -111,6 +111,10 @@ namespace agendaPosVenda.Repositories
 
 
 
+
+                }
+
+
                     if (dataInicio != null)
                     {
                         sql += $"AND {colunaDatas} >= @DataInicio ";
@@ -119,10 +123,6 @@ namespace agendaPosVenda.Repositories
                     {
                         sql += $"AND {colunaDatas} <= @DataFinal ";
                     }
-
-                }
-
-
                 
 
                 

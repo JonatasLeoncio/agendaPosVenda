@@ -65,6 +65,7 @@
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.pnlControles = new System.Windows.Forms.Panel();
+            this.cmb_Filt_Coluna_Datas = new System.Windows.Forms.ComboBox();
             this.rb_Desc = new System.Windows.Forms.RadioButton();
             this.rb_Asc = new System.Windows.Forms.RadioButton();
             this.ckbMesAtual = new System.Windows.Forms.CheckBox();
@@ -499,6 +500,7 @@
             // 
             this.pnlControles.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.pnlControles.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlControles.Controls.Add(this.cmb_Filt_Coluna_Datas);
             this.pnlControles.Controls.Add(this.rb_Desc);
             this.pnlControles.Controls.Add(this.rb_Asc);
             this.pnlControles.Controls.Add(this.ckbMesAtual);
@@ -521,6 +523,21 @@
             this.pnlControles.Size = new System.Drawing.Size(1249, 77);
             this.pnlControles.TabIndex = 12;
             this.pnlControles.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlControles_Paint);
+            // 
+            // cmb_Filt_Coluna_Datas
+            // 
+            this.cmb_Filt_Coluna_Datas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_Filt_Coluna_Datas.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.cmb_Filt_Coluna_Datas.FormattingEnabled = true;
+            this.cmb_Filt_Coluna_Datas.Items.AddRange(new object[] {
+            "Aberta",
+            "Entrega",
+            "Previsão de Entrega",
+            "Pós Venda Feito"});
+            this.cmb_Filt_Coluna_Datas.Location = new System.Drawing.Point(512, 3);
+            this.cmb_Filt_Coluna_Datas.Name = "cmb_Filt_Coluna_Datas";
+            this.cmb_Filt_Coluna_Datas.Size = new System.Drawing.Size(106, 21);
+            this.cmb_Filt_Coluna_Datas.TabIndex = 43;
             // 
             // rb_Desc
             // 
@@ -549,7 +566,7 @@
             // ckbMesAtual
             // 
             this.ckbMesAtual.AutoSize = true;
-            this.ckbMesAtual.Location = new System.Drawing.Point(343, 51);
+            this.ckbMesAtual.Location = new System.Drawing.Point(485, 53);
             this.ckbMesAtual.Name = "ckbMesAtual";
             this.ckbMesAtual.Size = new System.Drawing.Size(76, 19);
             this.ckbMesAtual.TabIndex = 40;
@@ -561,18 +578,18 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label22.Location = new System.Drawing.Point(380, 2);
+            this.label22.Location = new System.Drawing.Point(422, 10);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(144, 13);
+            this.label22.Size = new System.Drawing.Size(84, 13);
             this.label22.TabIndex = 38;
-            this.label22.Text = "Data de abertura do talão";
+            this.label22.Text = "filtro por datas";
             this.label22.Visible = false;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label21.Location = new System.Drawing.Point(419, 25);
+            this.label21.Location = new System.Drawing.Point(522, 37);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(27, 13);
             this.label21.TabIndex = 37;
@@ -582,7 +599,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label19.Location = new System.Drawing.Point(86, 2);
+            this.label19.Location = new System.Drawing.Point(86, 10);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(36, 13);
             this.label19.TabIndex = 32;
@@ -592,7 +609,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label20.Location = new System.Drawing.Point(316, 25);
+            this.label20.Location = new System.Drawing.Point(422, 37);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(24, 13);
             this.label20.TabIndex = 36;
@@ -602,15 +619,15 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(176, 2);
+            this.label18.Location = new System.Drawing.Point(176, 10);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(40, 13);
+            this.label18.Size = new System.Drawing.Size(71, 13);
             this.label18.TabIndex = 31;
-            this.label18.Text = "Status";
+            this.label18.Text = "Status atual";
             // 
             // txt_Filt_Dt_Final
             // 
-            this.txt_Filt_Dt_Final.Location = new System.Drawing.Point(446, 18);
+            this.txt_Filt_Dt_Final.Location = new System.Drawing.Point(549, 30);
             this.txt_Filt_Dt_Final.Mask = "00/00/0000";
             this.txt_Filt_Dt_Final.Name = "txt_Filt_Dt_Final";
             this.txt_Filt_Dt_Final.Size = new System.Drawing.Size(69, 23);
@@ -619,7 +636,7 @@
             // 
             // txt_Filt_Dt_Inicial
             // 
-            this.txt_Filt_Dt_Inicial.Location = new System.Drawing.Point(343, 18);
+            this.txt_Filt_Dt_Inicial.Location = new System.Drawing.Point(449, 30);
             this.txt_Filt_Dt_Inicial.Mask = "00/00/0000";
             this.txt_Filt_Dt_Inicial.Name = "txt_Filt_Dt_Inicial";
             this.txt_Filt_Dt_Inicial.Size = new System.Drawing.Size(67, 23);
@@ -628,7 +645,7 @@
             // 
             // txtFilt_Talao
             // 
-            this.txtFilt_Talao.Location = new System.Drawing.Point(86, 18);
+            this.txtFilt_Talao.Location = new System.Drawing.Point(86, 26);
             this.txtFilt_Talao.Name = "txtFilt_Talao";
             this.txtFilt_Talao.Size = new System.Drawing.Size(75, 23);
             this.txtFilt_Talao.TabIndex = 30;
@@ -639,7 +656,7 @@
             // btnFiltrat
             // 
             this.btnFiltrat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnFiltrat.Location = new System.Drawing.Point(4, 15);
+            this.btnFiltrat.Location = new System.Drawing.Point(4, 23);
             this.btnFiltrat.Name = "btnFiltrat";
             this.btnFiltrat.Size = new System.Drawing.Size(76, 27);
             this.btnFiltrat.TabIndex = 29;
@@ -655,10 +672,9 @@
             "Todos",
             "Aberto",
             "Entregue",
-            "Previsão de Entrega",
             "Pós Venda Feito",
             "Pendente"});
-            this.cmb_Filt_Status.Location = new System.Drawing.Point(176, 18);
+            this.cmb_Filt_Status.Location = new System.Drawing.Point(176, 26);
             this.cmb_Filt_Status.Name = "cmb_Filt_Status";
             this.cmb_Filt_Status.Size = new System.Drawing.Size(129, 23);
             this.cmb_Filt_Status.TabIndex = 28;
@@ -683,7 +699,7 @@
             "Leandro Leoncio",
             "Leonardo",
             "Rodrigo"});
-            this.cmbFilt_Funcionario.Location = new System.Drawing.Point(553, 15);
+            this.cmbFilt_Funcionario.Location = new System.Drawing.Point(624, 47);
             this.cmbFilt_Funcionario.Name = "cmbFilt_Funcionario";
             this.cmbFilt_Funcionario.Size = new System.Drawing.Size(62, 23);
             this.cmbFilt_Funcionario.TabIndex = 26;
@@ -1298,5 +1314,6 @@
         private Label lblTotDepoisDeAmanha;
         private RadioButton rb_Desc;
         private RadioButton rb_Asc;
+        private ComboBox cmb_Filt_Coluna_Datas;
     }
 }

@@ -55,6 +55,7 @@ namespace agendaPosVenda
             //cmbFuncLogin.SelectedIndex = 0;
             // cmbFuncLogin.Text = "Admin";
             cmb_Filt_Status.SelectedIndex = 0;
+            cmb_Filt_Coluna_Datas.SelectedIndex = 0;
 
 
             Program.FuncionarioLogin = cmbFuncLogin.Text;
@@ -602,7 +603,7 @@ namespace agendaPosVenda
 
         }
 
-        private void ListarGridRegistros(string funcionario = null, string status = null, int talao = 0, string dataAberturaInicial = "  /  /", string dataAberturaFinal = "  /  /", string dataEntregaInicial = "  /  /", string dataEntregaFinal = "  /  /")
+        private void ListarGridRegistros(string funcionario = null, string status = null, int talao = 0, string dataAberturaInicial = "  /  /", string dataAberturaFinal = "  /  /", string dataEntregaInicial = "  /  /", string dataEntregaFinal = "  /  /", string? columData = null)
         {
             // gridRegistros.CellFormatting += gridRegistros_CellFormatting;
             //if (txtLogin.Text != "".Trim())
@@ -624,6 +625,11 @@ namespace agendaPosVenda
             if (cmb_Filt_Status.Text.Trim() != "Todos")
             {
                 status = cmb_Filt_Status.Text;
+            }
+
+            if (cmb_Filt_Coluna_Datas.Text.Trim() != "Todos")
+            {
+                columData = cmb_Filt_Coluna_Datas.Text;
             }
 
             if (txtFilt_Talao.Text.Trim() != "")
@@ -711,7 +717,7 @@ namespace agendaPosVenda
 
 
 
-            var resp = registroControler.ListarRegistros(funcionario, status, talao, dataIncialFilt, dataFinalFilt);
+            var resp = registroControler.ListarRegistros(funcionario, status, talao, dataIncialFilt, dataFinalFilt, columData);
             gridRegistros.Rows.Clear();
             double total = 0;
             for (int i = 0; i < resp.Count; i++)

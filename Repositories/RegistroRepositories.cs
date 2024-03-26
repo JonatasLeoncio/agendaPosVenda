@@ -58,7 +58,7 @@ namespace agendaPosVenda.Repositories
                 return ListarGegistros();
             }
         }
-        public List<Registro> ListarGegistros(string funcionario = null, string status = null, int talao = 0,DateTime? dataInicio = null, DateTime? dataFinal = null)
+        public List<Registro> ListarGegistros(string? funcionario = null, string? status = null, int talao = 0,DateTime? dataInicio = null, DateTime? dataFinal = null,string? colunaDatas = null)
         {            
             using (var conexao = new SQLiteConnection("Data Source=" + caminhoDestino))
             {
@@ -73,54 +73,63 @@ namespace agendaPosVenda.Repositories
                     //parametros.Add("@Funcionario", funcionario);
                 }
 
-               
+                if (!string.IsNullOrEmpty(status))
+                {
+                    sql += "AND Status = @Status ";
+                    //parametros.Add("@Status", status);
+                }
+
+
 
                 if (talao > 0)
                 {
                     sql += "AND Talao = @Talao ";
                     //parametros.Add("@Status", status);
                 }
-                string colunaData = "DataAberta";
 
-                if (!string.IsNullOrEmpty(status)){
 
-                    if (status =="Entregue")
+                //string colunaData = "DataAberta";
+
+                if (!string.IsNullOrEmpty(colunaDatas)){
+                    if (colunaDatas == "Aberta")
                     {
-                        colunaData = "DataEntrega";
+                        colunaDatas = "DataAberta";
                     }
-                    if (status == "Pós Venda Feito")
+
+                    if (colunaDatas == "Entrega")
                     {
-                        colunaData = "DataPosVenda";
+                        colunaDatas = "DataEntrega";
                     }
-                    if (status == "Previsão de Entrega")
+                    if (colunaDatas == "Pós Venda Feito")
                     {
-                        colunaData = "DataPrevEntrega";
+                        colunaDatas = "DataPosVenda";
                     }
+                    if (colunaDatas == "Previsão de Entrega")
+                    {
+                        colunaDatas = "DataPrevEntrega";
+                    }
+
+
+
+                    if (dataInicio != null)
+                    {
+                        sql += $"AND {colunaDatas} >= @DataInicio ";
+                    }
+                    if (dataFinal != null)
+                    {
+                        sql += $"AND {colunaDatas} <= @DataFinal ";
+                    }
+
                 }
+
+
                 
 
-                if (dataInicio != null)
-                {
-                    sql += $"AND {colunaData} >= @DataInicio ";
-                }
-                if (dataFinal != null)
-                {
-                    sql += $"AND {colunaData} <= @DataFinal ";
-                }
+                
 
 
 
-                if (!string.IsNullOrEmpty(status))
-                {
-                    if(status== "Previsão de Entrega")
-                    {
-                        status = "Aberto";
-                    }
-                    
-                    
-                    sql += "AND Status = @Status ";
-                    //parametros.Add("@Status", status);
-                }
+               
 
 
                // string orderby = (Program.OrderListDesc)?"":"";

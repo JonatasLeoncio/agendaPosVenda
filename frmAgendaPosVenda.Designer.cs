@@ -136,13 +136,14 @@
             // 
             // btnSalvar
             // 
+            this.btnSalvar.BackColor = System.Drawing.Color.White;
             this.btnSalvar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSalvar.Location = new System.Drawing.Point(18, 7);
+            this.btnSalvar.Image = global::agendaPosVenda.Properties.Resources.btnSalvar_Image;
+            this.btnSalvar.Location = new System.Drawing.Point(3, 3);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(78, 28);
+            this.btnSalvar.Size = new System.Drawing.Size(78, 57);
             this.btnSalvar.TabIndex = 13;
-            this.btnSalvar.Text = "Adicionar";
-            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // txtNomeCliente
@@ -159,6 +160,8 @@
             this.txtTalao.Name = "txtTalao";
             this.txtTalao.Size = new System.Drawing.Size(76, 23);
             this.txtTalao.TabIndex = 1;
+            this.txtTalao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTalao_KeyPress);
+            this.txtTalao.MouseEnter += new System.EventHandler(this.txtTalao_MouseEnter);
             // 
             // txtCodCliente
             // 
@@ -166,15 +169,16 @@
             this.txtCodCliente.Name = "txtCodCliente";
             this.txtCodCliente.Size = new System.Drawing.Size(76, 23);
             this.txtCodCliente.TabIndex = 5;
+            this.txtCodCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodCliente_KeyPress);
             // 
             // cmbFuncionario
             // 
             this.cmbFuncionario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFuncionario.FormattingEnabled = true;
             this.cmbFuncionario.Items.AddRange(new object[] {
-            "LEONARDO METAL",
-            "JONATAS LEONCIO",
             "RODRIGO MACHADO",
+            "LUCIANO TADEU",
+            "JONATAS LEONCIO",
             "LEANDRO LEONCIO"});
             this.cmbFuncionario.Location = new System.Drawing.Point(101, 25);
             this.cmbFuncionario.Name = "cmbFuncionario";
@@ -238,6 +242,7 @@
             this.txtDtAberto.TabIndex = 3;
             this.txtDtAberto.ValidatingType = typeof(System.DateTime);
             this.txtDtAberto.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtDtAberto_MaskInputRejected);
+            this.txtDtAberto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDtAberto_KeyDown);
             this.txtDtAberto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDtAberto_KeyPress);
             // 
             // label11
@@ -266,6 +271,7 @@
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(99, 23);
             this.txtValor.TabIndex = 8;
+            this.txtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValor_KeyPress);
             // 
             // cmbStatus
             // 
@@ -288,6 +294,7 @@
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(103, 23);
             this.txtTel.TabIndex = 7;
+            this.txtTel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel_KeyPress);
             // 
             // label6
             // 
@@ -476,24 +483,26 @@
             // 
             // btnAlterar
             // 
+            this.btnAlterar.BackColor = System.Drawing.Color.White;
             this.btnAlterar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAlterar.Location = new System.Drawing.Point(125, 7);
+            this.btnAlterar.Image = global::agendaPosVenda.Properties.Resources.btnEditar_Image;
+            this.btnAlterar.Location = new System.Drawing.Point(87, 2);
             this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(71, 28);
+            this.btnAlterar.Size = new System.Drawing.Size(71, 60);
             this.btnAlterar.TabIndex = 114;
-            this.btnAlterar.Text = "Atualizar";
-            this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.UseVisualStyleBackColor = false;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnExcluir
             // 
+            this.btnExcluir.BackColor = System.Drawing.Color.White;
             this.btnExcluir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnExcluir.Location = new System.Drawing.Point(221, 7);
+            this.btnExcluir.Image = global::agendaPosVenda.Properties.Resources.btnExcluir_Image;
+            this.btnExcluir.Location = new System.Drawing.Point(173, 4);
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(65, 28);
+            this.btnExcluir.Size = new System.Drawing.Size(68, 57);
             this.btnExcluir.TabIndex = 15;
-            this.btnExcluir.Text = "Excluir";
-            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // pnlControles
@@ -682,13 +691,14 @@
             // 
             // btnNovo
             // 
+            this.btnNovo.BackColor = System.Drawing.Color.White;
             this.btnNovo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnNovo.Location = new System.Drawing.Point(1006, 8);
+            this.btnNovo.Image = global::agendaPosVenda.Properties.Resources.btnNovo_Image;
+            this.btnNovo.Location = new System.Drawing.Point(953, 3);
             this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(53, 33);
+            this.btnNovo.Size = new System.Drawing.Size(78, 67);
             this.btnNovo.TabIndex = 16;
-            this.btnNovo.Text = "Novo";
-            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.UseVisualStyleBackColor = false;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // cmbFilt_Funcionario
@@ -713,7 +723,7 @@
             this.pnlComandos.Controls.Add(this.btnExcluir);
             this.pnlComandos.Location = new System.Drawing.Point(692, 3);
             this.pnlComandos.Name = "pnlComandos";
-            this.pnlComandos.Size = new System.Drawing.Size(308, 43);
+            this.pnlComandos.Size = new System.Drawing.Size(255, 67);
             this.pnlComandos.TabIndex = 13;
             // 
             // btnAlerta
@@ -1175,7 +1185,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1267, 579);
+            this.ClientSize = new System.Drawing.Size(1267, 575);
             this.Controls.Add(this.cmbFuncLogin);
             this.Controls.Add(this.txtLogin);
             this.Controls.Add(this.label13);

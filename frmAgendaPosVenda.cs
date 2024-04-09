@@ -73,7 +73,7 @@ namespace agendaPosVenda
             rb_Asc.Checked = false;
 
 
-
+           
 
         }
         private void frmAgendaPosVenda_Load(object sender, EventArgs e)
@@ -205,6 +205,12 @@ namespace agendaPosVenda
             //.............................................
 
             // Utilizando expressão regular para verificar se o campo id contém apenas números inteiros.
+            if (lblId.Text!="".Trim())
+            {
+                MessageBox.Show("Não é possivel Duplicar");
+                return;
+            }
+
             Regex regex = new Regex(@"^\d+$");
             if (!regex.IsMatch(txtTalao.Text))
             {
@@ -1363,6 +1369,12 @@ namespace agendaPosVenda
                  e.Handled = true;
              }*/
             e.KeyChar = char.ToUpper(e.KeyChar);
+
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                //MessageBox.Show("ola");
+                txtTel.Focus();
+            }
         }
 
         private void txtDtAberto_KeyPress(object sender, KeyPressEventArgs e)
@@ -1374,6 +1386,11 @@ namespace agendaPosVenda
 
                 // Impede que o caractere seja inserido na MaskedTextBox
                 e.Handled = true;
+            }
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                //MessageBox.Show("ola");
+                txtCodCliente.Focus();
             }
         }
 
@@ -1387,6 +1404,11 @@ namespace agendaPosVenda
                 // Impede que o caractere seja inserido na MaskedTextBox
                 e.Handled = true;
             }
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                //MessageBox.Show("ola");
+                txtDtEntregue.Focus();
+            }
         }
 
         private void txtDtEntregue_KeyPress(object sender, KeyPressEventArgs e)
@@ -1398,6 +1420,11 @@ namespace agendaPosVenda
 
                 // Impede que o caractere seja inserido na MaskedTextBox
                 e.Handled = true;
+            }
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                //MessageBox.Show("ola");
+                txtDtPosVenda.Focus();
             }
         }
 
@@ -1411,6 +1438,11 @@ namespace agendaPosVenda
                 // Impede que o caractere seja inserido na MaskedTextBox
                 e.Handled = true;
             }
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                //MessageBox.Show("ola");
+                txtObservacao.Focus();
+            }
         }
 
         private void cmbFuncionario_KeyPress(object sender, KeyPressEventArgs e)
@@ -1422,6 +1454,11 @@ namespace agendaPosVenda
 
 
 
+            }
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                //MessageBox.Show("ola");
+                txtDtAberto.Focus();
             }
         }
 
@@ -1530,6 +1567,52 @@ namespace agendaPosVenda
         private void txtObservacao_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtTalao_MouseEnter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtTalao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           if (e.KeyChar == (char)Keys.Enter)
+            {
+                //MessageBox.Show("ola");
+                cmbFuncionario.Focus();
+            }
+        }
+
+        private void txtCodCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                //MessageBox.Show("ola");
+                txtNomeCliente.Focus();
+            }
+        }
+
+        private void txtTel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                //MessageBox.Show("ola");
+                txtValor.Focus();
+            }
+        }
+
+        private void txtValor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                //MessageBox.Show("ola");
+                txtDataPrevEntrega.Focus();
+            }
+        }
+
+        private void txtDtAberto_KeyDown(object sender, KeyEventArgs e)
+        {
+           
         }
     }
 }

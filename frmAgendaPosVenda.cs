@@ -785,6 +785,8 @@ namespace agendaPosVenda
 
                 gridRegistros.Rows[i].Cells["Observacao"].Value = resp[i].Observacao;
 
+                gridRegistros.Rows[i].Cells["Data"].Value = ((DateTime)resp[i].Data).ToString("dd/MM/yyyy  HH:mm");
+
 
 
 

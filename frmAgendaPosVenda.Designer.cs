@@ -110,20 +110,21 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txtLogin = new System.Windows.Forms.TextBox();
             this.cmbFuncLogin = new System.Windows.Forms.ComboBox();
-            this.Observacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataPosVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataEntrega = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataPrevEntrega = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataAberta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Funcionario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Talao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridRegistros = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Talao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Funcionario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataAberta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataPrevEntrega = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataEntrega = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataPosVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Observacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlEntidades.SuspendLayout();
             this.pnlStatus.SuspendLayout();
             this.pnlControles.SuspendLayout();
@@ -1048,107 +1049,18 @@
             this.cmbFuncLogin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbFuncLogin_KeyDown);
             this.cmbFuncLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbFuncLogin_KeyPress);
             // 
-            // Observacao
-            // 
-            this.Observacao.HeaderText = "Observacao";
-            this.Observacao.Name = "Observacao";
-            this.Observacao.ReadOnly = true;
-            // 
-            // Valor
-            // 
-            this.Valor.HeaderText = "Valor R$";
-            this.Valor.Name = "Valor";
-            this.Valor.ReadOnly = true;
-            // 
-            // DataPosVenda
-            // 
-            this.DataPosVenda.HeaderText = "Data Pós Venda";
-            this.DataPosVenda.Name = "DataPosVenda";
-            this.DataPosVenda.ReadOnly = true;
-            // 
-            // DataEntrega
-            // 
-            this.DataEntrega.HeaderText = "Data Entrega";
-            this.DataEntrega.Name = "DataEntrega";
-            this.DataEntrega.ReadOnly = true;
-            // 
-            // DataPrevEntrega
-            // 
-            this.DataPrevEntrega.HeaderText = "Previsão de Entrega";
-            this.DataPrevEntrega.Name = "DataPrevEntrega";
-            this.DataPrevEntrega.ReadOnly = true;
-            // 
-            // DataAberta
-            // 
-            this.DataAberta.HeaderText = "Data Aberta";
-            this.DataAberta.Name = "DataAberta";
-            this.DataAberta.ReadOnly = true;
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            // 
-            // Telefone
-            // 
-            this.Telefone.HeaderText = "Telefone";
-            this.Telefone.Name = "Telefone";
-            this.Telefone.ReadOnly = true;
-            // 
-            // cliente
-            // 
-            this.cliente.HeaderText = "Cliente";
-            this.cliente.Name = "cliente";
-            this.cliente.ReadOnly = true;
-            this.cliente.Width = 190;
-            // 
-            // CodCliente
-            // 
-            this.CodCliente.HeaderText = "Cod Cliente";
-            this.CodCliente.Name = "CodCliente";
-            this.CodCliente.ReadOnly = true;
-            this.CodCliente.Width = 60;
-            // 
-            // Funcionario
-            // 
-            this.Funcionario.HeaderText = "Funcionario";
-            this.Funcionario.Name = "Funcionario";
-            this.Funcionario.ReadOnly = true;
-            this.Funcionario.Width = 150;
-            // 
-            // Talao
-            // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Talao.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Talao.HeaderText = "Talao";
-            this.Talao.Name = "Talao";
-            this.Talao.ReadOnly = true;
-            this.Talao.Width = 60;
-            // 
-            // Id
-            // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Id.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Id.HeaderText = "Id";
-            this.Id.MinimumWidth = 4;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Width = 55;
-            // 
             // gridRegistros
             // 
             this.gridRegistros.AllowUserToAddRows = false;
             this.gridRegistros.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridRegistros.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridRegistros.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gridRegistros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridRegistros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -1163,7 +1075,8 @@
             this.DataEntrega,
             this.DataPosVenda,
             this.Valor,
-            this.Observacao});
+            this.Observacao,
+            this.Data});
             this.gridRegistros.EnableHeadersVisualStyles = false;
             this.gridRegistros.Location = new System.Drawing.Point(13, 235);
             this.gridRegistros.MultiSelect = false;
@@ -1179,6 +1092,101 @@
             this.gridRegistros.Click += new System.EventHandler(this.gridRegistros_Click);
             this.gridRegistros.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridRegistros_KeyDown);
             this.gridRegistros.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.gridRegistros_PreviewKeyDown);
+            // 
+            // Id
+            // 
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Id.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 4;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 55;
+            // 
+            // Talao
+            // 
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Talao.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Talao.HeaderText = "Talao";
+            this.Talao.Name = "Talao";
+            this.Talao.ReadOnly = true;
+            this.Talao.Width = 60;
+            // 
+            // Funcionario
+            // 
+            this.Funcionario.HeaderText = "Funcionario";
+            this.Funcionario.Name = "Funcionario";
+            this.Funcionario.ReadOnly = true;
+            this.Funcionario.Width = 150;
+            // 
+            // CodCliente
+            // 
+            this.CodCliente.HeaderText = "Cod Cliente";
+            this.CodCliente.Name = "CodCliente";
+            this.CodCliente.ReadOnly = true;
+            this.CodCliente.Width = 60;
+            // 
+            // cliente
+            // 
+            this.cliente.HeaderText = "Cliente";
+            this.cliente.Name = "cliente";
+            this.cliente.ReadOnly = true;
+            this.cliente.Width = 190;
+            // 
+            // Telefone
+            // 
+            this.Telefone.HeaderText = "Telefone";
+            this.Telefone.Name = "Telefone";
+            this.Telefone.ReadOnly = true;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
+            // DataAberta
+            // 
+            this.DataAberta.HeaderText = "Data Aberta";
+            this.DataAberta.Name = "DataAberta";
+            this.DataAberta.ReadOnly = true;
+            // 
+            // DataPrevEntrega
+            // 
+            this.DataPrevEntrega.HeaderText = "Previsão de Entrega";
+            this.DataPrevEntrega.Name = "DataPrevEntrega";
+            this.DataPrevEntrega.ReadOnly = true;
+            // 
+            // DataEntrega
+            // 
+            this.DataEntrega.HeaderText = "Data Entrega";
+            this.DataEntrega.Name = "DataEntrega";
+            this.DataEntrega.ReadOnly = true;
+            // 
+            // DataPosVenda
+            // 
+            this.DataPosVenda.HeaderText = "Data Pós Venda";
+            this.DataPosVenda.Name = "DataPosVenda";
+            this.DataPosVenda.ReadOnly = true;
+            // 
+            // Valor
+            // 
+            this.Valor.HeaderText = "Valor R$";
+            this.Valor.Name = "Valor";
+            this.Valor.ReadOnly = true;
+            // 
+            // Observacao
+            // 
+            this.Observacao.HeaderText = "Observacao";
+            this.Observacao.Name = "Observacao";
+            this.Observacao.ReadOnly = true;
+            // 
+            // Data
+            // 
+            this.Data.HeaderText = "Data e Hora do Registro";
+            this.Data.Name = "Data";
+            this.Data.ReadOnly = true;
             // 
             // frmAgendaPosVenda
             // 
@@ -1294,19 +1302,6 @@
         private Label label16;
         private Label label15;
         private Label label17;
-        private DataGridViewTextBoxColumn Observacao;
-        private DataGridViewTextBoxColumn Valor;
-        private DataGridViewTextBoxColumn DataPosVenda;
-        private DataGridViewTextBoxColumn DataEntrega;
-        private DataGridViewTextBoxColumn DataPrevEntrega;
-        private DataGridViewTextBoxColumn DataAberta;
-        private DataGridViewTextBoxColumn Status;
-        private DataGridViewTextBoxColumn Telefone;
-        private DataGridViewTextBoxColumn cliente;
-        private DataGridViewTextBoxColumn CodCliente;
-        private DataGridViewTextBoxColumn Funcionario;
-        private DataGridViewTextBoxColumn Talao;
-        private DataGridViewTextBoxColumn Id;
         private DataGridView gridRegistros;
         private ComboBox cmb_Filt_Status;
         private Button btnFiltrat;
@@ -1325,5 +1320,19 @@
         private RadioButton rb_Desc;
         private RadioButton rb_Asc;
         private ComboBox cmb_Filt_Coluna_Datas;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn Talao;
+        private DataGridViewTextBoxColumn Funcionario;
+        private DataGridViewTextBoxColumn CodCliente;
+        private DataGridViewTextBoxColumn cliente;
+        private DataGridViewTextBoxColumn Telefone;
+        private DataGridViewTextBoxColumn Status;
+        private DataGridViewTextBoxColumn DataAberta;
+        private DataGridViewTextBoxColumn DataPrevEntrega;
+        private DataGridViewTextBoxColumn DataEntrega;
+        private DataGridViewTextBoxColumn DataPosVenda;
+        private DataGridViewTextBoxColumn Valor;
+        private DataGridViewTextBoxColumn Observacao;
+        private DataGridViewTextBoxColumn Data;
     }
 }
